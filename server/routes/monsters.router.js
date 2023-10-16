@@ -22,7 +22,10 @@ router.get('/', (req, res) => {
  * POST route template
  */
 router.post('/', (req, res) => {
-  // POST route code here
+  // POST route for /monsters
+    const monster = req.body;
+    console.log(monster);
+
 });
 
 module.exports = router;
