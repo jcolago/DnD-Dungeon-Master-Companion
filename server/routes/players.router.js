@@ -89,4 +89,10 @@ router.delete("/:id", (req, res) => {
         })
 })
 
+// router.put("/:id", (req, res) => {
+//     const id = req.params.id
+//     console.log("PUT request to player with id", id);
+//     const queryText = ``
+// })
+
 module.exports = router;
