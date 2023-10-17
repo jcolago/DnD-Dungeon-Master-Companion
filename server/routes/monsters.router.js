@@ -42,7 +42,7 @@ router.delete("/:id", (req, res) => {
     //query to delete from players_inventory table
     const id = req.params.id;
     console.log(id)
-    const queryText = `DELETE FROM "monsters" WHERE "id" = 1`;
+    const queryText = `DELETE FROM "monsters" WHERE "id" = $1`;
 
     if (!id) {
         res.sendStatus(400);
@@ -55,5 +55,14 @@ router.delete("/:id", (req, res) => {
         console.log('Error in DELETE from monsters table', err);
         res.sendStatus(500);
     })
-})
+});
+
+// router.put("/id", (req, res) => {
+//     const id = req.params.id;
+//     console.log("Update request to moster with id:", id)
+
+//     const queryText = `UPDATE "monsters" SET "hit_points" = '5' WHERE "id" = $1`
+// })
+
+
 module.exports = router;
