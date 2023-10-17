@@ -100,13 +100,13 @@ router.put("/:id", (req, res) => {
     const queryText = `UPDATE "players" SET "player_name" = $1, "character_name" = $2, "character_img" = $3, "character_level" = $4, "current_hp" = $5, "total_hp" = $6, "armor_class" = $7, "speed" = $8, "initiative_bonus" = $9, "strength" = $10, "str_bonus" = $11, "str_save" = $12, "dexterity" = $13, "dex_bonus" = $14, "dex_save" = $15, "constitution" = $16, "con_bonus" = $17, "con_save" = $18, "intelligence" = $19, "int_bonus" = $20, "int_save" = $21, "wisdom" = $22, "wis_bonus" = $23, "wis_save" = $24, "charisma" = $25, "cha_bonus" = $26, "cha_save" = $27, "game_id" = $28 WHERE "id" = $29;`;
 
     pool.query(queryText, [updatedCharacter.player_name, updatedCharacter.character_name, updatedCharacter.character_img, updatedCharacter.character_level, updatedCharacter.current_hp, updatedCharacter.total_hp, updatedCharacter.armor_class, updatedCharacter.speed, updatedCharacter.initiative_bonus, updatedCharacter.strength, updatedCharacter.str_bonus, updatedCharacter.str_save, updatedCharacter.dexterity, updatedCharacter.dex_bonus, updatedCharacter.dex_save, updatedCharacter.constitution, updatedCharacter.con_bonus, updatedCharacter.con_save, updatedCharacter.intelligence, updatedCharacter.int_bonus, updatedCharacter.int_save, updatedCharacter.wisdom, updatedCharacter.wis_bonus, updatedCharacter.wis_save, updatedCharacter.charisma, updatedCharacter.cha_bonus, updatedCharacter.cha_save, updatedCharacter.game_id, id])
-    .then(() => {
-        res.sendStatus(200)
-    })
-    .catch((err) => {
-        console.log('Error updating player', err);
-        res.sendStatus(500);
-    });
+        .then(() => {
+            res.sendStatus(200)
+        })
+        .catch((err) => {
+            console.log('Error updating player', err);
+            res.sendStatus(500);
+        });
 });
 
 module.exports = router;
