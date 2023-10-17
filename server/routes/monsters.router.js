@@ -57,12 +57,23 @@ router.delete("/:id", (req, res) => {
     })
 });
 
-// router.put("/id", (req, res) => {
-//     const id = req.params.id;
-//     console.log("Update request to moster with id:", id)
+router.put("/id", (req, res) => {
+    const id = req.params.id;
+    const updatedMonster = req.body;
+    console.log("Update request to moster with id:", id)
+    console.log('Updated monster', updatedMonster)
 
-//     const queryText = `UPDATE "monsters" SET "hit_points" = '5' WHERE "id" = $1`
-// })
+    const queryText = `UPDATE "monsters" SET "name" = $1, "size" = $2, "alignment" = $3, "armor_class" = $4, "hit_points" = $5, "speed" = $6, "resistances" = $7, "proficiency_bonus" = $8, "attacks" = $9, "game_id" = $10 WHERE "id" = $11`
+
+    pool.query(queryText, [updatedMonster.name, updatedMonster.size, updatedMonster.alignment, updatedMonster.armor_class, updatedMonster.hit_points, updatedMonster.speed, updatedMonster.resistances, updatedMonster.proficiency_bonus, updatedMonster.attacks, updatedMonster.game_id, id])
+    .then(() => {
+        res.sendStatus(200)
+    })
+    .catch((err) => {
+        console.log('Error updating monster', err);
+        res.sendStatus(500);
+    });
+})
 
 
 module.exports = router;
