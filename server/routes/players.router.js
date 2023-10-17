@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
   JOIN "inventory" AS "i" ON "pi".inventory_id = "i".id
   JOIN  "players_conditions" AS "pc" ON "p".id = "pc".player_id
   JOIN "conditions" AS "c" ON "pc".condition_id = "c".id
-  GROUP BY "p".id, "pc".condition_length, "c".condition_name;`;
+  GROUP BY "p".id, "pc".condition_length, "c".condition_name RETURNING "id";`;
 
     pool.query(queryText)
         .then(result => {
