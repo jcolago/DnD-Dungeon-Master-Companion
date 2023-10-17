@@ -11,9 +11,24 @@ function* fetchPlayersSaga() {
     }
 }
 
+function* deletePlayerSaga(action) {
+    try {
+        yield axios ({
+            method: 'DELETE',
+            url: `/api/players/${action.payload}`
+        });
+        yield put ({ type: 'FETCH_PLAYERS'});
+    } catch (error) {
+        console.log('Unable to delete player character', error)
+    }
+}
+
+
+
 
 function* playersSaga() {
     yield takeEvery("FETCH_PLAYERS", fetchPlayersSaga)
+    yield takeEvery("DELETE_CHARACTER", deletePlayerSaga)
 }
 
 export default playersSaga;
