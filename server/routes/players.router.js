@@ -129,4 +129,31 @@ router.put("/:id", (req, res) => {
         });
 });
 
+router.put('/display/:id', (req, res) =>{
+    const id = req.params.id;
+    console.log("Display request to player with id", id);
+    const queryText = 'UPDATE "players" SET "displayed" = true WHERE "id" = $1;';
+    pool.query(queryText, [id])
+    .then(() => {
+        res.sendStatus(200)
+    })
+    .catch((err) => {
+        console.log("Error in setting character to displayed", err);
+        res.sendStatus(500);
+    });
+});
+
+router.put('/remove/:id', (req, res) =>{
+    const id = req.params.id;
+    console.log("Remove from display request to player with id", id);
+    const queryText = 'UPDATE "players" SET "displayed" = false WHERE "id" = $1;';
+    pool.query(queryText, [id])
+    .then(() => {
+        res.sendStatus(200)
+    })
+    .catch((err) => {
+        console.log("Error in removing character from display", err);
+        res.sendStatus(500);
+    });
+});
 module.exports = router;
