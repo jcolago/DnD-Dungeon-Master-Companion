@@ -27,6 +27,30 @@ router.get('/', (req, res) => {
         })
 });
 
+router.get('/:id', (req, res) => {
+    // GET route for player details
+    const id = req.params.id
+    console.log('Getting player information with id:', id)
+    const queryText = `SELECT "p".id, "p".player_name, "p".character_name, "p". character_img, "p".character_level, "p".current_hp, "p".total_hp, "p".armor_class, "p".speed, "p".initiative_bonus, "p".strength, "p".str_bonus, "p".str_save, "p".dexterity, "p".dex_bonus, "p".dex_save, "p".constitution, "p".con_bonus, "p".con_save, "p".intelligence, "p".int_bonus, "p".int_save, "p".wisdom, "p".wis_bonus, "p".wis_save, "p".charisma, "p".cha_bonus, "p".cha_save, "p".displayed, JSON_AGG (json_build_object('quantity',"pi".quantity, 'item_name', "i".item_name)) AS quantity_items, "pc".condition_length, "c".condition_name, "g".game_name, "g".dm_id FROM "players" AS "p"
+    JOIN  "players_inventory" AS "pi" ON "p".id = "pi".player_id
+    JOIN "inventory" AS "i" ON "pi".inventory_id = "i".id
+    JOIN  "players_conditions" AS "pc" ON "p".id = "pc".player_id
+    JOIN "conditions" AS "c" ON "pc".condition_id = "c".id
+    JOIN "games" AS "g" ON "p".game_id = "g".id
+    WHERE "g".dm_id = $1 AND "p".id = $2
+    GROUP BY "p".id, "pc".condition_length, "c".condition_name, "g".game_name, "g".dm_id;
+    `;
+
+    pool.query(queryText, [req.user.id,id])
+        .then(result => {
+            res.send(result.rows);
+        })
+        .catch(err => {
+            console.log('Error getting data from database', err);
+            res.sendStatus(500)
+        })
+});
+
 /**
  * POST route template
  */

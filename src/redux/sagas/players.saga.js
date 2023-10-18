@@ -18,17 +18,70 @@ function* deletePlayerSaga(action) {
             url: `/api/players/${action.payload}`
         });
         yield put ({ type: 'FETCH_PLAYERS'});
-    } catch (error) {
-        console.log('Unable to delete player character', error)
+    } catch (err) {
+        console.log('Unable to delete player character', err)
+    }
+}
+
+function* updatePlayerSaga(action) {
+    try {
+        yield axios ({
+            method: 'PUT',
+            url:`/api/players/${action.payload.id}`,
+            data: action.payload,
+        });
+        yield put ({ type: 'FETCH_PLAYERS '})
+    } catch (err) {
+        console.log('Unable to update player character', err)
+    }
+}
+
+function* addPlayerSaga(action) {
+    try {
+        yield axios ({
+            method: 'POST',
+            url:'/api/players',
+            data: action.payload
+        })
+        yield put ({ type: 'FETCH_PLAYERS'})
+    } catch (err) {
+        console.log('Unable to add player', err)
+    }
+}
+
+function* displayPlayerSaga(action) {
+    try {
+        yield axios ({
+            method: 'PUT',
+            url: `/api/players/display/${action.payload}`
+        })
+        yield put ({ type: 'FETCH_PLAYERS'})
+    } catch (err) {
+        console.log('Unable to set player to displayed', err)
+    }
+}
+
+function* removePlayerSaga(action) {
+    try {
+        yield axios ({
+            method: 'PUT',
+            url: `/api/players/display/${action.payload}`
+        })
+        yield put ({ type: 'FETCH_PLAYERS'})
+    } catch (err) {
+        console.log('Unable to remove player from game display', err)
     }
 }
 
 
 
-
 function* playersSaga() {
-    yield takeEvery("FETCH_PLAYERS", fetchPlayersSaga)
-    yield takeEvery("DELETE_CHARACTER", deletePlayerSaga)
+    yield takeEvery("FETCH_PLAYERS", fetchPlayersSaga);
+    yield takeEvery("DELETE_CHARACTER", deletePlayerSaga);
+    yield takeEvery("UPDATE_CHARACTER", updatePlayerSaga);
+    yield takeEvery("ADD_PLAYER", addPlayerSaga);
+    yield takeEvery("DISPLAY_PLAYER", displayPlayerSaga)
+    yield takeEvery("REMOVE_PLAYER", removePlayerSaga)
 }
 
 export default playersSaga;
