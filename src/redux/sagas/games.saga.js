@@ -5,7 +5,7 @@ function* fetchGamesSaga() {
     try {
         const inventory = yield axios.get('/api/games');
         console.log('GET all games', inventory.data);
-        yield put ({ type: 'SET_GAMES', payload: inventory.data })
+        yield put({ type: 'SET_GAMES', payload: inventory.data })
     } catch (error) {
         console.log('Error fetching games', error);
     }
@@ -13,12 +13,12 @@ function* fetchGamesSaga() {
 
 function* addGameSaga(action) {
     try {
-        yield axios ({
+        yield axios({
             method: 'POST',
-            url:'/api/games',
+            url: '/api/games',
             data: action.payload
         })
-        yield put ({ type: 'FETCH_GAMES'})
+        yield put({ type: 'FETCH_GAMES' })
     } catch (err) {
         console.log('Unable to add game', err)
     }

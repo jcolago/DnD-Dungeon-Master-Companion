@@ -5,7 +5,7 @@ function* fetchInventorySaga() {
     try {
         const inventory = yield axios.get('/api/inventory');
         console.log('GET all inventory', inventory.data);
-        yield put ({ type: 'SET_INVENTORY', payload: inventory.data })
+        yield put({ type: 'SET_INVENTORY', payload: inventory.data })
     } catch (error) {
         console.log('Error fetching inventory', error);
     }
@@ -13,12 +13,12 @@ function* fetchInventorySaga() {
 
 function* addItemSaga(action) {
     try {
-        yield axios ({
+        yield axios({
             method: 'POST',
-            url:`/api/inventory/${action.payload.id}`,
+            url: `/api/inventory/${action.payload.id}`,
             data: action.payload
         })
-        yield put ({ type: 'FETCH_PLAYERS'})
+        yield put({ type: 'FETCH_PLAYERS' })
     } catch (err) {
         console.log('Unable to add item to player', err)
     }
