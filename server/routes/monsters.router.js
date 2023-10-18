@@ -75,7 +75,35 @@ router.put("/id", (req, res) => {
             console.log('Error updating monster', err);
             res.sendStatus(500);
         });
-})
+});
+
+router.put('/display/:id', (req, res) =>{
+    const id = req.params.id;
+    console.log("Display request to monster with id", id);
+    const queryText = 'UPDATE "monsters" SET "displayed" = true WHERE "id" = $1;';
+    pool.query(queryText, [id])
+    .then(() => {
+        res.sendStatus(200)
+    })
+    .catch((err) => {
+        console.log("Error in setting monster to displayed", err);
+        res.sendStatus(500);
+    });
+});
+
+router.put('/remove/:id', (req, res) =>{
+    const id = req.params.id;
+    console.log("Remove from display request to monster with id", id);
+    const queryText = 'UPDATE "monsters" SET "displayed" = false WHERE "id" = $1;';
+    pool.query(queryText, [id])
+    .then(() => {
+        res.sendStatus(200)
+    })
+    .catch((err) => {
+        console.log("Error in removing monster from display", err);
+        res.sendStatus(500);
+    });
+});
 
 
 module.exports = router;
