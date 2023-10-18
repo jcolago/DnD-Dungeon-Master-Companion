@@ -11,6 +11,17 @@ function* fetchPlayersSaga() {
     }
 }
 
+function* fetchPlayerDetailsSaga(action) {
+  try {
+    console.log(action.payload);
+    const response = yield axios.get(`api/players/${action.payload}`)
+    console.log
+    yield put ({ type: 'SET_PLAYER_DETAILS', payload: response.data})
+  } catch (err) {
+    console.log('Unable to fecth details of player with id:', err)
+  }
+}
+
 function* deletePlayerSaga(action) {
     try {
         yield axios ({
@@ -80,8 +91,9 @@ function* playersSaga() {
     yield takeEvery("DELETE_CHARACTER", deletePlayerSaga);
     yield takeEvery("UPDATE_CHARACTER", updatePlayerSaga);
     yield takeEvery("ADD_PLAYER", addPlayerSaga);
-    yield takeEvery("DISPLAY_PLAYER", displayPlayerSaga)
-    yield takeEvery("REMOVE_PLAYER", removePlayerSaga)
+    yield takeEvery("DISPLAY_PLAYER", displayPlayerSaga);
+    yield takeEvery("REMOVE_PLAYER", removePlayerSaga);
+    yield takeEvery("FETCH_PLAYER_DETAILS", fetchPlayerDetailsSaga);
 }
 
 export default playersSaga;
