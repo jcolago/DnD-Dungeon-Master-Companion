@@ -4,7 +4,7 @@ import user from './user.reducer';
 import players from './players.reducer';
 import monsters from './monster.reducer';
 import games from './games.reducer';
-import items from './items.reducer';
+import inventory from './inventory.reducer';
 import conditions from './conditions.reducer'
 
 // rootReducer is the primary reducer for our entire project
@@ -19,7 +19,7 @@ const rootReducer = combineReducers({
   players,
   monsters,
   games,
-  items,
+  inventory,
   conditions
 });
 
