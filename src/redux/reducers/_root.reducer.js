@@ -6,6 +6,7 @@ import monsters from './monster.reducer';
 import games from './games.reducer';
 import inventory from './inventory.reducer';
 import conditions from './conditions.reducer'
+import stats from './stats.reducer'
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -20,7 +21,8 @@ const rootReducer = combineReducers({
   monsters,
   games,
   inventory,
-  conditions
+  conditions,
+  stats
 });
 
 export default rootReducer;

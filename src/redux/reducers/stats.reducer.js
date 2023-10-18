@@ -1,10 +1,10 @@
-const playersReducer = (state = {}, action) => {
+const statsReducer = (state = {}, action) => {
     switch (action.type) {
-        case 'SET_PLAYERS':
+        case 'SET_STATS':
             return action.payload; 
         default:
             return state;
     }
 }
 
-export default playersReducer;
+export default statsReducer;
