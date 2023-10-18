@@ -57,7 +57,8 @@ export default function PlayerInfo() {
     event.preventDefault();
     console.log(newPlayerInfo)
     dispatch({ type: 'SET_PLAYERS', payload: newPlayerInfo})
-    setNewPlayerInfo(({ player_name: "", character_name: "", character_img: "", character_level: "", current_hp: "", total_hp: "", armor_class: "", speed: "", initiative_bonus: "" }))
+    setNewPlayerInfo({ player_name: "", character_name: "", character_img: "", character_level: "", current_hp: "", total_hp: "", armor_class: "", speed: "", initiative_bonus: "" });
+    history.push("/stats")
     }
     return (
         <div>

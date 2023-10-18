@@ -20,6 +20,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import PlayerInfo from '../PlayerInfo/PlayerInfo';
+import PlayerStatInfo from '../PlayerStatInfo/PlayerStatInfo';
 
 import './App.css';
 
@@ -113,6 +114,9 @@ function App() {
           </Route>
           <Route path= "/playerinfo">
             <PlayerInfo />
+          </Route>
+          <Route path="/stats">
+            <PlayerStatInfo />
           </Route>
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>
