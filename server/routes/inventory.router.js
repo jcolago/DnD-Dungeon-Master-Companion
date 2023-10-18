@@ -19,6 +19,44 @@ router.get('/', (req, res) => {
         })
 });
 
+router.post("/:id", async (req, res) => {
+try {
+    const id = req.params.id
+    console.log("Adding to player inventory with id:", id)
+    const itemArray = req.body
+    const itemsQuery = `INSERT INTO "players_inventory" ("quantity", "inventory_id", "player_id")
+            VALUES ($1, $2, $3);
+            `
+
+    for (let i = 0; i < itemArray.length; i++) {
+        await pool.query(itemsQuery, [itemArray[i].quantity, itemArray[i].inventory_id, id])
+    }
+    res.sendStatus(201)
+} catch (err) {
+    console.log('Error adding to player inventory', err);
+    res.sendStatus(500);
+}
+});
+
+router.delete("/:id", async (req, res) => {
+    try {
+        const id = req.params.id
+        console.log("Removing from player inventory with id:", id)
+        const itemsQuery = `INSERT INTO "players_inventory" ("quantity", "inventory_id", "player_id")
+                VALUES ($1, $2, $3);
+                `
+    
+        for (let i = 0; i < itemArray.length; i++) {
+            await pool.query(itemsQuery, [itemArray[i].quantity, itemArray[i].inventory_id, id])
+        }
+        res.sendStatus(201)
+    } catch (err) {
+        console.log('Error adding to player inventory', err);
+        res.sendStatus(500);
+    }
+    });
+
+
 
 
 module.exports = router;

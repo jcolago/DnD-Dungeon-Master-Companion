@@ -23,8 +23,38 @@ router.get('/', (req, res) => {
 /**
  * POST route template
  */
-router.post('/', (req, res) => {
+router.post('/:id', (req, res) => {
     // POST route code here
+    const id = req.params.id
+    const condition = req.body
+    console.log("Adding condition for player with id:", id)
+    const queryText = `INSERT INTO "players_conditions" ("condition_length", "condition_id", "player_id")
+    VALUES ($1, $2, $3);`;
+
+    pool.query(queryText, [condition.condition_length, condition.condition_id, id])
+    .then(()=> {
+        res.sendStatus(201)
+    })
+    .catch((err) => {
+        console.log('Error in updating player condition', err);
+        res.sendStatus(500)
+    })
 });
+
+router.put('/:id', (req, res)=> {
+    const id = req.params.id
+    console.log("Updating condition for player with id:", id)
+    const updatedCondition = req.body
+    const queryText = 'UPDATE "players_conditions" SET "condition_length" = $1, "condition_id" = $2 WHERE "player_id" = $3;';
+
+    pool.query(queryText, [updatedCondition.condition_length, updatedCondition.condition_id, id])
+    .then(() => {
+        res.sendStatus(200)
+    })
+    .catch((err) => {
+        console.log('Error in updating condition', err);
+        res.sendStatus(500)
+    })
+})
 
 module.exports = router;
