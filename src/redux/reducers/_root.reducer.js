@@ -7,7 +7,8 @@ import games from './games.reducer';
 import inventory from './inventory.reducer';
 import conditions from './conditions.reducer';
 import stats from './stats.reducer';
-import backpack from './itemsarray.reducer'
+import backpack from './itemsarray.reducer';
+import playersInfo from './playerinfo.reducer'
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -24,7 +25,8 @@ const rootReducer = combineReducers({
   inventory,
   conditions,
   stats,
-  backpack
+  backpack,
+  playersInfo
 });
 
 export default rootReducer;
