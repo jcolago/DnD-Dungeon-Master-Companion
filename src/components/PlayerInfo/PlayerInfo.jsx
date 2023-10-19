@@ -53,12 +53,12 @@ export default function PlayerInfo() {
         setNewPlayerInfo({ ...newPlayerInfo, initiative_bonus: event.target.value })
     }
 
-    const addNewPlayerInfo = (event) =>{
-    event.preventDefault();
-    console.log(newPlayerInfo)
-    dispatch({ type: 'SET_PLAYERS', payload: newPlayerInfo})
-    setNewPlayerInfo({ player_name: "", character_name: "", character_img: "", character_level: "", current_hp: "", total_hp: "", armor_class: "", speed: "", initiative_bonus: "" });
-    history.push("/stats")
+    const addNewPlayerInfo = (event) => {
+        event.preventDefault();
+        console.log(newPlayerInfo)
+        dispatch({ type: 'SET_PLAYERS', payload: newPlayerInfo })
+        setNewPlayerInfo({ player_name: "", character_name: "", character_img: "", character_level: "", current_hp: "", total_hp: "", armor_class: "", speed: "", initiative_bonus: "" });
+        history.push("/stats")
     }
     return (
         <div>
