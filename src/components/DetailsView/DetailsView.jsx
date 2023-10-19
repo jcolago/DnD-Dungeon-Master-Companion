@@ -4,27 +4,30 @@ import { useHistory, useParams } from "react-router-dom";
 import DetailViewItem from "../DetailViewItem/DetailViewItem";
 
 export default function DetailsView() {
-    const id = useParams().id;
+    const id = Number(useParams().id);
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const player = useSelector((store) => store.detials)
+    const players = useSelector((store) => store.details)
+    // const player = players.find(playerDetails => Number(playerDetails.id) === id)
 
     useEffect(() => {
-        dispatch({ type: 'SET_PLAYER_DETAILS', payload: id })
-    }, [])
+        dispatch({ type: 'FETCH_PLAYER_DETAILS', payload: id });
+    }, []);
 
+    console.log(players)
+    console.log(id)
     return (
         <div>
-            {player.map(player => {
-                <div>
+            {players.map(player => {
+
+               return ( <div key={player.id}>
                     <div>
-                        <img src={player.img} />
+                        <img src={player.character_img} />
                     </div>
                     <div>
-                        <p>Player Name: {player.name}</p>
+                        <p>Player Name: {player.player_name}</p>
                         <p>Character Name: {player.character_name}</p>
-                        <p>Character Image: {player.character_img}</p>
                         <p>Character Lever: {player.character_level}</p>
                         <p>Current Hit Points: {player.current_hp}</p>
                         <p>Total Hit Points: {player.total_hp}</p>
@@ -41,11 +44,14 @@ export default function DetailsView() {
                         <p>Charisma: {player.charisma} Bonus: {player.cha_bonus}  Save: {player.cha_save}</p>
                     </div>
                     {player.quantity_items.map(item => {
-                        <ul>
+
+                       return( <ul>
                             <DetailViewItem key={item.id} item={item} />
                         </ul>
+                       )
                     })}
                 </div>
+               )
             })}
         </div>
     )

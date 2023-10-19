@@ -8,8 +8,9 @@ import inventory from './inventory.reducer';
 import conditions from './conditions.reducer';
 import stats from './stats.reducer';
 import backpack from './itemsarray.reducer';
-import playersInfo from './playerinfo.reducer'
+import playersInfo from './playerinfo.reducer';
 import details from './playerdetails.reducer'
+
 
 
 // rootReducer is the primary reducer for our entire project
