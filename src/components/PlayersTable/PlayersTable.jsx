@@ -1,10 +1,14 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import PlayersTableItem from "../PlayerTableItems/PlayerTableItem";
 
 export default function PlayersTable() {
-    const players = useSelector((store) => store.rootReducer.players)
-    console.log(players)
+    const dispatch = useDispatch();
+    const players = useSelector((store) => store.players)
+    console.log(players);
+
+
 
 return (
     <table>

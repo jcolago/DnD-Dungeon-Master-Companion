@@ -21,12 +21,13 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import PlayerInfo from '../PlayerInfo/PlayerInfo';
 import PlayerStatInfo from '../PlayerStatInfo/PlayerStatInfo';
+import PlayersTable from '../PlayersTable/PlayersTable';
 
 import './App.css';
 
 function App() {
   const dispatch = useDispatch();
-
+  
   const user = useSelector(store => store.user);
 
   useEffect(() => {
@@ -118,6 +119,9 @@ function App() {
           </Route>
           <Route path="/stats">
             <PlayerStatInfo />
+          </Route>
+          <Route exact path="/players">
+            <PlayersTable />
           </Route>
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>

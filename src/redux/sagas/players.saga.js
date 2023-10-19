@@ -3,9 +3,9 @@ import axios from "axios";
 
 function* fetchPlayersSaga() {
     try {
-        const players = yield axios.get('/api/players');
-        console.log('GET all players', players.data);
-        yield put({ type: 'SET_PLAYERS', payload: players.data })
+        const response = yield axios.get('/api/players');
+        console.log('GET all players', response.data);
+        yield put({ type: 'SET_PLAYERS', payload: response.data })
     } catch (error) {
         console.log('Error fetching players', error);
     }
