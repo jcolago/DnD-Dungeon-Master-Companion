@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-
+import PlayersTableItem from "../PlayerTableItems/PlayerTableItem";
 
 export default function PlayersTable() {
     const players = useSelector((store) => store.rootReducer.players)
@@ -12,16 +12,15 @@ return (
             <tr>
                 <th>Player Name</th>
                 <th>Character Name</th>
-                <th>Character Class</th>
                 <th>Character Level</th>
                 <th>Game Name</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-        {players.map(players => {
+        {players.map(player => {
             return (
-
+                <PlayersTableItem key={player.id} player={player} />
             )
         })}
         </tbody>
