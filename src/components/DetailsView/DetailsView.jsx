@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import DetailViewItem from "../DetailViewItem/DetailViewItem";
 
-export default function PlayerDetails() {
+export default function DetailsView() {
     const id = useParams().id;
     const dispatch = useDispatch();
     const history = useHistory();
