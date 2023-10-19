@@ -9,6 +9,8 @@ import conditions from './conditions.reducer';
 import stats from './stats.reducer';
 import backpack from './itemsarray.reducer';
 import playersInfo from './playerinfo.reducer'
+import details from './playerdetails.reducer'
+
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -26,7 +28,8 @@ const rootReducer = combineReducers({
   conditions,
   stats,
   backpack,
-  playersInfo
+  playersInfo,
+  details
 });
 
 export default rootReducer;
