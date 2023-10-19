@@ -85,6 +85,7 @@ export default function PlayerStatInfo() {
         console.log(newPlayerStats)
         dispatch({ type: 'SET_STATS', payload: newPlayerStats })
         setNewPlayerStats({ strength: "", str_bonus: "", str_save: "", dexterity: "", dex_bonus: "", dex_save: "", constitution: "", con_bonus: "", con_save: "", intelligence: "", int_bonus: "", int_save: "", wisdom: "", wis_bonus: "", wis_save: "", charisma: "", cha_bonus: "", cha_save: "" });
+        history.push('/playerinventory')
     }
 
     return (

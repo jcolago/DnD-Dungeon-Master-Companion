@@ -29,7 +29,8 @@ export default function PlayerInventoryInfo() {
         let newItem = { quantity: itemQuantity, item_id: itemId }
         dispatch({ type: 'ADD_TO_ARRAY', payload: newItem })
         setItemQuantity('0');
-        setItemId('')
+        setItemId('');
+        history.push('/review')
     }
 
     return (
