@@ -21,7 +21,7 @@ export default function DetailsView() {
         <div>
             {players.map(player => {
 
-               return ( <div key={player.id}>
+                return (<div key={player.id}>
                     <div>
                         <img src={player.character_img} />
                     </div>
@@ -45,13 +45,16 @@ export default function DetailsView() {
                     </div>
                     {player.quantity_items.map(item => {
 
-                       return( <ul>
-                            <DetailViewItem key={item.id} item={item} />
-                        </ul>
-                       )
+                        return (
+                            <ul>
+                                <DetailViewItem key={item.id} item={item} />
+                            </ul>
+                        )
                     })}
+                    <button>Edit</button>
+                    <button onClick={() => history.push('/players')}>Player List</button>
                 </div>
-               )
+                )
             })}
         </div>
     )
