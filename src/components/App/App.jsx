@@ -22,6 +22,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import PlayerInfo from '../PlayerInfo/PlayerInfo';
 import PlayerStatInfo from '../PlayerStatInfo/PlayerStatInfo';
 import PlayersTable from '../PlayersTable/PlayersTable';
+import PlayerInventoryInfo from '../PlayerInventoryInfo/PlayerInventoryInfo';
 
 import './App.css';
 
@@ -33,6 +34,7 @@ function App() {
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
     dispatch({ type: "FETCH_PLAYERS"});
+    dispatch({ type: "FETCH_INVENTORY"})
   }, [dispatch]);
 
   return (
@@ -122,6 +124,9 @@ function App() {
           </Route>
           <Route exact path="/players">
             <PlayersTable />
+          </Route>
+          <Route exact path="/playerinventory">
+            <PlayerInventoryInfo />
           </Route>
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>
