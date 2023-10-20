@@ -9,8 +9,7 @@ export default function DetailsView() {
     const history = useHistory();
 
     const players = useSelector((store) => store.details)
-    // const player = players.find(playerDetails => Number(playerDetails.id) === id)
-
+  
     useEffect(() => {
         dispatch({ type: 'FETCH_PLAYER_DETAILS', payload: id });
     }, []);
@@ -28,7 +27,7 @@ export default function DetailsView() {
                     <div>
                         <p>Player Name: {player.player_name}</p>
                         <p>Character Name: {player.character_name}</p>
-                        <p>Character Lever: {player.character_level}</p>
+                        <p>Character Level: {player.character_level}</p>
                         <p>Current Hit Points: {player.current_hp}</p>
                         <p>Total Hit Points: {player.total_hp}</p>
                         <p>Armor Class: {player.armor_class}</p>
