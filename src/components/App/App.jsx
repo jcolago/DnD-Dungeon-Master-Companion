@@ -27,6 +27,7 @@ import Review from '../Review/Review';
 import DetailsView from '../DetailsView/DetailsView';
 import EditDetails from '../EditDetails/EditDetails';
 import Success from '../Success/Success';
+import MonstersTable from '../MonsterTable/MonsterTable';
 
 import './App.css';
 
@@ -38,7 +39,8 @@ function App() {
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
     dispatch({ type: "FETCH_PLAYERS"});
-    dispatch({ type: "FETCH_INVENTORY"})
+    dispatch({ type: "FETCH_INVENTORY"});
+    dispatch({ type: "FETCH_MONSTERS"})
   }, [dispatch]);
 
   return (
@@ -143,6 +145,9 @@ function App() {
           </Route>
           <Route path='/edit/:id'>
             <EditDetails />
+          </Route>
+          <Route path="/monsters">
+            <MonstersTable />
           </Route>
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>

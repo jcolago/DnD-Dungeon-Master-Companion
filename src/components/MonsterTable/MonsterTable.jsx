@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import MonsterTableItem from "../MonsterTableItem/MonsterTableItem";
 
 
 export default function MonstersTable() {
     const dispatch = useDispatch();
     const monsters = useSelector((store) => store.monsters)
-    console.log(players);
+    console.log(monsters);
 
     useEffect(() => {
         dispatch({ type: "FETCH_MONSTERS" });
