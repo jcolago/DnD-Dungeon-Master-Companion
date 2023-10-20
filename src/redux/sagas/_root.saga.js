@@ -6,6 +6,7 @@ import playersSaga from './players.saga';
 import inventorySaga from './inventory.saga';
 import gamesSaga from './games.saga';
 import conditionsSaga from './conditions.saga'
+import monstersSaga from './monsters.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -22,6 +23,7 @@ export default function* rootSaga() {
     playersSaga(),
     inventorySaga(),
     conditionsSaga(),
-    gamesSaga()
+    gamesSaga(),
+    monstersSaga()
   ]);
 }
