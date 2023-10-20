@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
@@ -6,7 +6,10 @@ export default function PlayersTableItem({ player }) {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    
+    useEffect(() => {
+        dispatch({ type: "FETCH_PLAYERS"});
+    }, [])
+
     return (
         <>
             <tr>
