@@ -25,6 +25,7 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   // POST route code here
   const game = req.body;
+  console.log(req.body)
   console.log('Creating game:', game)
   const queryText = `INSERT INTO "games" ("game_name", "dm_id")
   VALUES ($1, $2);`
