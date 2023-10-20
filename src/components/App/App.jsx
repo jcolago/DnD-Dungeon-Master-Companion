@@ -30,6 +30,7 @@ import Success from '../Success/Success';
 import MonstersTable from '../MonsterTable/MonsterTable';
 
 import './App.css';
+import MonsterEntryFrom from '../MonsterEntryForm/MonsterEntryForm';
 
 function App() {
   const dispatch = useDispatch();
@@ -145,6 +146,9 @@ function App() {
           </Route>
           <Route path='/edit/:id'>
             <EditDetails />
+          </Route>
+          <Route exact path="/monsterentry">
+            <MonsterEntryFrom />
           </Route>
           <Route path="/monsters">
             <MonstersTable />
