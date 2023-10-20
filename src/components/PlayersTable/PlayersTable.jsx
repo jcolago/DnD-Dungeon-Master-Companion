@@ -8,7 +8,9 @@ export default function PlayersTable() {
     const players = useSelector((store) => store.players)
     console.log(players);
 
-
+    useEffect(() => {
+        dispatch({ type: "FETCH_PLAYERS"});
+    }, [])
 
 return (
     <table>
