@@ -25,6 +25,7 @@ import PlayersTable from '../PlayersTable/PlayersTable';
 import PlayerInventoryInfo from '../PlayerInventoryInfo/PlayerInventoryInfo';
 import Review from '../Review/Review';
 import DetailsView from '../DetailsView/DetailsView';
+import EditDetails from '../EditDetails/EditDetails';
 
 import './App.css';
 
@@ -135,6 +136,9 @@ function App() {
           </Route>
           <Route path='/details/:id'>
             <DetailsView />
+          </Route>
+          <Route path='/edit/:id'>
+            <EditDetails />
           </Route>
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>

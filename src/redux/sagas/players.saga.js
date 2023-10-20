@@ -39,7 +39,7 @@ function* updatePlayerSaga(action) {
         yield axios({
             method: 'PUT',
             url: `/api/players/${action.payload.id}`,
-            data: action.payload,
+            data: action.payload
         });
         yield put({ type: 'FETCH_PLAYERS ' })
     } catch (err) {

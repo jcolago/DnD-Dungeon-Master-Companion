@@ -5,6 +5,8 @@ import { useHistory } from "react-router-dom";
 export default function PlayersTableItem({ player }) {
     const dispatch = useDispatch();
     const history = useHistory();
+
+    
     return (
         <>
             <tr>

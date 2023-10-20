@@ -50,7 +50,7 @@ export default function DetailsView() {
                             </ul>
                         )
                     })}
-                    <button>Edit</button>
+                    <button onClick={() => history.push(`/edit/${id}`)}>Edit</button>
                     <button onClick={() => history.push('/players')}>Player List</button>
                 </div>
                 )
