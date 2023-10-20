@@ -26,6 +26,7 @@ import PlayerInventoryInfo from '../PlayerInventoryInfo/PlayerInventoryInfo';
 import Review from '../Review/Review';
 import DetailsView from '../DetailsView/DetailsView';
 import EditDetails from '../EditDetails/EditDetails';
+import Success from '../Success/Success';
 
 import './App.css';
 
@@ -125,14 +126,17 @@ function App() {
           <Route path="/stats">
             <PlayerStatInfo />
           </Route>
-          <Route exact path="/players">
-            <PlayersTable />
-          </Route>
           <Route exact path="/playerinventory">
             <PlayerInventoryInfo />
           </Route>
+          <Route exact path="/players">
+            <PlayersTable />
+          </Route>
           <Route path="/review">
             <Review />
+          </Route>
+          <Route path="/success">
+            <Success />
           </Route>
           <Route path='/details/:id'>
             <DetailsView />
