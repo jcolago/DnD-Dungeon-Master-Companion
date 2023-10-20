@@ -30,7 +30,6 @@ export default function PlayerInventoryInfo() {
         dispatch({ type: 'ADD_TO_ARRAY', payload: newItem })
         setItemQuantity('0');
         setItemId('');
-        history.push('/review')
     }
 
     return (
@@ -62,6 +61,7 @@ export default function PlayerInventoryInfo() {
                     </div>
                 )
             })}
+            <button onClick={() => history.push('/review')}>Review Character</button>
         </div>
     )
 }

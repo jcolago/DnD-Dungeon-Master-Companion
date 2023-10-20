@@ -73,7 +73,7 @@ VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $
 
         console.log("Player id from conditions:", response2.rows[0].player_id)
         const consId = response2.rows[0].player_id
-        const itemArray = character.items
+        const itemArray = character.item
         const itemsQuery = `INSERT INTO "players_inventory" ("quantity", "inventory_id", "player_id")
                 VALUES ($1, $2, $3);
                 `

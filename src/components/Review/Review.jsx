@@ -5,10 +5,19 @@ import { useHistory } from "react-router-dom";
 export default function Review() {
     const dispatch = useDispatch();
     const history = useHistory();
-    const playerInfo = useSelector((store) => store.playerInfo);
-    const stats = useSelector((store) => store.stats);
-    const backpack = useSelector((store) => store.backpack);
+    const playersInfo = useSelector((store) => store.playersInfo);
+    const playerStats = useSelector((store) => store.stats);
+    const item = useSelector((store) => store.backpack);
     const inventory = useSelector((store) => store.inventory)
+    const characterObj = {...playersInfo, ...playerStats, item }
+    console.log(playersInfo)
+    console.log(characterObj)
+
+    const submitCharacter = () => {
+        dispatch({ type: "ADD_PLAYER", payload: characterObj})
+    }
+
+    
 
     return (
         <div>
@@ -19,25 +28,22 @@ export default function Review() {
                 <h3>Player Info</h3>
             </div>
             <div>
-                {playerInfo.map(playerInfo => {
-                    <div key={playerInfo.id}>
-                        <p>Player Name: {playerInfo.name}</p>
-                        <p>Character Name: {playerInfo.character_name}</p>
-                        <p>Character Image: {playerInfo.character_img}</p>
-                        <p>Character Lever: {playerInfo.character_level}</p>
-                        <p>Current Hit Points: {playerInfo.current_hp}</p>
-                        <p>Total Hit Points: {playerInfo.total_hp}</p>
-                        <p>Armor Class: {playerInfo.armor_class}</p>
-                        <p>Speed: {playerInfo.speed}</p>
-                        <p>Initiative Bonus: {playerInfo.initiative_bonus}</p>
+                    <div key={playersInfo.id}>
+                        <p>Player Name: {playersInfo.player_name}</p>
+                        <p>Character Name: {playersInfo.character_name}</p>
+                        <p>Character Image: {playersInfo.character_img}</p>
+                        <p>Character Lever: {playersInfo.character_level}</p>
+                        <p>Current Hit Points: {playersInfo.current_hp}</p>
+                        <p>Total Hit Points: {playersInfo.total_hp}</p>
+                        <p>Armor Class: {playersInfo.armor_class}</p>
+                        <p>Speed: {playersInfo.speed}</p>
+                        <p>Initiative Bonus: {playersInfo.initiative_bonus}</p>
                     </div>
-                })}
             </div>
             <div>
                 <h3>Player Stats</h3>
             </div>
             <div>
-                {stats.map(playerStats => {
                     <div>
                         <p>Strength: {playerStats.strength} Bonus: {playerStats.str_bonus}  Save: {playerStats.str_save}</p>
                         <p>Dexterity: {playerStats.dexterity} Bonus: {playerStats.dex_bonus}  Save: {playerStats.dex_save}</p>
@@ -46,13 +52,12 @@ export default function Review() {
                         <p>Wisdom: {playerStats.wisdom} Bonus: {playerStats.wis_bonus}  Save: {playerStats.wis_save}</p>
                         <p>Charisma: {playerStats.charisma} Bonus: {playerStats.cha_bonus}  Save: {playerStats.cha_save}</p>
                     </div>
-                })}
             </div>
             <div>
                 <h3>Inventory</h3>
             </div>
             <div>
-            {backpack.map(backpackItem => {
+            {item.map(backpackItem => {
                 console.log(backpackItem);
                 console.log(inventory)
                 let item = inventory.find(inventoryItem => Number(inventoryItem.id) === Number(backpackItem.item_id));
@@ -65,7 +70,7 @@ export default function Review() {
                 )
             })}
             </div>
-            <button>Submit Character</button>
+            <button onClick={submitCharacter}>Submit Character</button>
         </div>
     )
 
