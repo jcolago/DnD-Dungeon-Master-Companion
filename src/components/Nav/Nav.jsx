@@ -36,6 +36,10 @@ function Nav() {
               Character List
             </Link>
 
+            <Link className="navLink" to="/gameview">
+              Game View
+            </Link>
+
             <Link className="navLink" to="/monsterentry">
               Monster Entry
             </Link>

@@ -153,7 +153,7 @@ function App() {
             <MonsterEntryFrom />
           </Route>
           <Route exact path="/monstersuccess">
-            <MonsterSuccess></MonsterSuccess>
+            <MonsterSuccess />
           </Route>
           <Route path="/monsters">
             <MonstersTable />

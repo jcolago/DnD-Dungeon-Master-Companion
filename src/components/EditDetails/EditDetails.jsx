@@ -140,6 +140,7 @@ export default function EditDetails() {
             dispatch({ type: 'UPDATE_CHARACTER', payload:  {id: id, ...updatedPlayerInfo} })
         console.log(updatedPlayerInfo)
         console.log(id)
+        history.push(`/details/${id}`)
     }
 console.log(updatedPlayerInfo)
     return (

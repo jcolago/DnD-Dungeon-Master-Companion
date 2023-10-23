@@ -15,6 +15,7 @@ export default function Review() {
 
     const submitCharacter = () => {
         dispatch({ type: "ADD_PLAYER", payload: characterObj})
+        history.push("/success")
     }
 
     
