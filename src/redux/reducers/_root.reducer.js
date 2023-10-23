@@ -9,7 +9,8 @@ import conditions from './conditions.reducer';
 import stats from './stats.reducer';
 import backpack from './itemsarray.reducer';
 import playersInfo from './playerinfo.reducer';
-import details from './playerdetails.reducer'
+import details from './playerdetails.reducer';
+import monsterdetails from './monsterdetails.reducer'
 
 
 
@@ -30,7 +31,8 @@ const rootReducer = combineReducers({
   stats,
   backpack,
   playersInfo,
-  details
+  details,
+  monsterdetails
 });
 
 export default rootReducer;
