@@ -1,10 +1,22 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, {useState} from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 export default function PlayerCard({ player }) {
     const dispatch = useDispatch();
     const history = useHistory();
+
+    const conditions = useSelector((store) => store.conditions);
+    const [conditionLength, setConditionLength] = useState('')
+    const [conditionId, setConditionId] = useState('')
+
+    console.log (conditions)
+
+    const addCondition = () => {
+        let conditionObj = { condition_length: Number(conditionLength), condition_id: Number(conditionId), player_id: Number(player.id)}
+        console.log(conditionObj)
+        dispatch({ type: 'ADD_CONDITION', payload: conditionObj})
+    }
 
     return (
         <div>
@@ -18,7 +30,14 @@ export default function PlayerCard({ player }) {
             </div>
             <div className="condition-container">
                 <h4>Conditions</h4>
-                <p> {player.condition_length}</p><p> {player.condition_name}</p>
+                <input  onChange={(event) => setConditionLength(event.target.value)} type="number" placeholder="Condition Length" value={conditionLength}/>
+                <select onChange={(event) => setConditionId(event.target.value)} value={conditionId} name="conditions" id="conditions">
+                    <option value="" disabled> Please select a condition</option>
+                    {conditions.map(condition =>{
+                        return(<option value={condition.id} key={condition.id}>{condition.condition_name}</option>)
+                    })}
+                </select>
+                <button onClick={addCondition}>Add Condition</button>
             </div>
             <button onClick={() => dispatch({ type: 'REMOVE_PLAYER', payload: player.id})}>Remove</button>
         </div>

@@ -15,7 +15,7 @@ function* addConditionSaga(action) {
     try {
         yield axios({
             method: 'POST',
-            url: `/api/conditions/${action.payload.id}`,
+            url: `/api/conditions/${action.payload.player_id}`,
             data: action.payload
         })
         yield put({ type: 'FETCH_PLAYERS' })
