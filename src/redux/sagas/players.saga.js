@@ -76,7 +76,7 @@ function* removePlayerSaga(action) {
     try {
         yield axios({
             method: 'PUT',
-            url: `/api/players/display/${action.payload}`
+            url: `/api/players/remove/${action.payload}`
         })
         yield put({ type: 'FETCH_PLAYERS' })
     } catch (err) {

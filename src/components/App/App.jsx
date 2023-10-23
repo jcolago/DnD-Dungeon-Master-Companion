@@ -28,6 +28,7 @@ import DetailsView from '../DetailsView/DetailsView';
 import EditDetails from '../EditDetails/EditDetails';
 import Success from '../Success/Success';
 import MonstersTable from '../MonsterTable/MonsterTable';
+import GameView from '../GameView/GameView';
 
 import './App.css';
 import MonsterEntryFrom from '../MonsterEntryForm/MonsterEntryForm';
@@ -152,6 +153,9 @@ function App() {
           </Route>
           <Route path="/monsters">
             <MonstersTable />
+          </Route>
+          <Route path="/gameview">
+            <GameView />
           </Route>
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>
