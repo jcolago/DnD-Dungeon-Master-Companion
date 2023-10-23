@@ -6,22 +6,48 @@ export default function MonsterEntryFrom() {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const [monsterInfo, setMonsterInfo] = useState({ name: '', alignment: '' , armor_class: '', hit_points: '', speed: '', resistances: '', proficiency_bonus: '', attacks: ''});
+    const [monsterName, setMonsterName] = useState('');
+    const [monsterSize, setMonsterSize] = useState('');
+    const [monsterAlignment, setMonsterAlignment] = useState('');
+    const [monsterArmorClass, setMonsterArmorClass] = useState('');
+    const [monsterHitPoints, setMonsterHitPoints] = useState('');
+    const [monsterSpeed, setMonsterSpeed] = useState('');
+    const [monsterResistances, setMonsterResistances] = useState('');
+    const [monsterProficiencyBonus, setMonsterProficiencyBonus] = useState('');
+    const [monsterAttacks, setMonsterAttacks] = useState('');
 
-    console.log(monsterInfo)
+    const monsterObj = { name: monsterName, size: monsterSize, alignment: monsterAlignment, armor_class: monsterArmorClass, hit_points: monsterHitPoints, speed: monsterSpeed, resistances: monsterResistances, proficiency_bonus: monsterProficiencyBonus, attacks: monsterAttacks}
+
+    console.log(monsterObj)
+
+    const handleSubmit = (event) => {
+        event.preventDefault
+        dispatch({ type: "ADD_MONSTER", payload: monsterObj});
+        setMonsterName('');
+        setMonsterSize('');
+        setMonsterAlignment('');
+        setMonsterArmorClass('');
+        setMonsterHitPoints('');
+        setMonsterSpeed('');
+        setMonsterResistances('');
+        setMonsterProficiencyBonus('');
+        setMonsterAttacks('');
+
+    }
 
     return(
         <div>
-            <form>
-                <input type="text" placeholder="Monster Name" value={monsterInfo.name} onChange={(event) => setMonsterInfo(event.target.value)}/>
-                <input type="text" placeholder="Alignment" value={monsterInfo.alignment} onChange={(event) => setMonsterInfo(event.target.value)}/>
-                <input type="number" placeholder="Armor Class" value={monsterInfo.armor_class} onChange={(event) => setMonsterInfo(event.target.value)}/>
-                <input type="number" placeholder="Hit Points" value={monsterInfo.hit_points} onChange={(event) => setMonsterInfo(event.target.value)}/>
-                <input type="number" placeholder="Speed" value={monsterInfo.speed} onChange={(event) => setMonsterInfo(event.target.value)}/>
-                <input type="text" placeholder="Resistances" value={monsterInfo.resistances} onChange={(event) => setMonsterInfo(event.target.value)}/>
-                <input type="number" placeholder="Profiviency Bonus" value={monsterInfo.proficiency_bonus} onChange={(event) => setMonsterInfo(event.target.value)}/>
-                <input type="text" placeholder="Attacks" value={monsterInfo.attacks} onChange={(event) => setMonsterInfo(event.target.value)}/>
-                <button>Submit</button>
+            <form onSubmit={handleSubmit}>
+                <input type="text" placeholder="Monster Name" value={monsterName} onChange={(event) => setMonsterName(event.target.value)}/>
+                <input type="text" placeholder="Monster Size" value={monsterSize} onChange={(event) => setMonsterSize(event.target.value)}/>
+                <input type="text" placeholder="Alignment" value={monsterAlignment} onChange={(event) => setMonsterAlignment(event.target.value)}/>
+                <input type="number" placeholder="Armor Class" value={monsterArmorClass} onChange={(event) => setMonsterArmorClass(event.target.value)}/>
+                <input type="number" placeholder="Hit Points" value={monsterHitPoints} onChange={(event) => setMonsterHitPoints(event.target.value)}/>
+                <input type="number" placeholder="Speed" value={monsterSpeed} onChange={(event) => setMonsterSpeed(event.target.value)}/>
+                <input type="text" placeholder="Resistances" value={monsterResistances} onChange={(event) => setMonsterResistances(event.target.value)}/>
+                <input type="number" placeholder="Proficiency Bonus" value={monsterProficiencyBonus} onChange={(event) => setMonsterProficiencyBonus(event.target.value)}/>
+                <input type="text" placeholder="Attacks" value={monsterAttacks} onChange={(event) => setMonsterAttacks(event.target.value)}/>
+                <button type="submit">Submit</button>
             </form>
         </div>
     )
