@@ -13,7 +13,7 @@ export default function MonsterTableItem({ monster }) {
                 <td>{monster.size}</td>
                 <td>{monster.hit_points}</td>
                 <td>{monster.game_name}</td>
-                <td><button >Details</button> <button onClick={() => dispatch({type: "DELETE_MONSTER", payload: player.id})}>Delete</button> <button >Display</button></td>
+                <td><button >Details</button> <button onClick={() => dispatch({type: "DELETE_MONSTER", payload: monster.id})}>Delete</button> <button  onClick={() => history.push()}>Display</button></td>
             </tr>
         </>
     )
