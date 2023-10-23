@@ -19,6 +19,8 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+
+import './App.css';
 import PlayerInfo from '../PlayerInfo/PlayerInfo';
 import PlayerStatInfo from '../PlayerStatInfo/PlayerStatInfo';
 import PlayersTable from '../PlayersTable/PlayersTable';
@@ -29,9 +31,8 @@ import EditDetails from '../EditDetails/EditDetails';
 import Success from '../Success/Success';
 import MonstersTable from '../MonsterTable/MonsterTable';
 import GameView from '../GameView/GameView';
-
-import './App.css';
 import MonsterEntryFrom from '../MonsterEntryForm/MonsterEntryForm';
+import MonsterSuccess from '../MonsterSuccess/MonsterSuccess';
 
 function App() {
   const dispatch = useDispatch();
@@ -150,6 +151,9 @@ function App() {
           </Route>
           <Route exact path="/monsterentry">
             <MonsterEntryFrom />
+          </Route>
+          <Route exact path="/monstersuccess">
+            <MonsterSuccess></MonsterSuccess>
           </Route>
           <Route path="/monsters">
             <MonstersTable />
