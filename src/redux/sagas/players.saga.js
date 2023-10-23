@@ -15,7 +15,6 @@ function* fetchPlayerDetailsSaga(action) {
     try {
         console.log(action.payload);
         const response = yield axios.get(`api/players/${action.payload}`)
-        console.log
         yield put({ type: 'SET_PLAYER_DETAILS', payload: response.data })
     } catch (err) {
         console.log('Unable to fecth details of player with id:', err)

@@ -33,6 +33,7 @@ import MonstersTable from '../MonsterTable/MonsterTable';
 import GameView from '../GameView/GameView';
 import MonsterEntryFrom from '../MonsterEntryForm/MonsterEntryForm';
 import MonsterSuccess from '../MonsterSuccess/MonsterSuccess';
+import MonsterDetails from '../MonsterDetails/MonsterDetails';
 
 function App() {
   const dispatch = useDispatch();
@@ -157,6 +158,9 @@ function App() {
           </Route>
           <Route path="/monsters">
             <MonstersTable />
+          </Route>
+          <Route exact path="/monsterdetails/:id">
+            <MonsterDetails />
           </Route>
           <Route path="/gameview">
             <GameView />

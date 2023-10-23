@@ -15,7 +15,6 @@ function* fetchMonsterDetailsSaga(action) {
     try {
         console.log(action.payload);
         const response = yield axios.get(`api/monsters/${action.payload}`)
-        console.log
         yield put({ type: 'SET_MONSTER_DETAILS', payload: response.data })
     } catch (err) {
         console.log('Unable to fecth details of monster with id:', err)

@@ -24,7 +24,7 @@ router.get('/:id', (req, res) => {
     // GET route for monster details
     const id = req.params.id;
     console.log('Getting details for monster with id:', id)
-    const queryText = `SELECT "g".id, "g".game_name, "g".dm_id, "m".name, "m".size, "m".alignment, "m".armor_class, "m".armor_class, "m".hit_points, "m".speed, "m".resistances, "m".proficiency_bonus, "m".attacks, "m".displayed FROM "games" AS "g"
+    const queryText = `SELECT "m".id, "g".game_name, "g".dm_id, "m".name, "m".size, "m".alignment, "m".armor_class, "m".armor_class, "m".hit_points, "m".speed, "m".resistances, "m".proficiency_bonus, "m".attacks, "m".displayed FROM "games" AS "g"
   JOIN "monsters" AS "m" ON "g".id = "m".game_id
   WHERE "g".dm_id = $1 AND "m".id = $2;`;
     pool.query(queryText, [req.user.id, id])
