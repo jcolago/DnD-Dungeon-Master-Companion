@@ -32,7 +32,7 @@ function UserPage() {
         </form>
       </div>
       <div>
-        <h2>Click To Navigate To Player Entry or Chracter List!</h2>
+        <h2>Click To Navigate To An Entry Form or List!</h2>
         <button onClick={() => history.push('/playerinfo')}>Player Entry Form</button> <button onClick={() => history.push('/players')}>Character List</button>  <button onClick={() => history.push('/monsterentry')}>Monster Entry Form</button>
       </div>
     </div>
