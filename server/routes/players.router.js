@@ -7,7 +7,7 @@ const router = express.Router();
  */
 router.get('/', (req, res) => {
     // GET route from players table
-    const queryText = `SELECT "p".id, "p".player_name, "p".character_name, "p". character_img, "p".character_level, "p".current_hp, "p".total_hp, "p".armor_class, "p".speed, "p".initiative_bonus, "p".strength, "p".str_bonus, "p".str_save, "p".dexterity, "p".dex_bonus, "p".dex_save, "p".constitution, "p".con_bonus, "p".con_save, "p".intelligence, "p".int_bonus, "p".int_save, "p".wisdom, "p".wis_bonus, "p".wis_save, "p".charisma, "p".cha_bonus, "p".cha_save, "p".displayed, JSON_AGG (json_build_object('quantity',"pi".quantity, 'item_name', "i".item_name)) AS quantity_items, JSON_AGG (json_build_object ('length', "pc".condition_length,  'condition_name', "c".condition_name)), "g".game_name, "g".dm_id FROM "players" AS "p"
+    const queryText = `SELECT "p".id, "p".player_name, "p".character_name, "p". character_img, "p".character_level, "p".current_hp, "p".total_hp, "p".armor_class, "p".speed, "p".initiative_bonus, "p".strength, "p".str_bonus, "p".str_save, "p".dexterity, "p".dex_bonus, "p".dex_save, "p".constitution, "p".con_bonus, "p".con_save, "p".intelligence, "p".int_bonus, "p".int_save, "p".wisdom, "p".wis_bonus, "p".wis_save, "p".charisma, "p".cha_bonus, "p".cha_save, "p".displayed, JSON_AGG (json_build_object('quantity',"pi".quantity, 'item_name', "i".item_name)) AS quantity_items, JSON_AGG (json_build_object ('length', "pc".condition_length, 'condition_name', "c".condition_name)) AS length_condition, "g".game_name, "g".dm_id FROM "players" AS "p"
     JOIN  "players_inventory" AS "pi" ON "p".id = "pi".player_id
     JOIN "inventory" AS "i" ON "pi".inventory_id = "i".id
     JOIN  "players_conditions" AS "pc" ON "p".id = "pc".player_id
@@ -79,7 +79,7 @@ VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $
                 `
 
         for (let i = 0; i < itemArray.length; i++) {
-            await pool.query(itemsQuery, [itemArray[i].quantity, itemArray[i].inventory_id, consId])
+            await pool.query(itemsQuery, [itemArray[i].quantity, itemArray[i].item_id, consId])
         }
 
         res.sendStatus(201)

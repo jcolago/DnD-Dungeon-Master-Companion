@@ -35,8 +35,8 @@ export default function MonsterDetails() {
                         <p>Attacks: {monster[0].attacks}</p>
                         <button onClick={() => history.push('/monsters')}>Monster List</button>
                     </div>
-                {/* )
-            })} */}
+                 {/* )
+            })}  */}
         </div>
     )
 }
