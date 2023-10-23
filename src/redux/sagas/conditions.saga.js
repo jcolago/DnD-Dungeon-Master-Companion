@@ -24,12 +24,26 @@ function* addConditionSaga(action) {
     }
 }
 
+function* deleteConditionSaga(action) {
+    try {
+        console.log(action.payload)
+        yield axios({
+            method: 'DELETE',
+            url: `/api/conditions/`,
+            data: {id: action.payload}
+        });
+        yield put({ type: 'FETCH_PLAYERS' });
+    } catch (err) {
+        console.log('Unable to delete condition', err)
+    }
+}
 //Delete condition saga goes here
 
 
 function* conditionsSaga() {
     yield takeEvery('FETCH_CONDITIONS', fetchConditionsSaga);
     yield takeEvery('ADD_CONDITION', addConditionSaga)
+    yield takeEvery('DELETE_CONDITION', deleteConditionSaga)
 }
 
 export default conditionsSaga;

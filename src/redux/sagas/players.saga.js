@@ -83,6 +83,20 @@ function* removePlayerSaga(action) {
     }
 }
 
+function* updateHpSaga(action) {
+  try {
+    console.log(action.payload)
+    yield axios({
+        method: 'PUT',
+        url: '/api/players',
+        data: action.payload
+    })
+    yield put({ type: 'FETCH_PLAYERS'})
+  } catch (err) {
+    console.log('Unable to update player hit points', err)
+  }
+}
+
 
 
 function* playersSaga() {
@@ -93,6 +107,7 @@ function* playersSaga() {
     yield takeEvery("DISPLAY_PLAYER", displayPlayerSaga);
     yield takeEvery("REMOVE_PLAYER", removePlayerSaga);
     yield takeEvery("FETCH_PLAYER_DETAILS", fetchPlayerDetailsSaga);
+    yield takeEvery("UPDATE_HIT_POINTS", updateHpSaga)
 }
 
 export default playersSaga;

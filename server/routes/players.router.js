@@ -7,7 +7,7 @@ const router = express.Router();
  */
 router.get('/', (req, res) => {
     // GET route from players table
-    const queryText = `SELECT "p".id, "p".player_name, "p".character_name, "p". character_img, "p".character_level, "p".current_hp, "p".total_hp, "p".armor_class, "p".speed, "p".initiative_bonus, "p".strength, "p".str_bonus, "p".str_save, "p".dexterity, "p".dex_bonus, "p".dex_save, "p".constitution, "p".con_bonus, "p".con_save, "p".intelligence, "p".int_bonus, "p".int_save, "p".wisdom, "p".wis_bonus, "p".wis_save, "p".charisma, "p".cha_bonus, "p".cha_save, "p".displayed, JSON_AGG (json_build_object('quantity',"pi".quantity, 'item_name', "i".item_name)) AS quantity_items, JSON_AGG (json_build_object ('length', "pc".condition_length, 'condition_name', "c".condition_name)) AS length_condition, "g".game_name, "g".dm_id FROM "players" AS "p"
+    const queryText = `SELECT "p".id, "p".player_name, "p".character_name, "p". character_img, "p".character_level, "p".current_hp, "p".total_hp, "p".armor_class, "p".speed, "p".initiative_bonus, "p".strength, "p".str_bonus, "p".str_save, "p".dexterity, "p".dex_bonus, "p".dex_save, "p".constitution, "p".con_bonus, "p".con_save, "p".intelligence, "p".int_bonus, "p".int_save, "p".wisdom, "p".wis_bonus, "p".wis_save, "p".charisma, "p".cha_bonus, "p".cha_save, "p".displayed, JSON_AGG (json_build_object('quantity',"pi".quantity, 'item_name', "i".item_name)) AS quantity_items, JSON_AGG (json_build_object ('id', "pc".id,'length', "pc".condition_length, 'condition_name', "c".condition_name)) AS length_condition, "g".game_name, "g".dm_id FROM "players" AS "p"
     JOIN  "players_inventory" AS "pi" ON "p".id = "pi".player_id
     JOIN "inventory" AS "i" ON "pi".inventory_id = "i".id
     JOIN  "players_conditions" AS "pc" ON "p".id = "pc".player_id
@@ -180,4 +180,19 @@ router.put('/remove/:id', (req, res) =>{
         res.sendStatus(500);
     });
 });
+
+router.put('/' , (req, res) => {
+    const updatedHp = req.body;
+    console.log(updatedHp)
+    console.log('Updating player hit points')
+    const queryText = 'UPDATE "players" SET "current_hp" = $1 WHERE "id" = $2;';
+    pool.query( queryText, [updatedHp.current_hp, updatedHp.player_id])
+    .then(() => {
+        res.sendStatus(200)
+    })
+    .catch((err) => {
+        console.log('Error updating current hit points', err);
+        res.sendStatus(500)
+    })
+})
 module.exports = router;

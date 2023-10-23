@@ -57,4 +57,22 @@ router.put('/:id', (req, res)=> {
     })
 })
 
+router.delete("/", (req, res) => {
+    //query to delete from players_inventory table
+    const id = req.body.id
+    console.log(id)
+    const queryText = `DELETE FROM "players_conditions" WHERE "id" = $1`;
+
+    if (!req.body) {
+        res.sendStatus(400);
+        return;
+    };
+
+    pool.query(queryText, [id])
+        .then(() => res.sendStatus(204))
+        .catch((err) => {
+            console.log('Error in DELETE from players_conditions table table', err);
+            res.sendStatus(500);
+        })
+});
 module.exports = router;
