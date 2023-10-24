@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { Card, CardActionArea, CardContent, CardHeader, Container, Button, Grid, OutlinedInput, Typography, Select, MenuItem, FormControl, InputLabel } from "@mui/material";
 import ConditionItem from "../ConditionItem/ConditionItem";
 
 export default function PlayerCard({ player }) {
@@ -22,6 +23,8 @@ export default function PlayerCard({ player }) {
         let conditionObj = { condition_length: Number(conditionLength), condition_id: Number(conditionId), player_id: Number(player.id)}
         console.log(conditionObj)
         dispatch({ type: 'ADD_CONDITION', payload: conditionObj})
+        setConditionId('');
+        setConditionLength('');
     }
 
     const handleUpdate = () =>{
@@ -31,17 +34,19 @@ export default function PlayerCard({ player }) {
     }
 
     return (
-        <div>
-            <div className="info-container">
-                <h4>Player Info</h4>
-                <p>Player Name: {player.player_name}</p>
-                <p>Character Name: {player.character_name}</p>
-                <p>Hit Points: <input onChange={(event) => setNewHp(event.target.value)} value={newHp}/> / {player.total_hp}</p> <button onClick={handleUpdate}>Update</button>
-                <p>Armor Class: {player.armor_class}</p>
-                <p>Initiative bonus: {player.initiative_bonus} </p>
-            </div>
-            <div className="condition-container">
-                <h4>Conditions</h4>
+        <Container style={{background: "darkkhaki", padding: "5px", display: "flex", flexDirection: "row"}}>
+            
+                <Card className="info-container" style={{ padding: "5px", margin: "5px", width: "30%"}}>
+                <img src={player.character_img}/>
+                <Typography variant="h4" gutterBottom> Player Info</Typography>
+                <Typography >Player Name: {player.player_name}</Typography> <Typography gutterBottom>Character Name: {player.character_name}</Typography>
+                
+                <Typography>Hit Points: <OutlinedInput  style={{ maxHeight: "25px", maxWidth: "50px"}} variant="outlined" onChange={(event) => setNewHp(event.target.value)} value={newHp} /> / {player.total_hp} <Button style={{ maxHeight: "25px", marginLeft: "5px"}} onClick={handleUpdate} variant="contained">Update</Button></Typography>
+                <Typography>Armor Class: {player.armor_class}</Typography>
+                <Typography>Initiative bonus: {player.initiative_bonus} </Typography>
+            </Card>
+            <Card className="condition-container" style={{padding: "5px", margin: "5px", width: "65%", height: "80%"}}>
+                <Typography variant="h4" gutterBottom>Conditions</Typography>
                 {player.length_condition && player.length_condition.map (player => {
                     return(
                         <div>
@@ -49,21 +54,24 @@ export default function PlayerCard({ player }) {
                 </div>
                 )
             })}
-                <input  onChange={(event) => setConditionLength(event.target.value)} type="number" placeholder="Condition Length" value={conditionLength}/>
-                <select onChange={(event) => setConditionId(event.target.value)} value={conditionId} name="conditions" id="conditions" key={conditions.id}>
-                    <option value="" disabled> Please select a condition</option>
+                <OutlinedInput placeholder="Condition Length" style={{ maxHeight: "25px", marginTop: "20px"}} onChange={(event) => setConditionLength(event.target.value)} type="number" value={conditionLength}/>
+                <FormControl>
+                <InputLabel id="Conditon" style={{marginTop: "5px"}}> Condition </InputLabel>
+                <Select onChange={(event) => setConditionId(event.target.value)} value={conditionId} name="conditions" id="conditions" key={conditions.id} style={{width: "200px", maxHeight: "25px", marginTop: "20px", marginLeft: "5px"}}>
+                    <MenuItem disabled value="" > 
+                    <em>Please select a condition</em>
+                    </MenuItem>
                     {conditions.map(condition =>{
-                        return(<option value={condition.id} key={condition.id}>{condition.condition_name}</option>)
+                        return(<MenuItem value={condition.id} key={condition.id}><Typography>{condition.condition_name}</Typography></MenuItem>)
                     })}
-                </select>
-                <button onClick={addCondition}>Add Condition</button>
-                
-                  
-               
-            </div>
-            
-            <button onClick={() => dispatch({ type: 'REMOVE_PLAYER', payload: player.id})}>Remove</button>
-        </div>
+                </Select>
+                </FormControl>
+                <Button style={{ maxHeight: "25px", marginLeft: "5px", marginBottom: "3px"}} variant="contained" onClick={addCondition}>Add Condition</Button>  
+            </Card>
+            <Button variant="outlined" style={{margin: "5px", alignSelf:"end"}} onClick={() => dispatch({ type: 'REMOVE_PLAYER', payload: player.id})}>Remove</Button>
+        </Container>
+        
+         
+         
     )
-
 }
