@@ -20,22 +20,22 @@ router.get('/', (req, res) => {
 });
 
 router.post("/:id", async (req, res) => {
-try {
-    const id = req.params.id
-    console.log("Adding to player inventory with id:", id)
-    const itemArray = req.body
-    const itemsQuery = `INSERT INTO "players_inventory" ("quantity", "inventory_id", "player_id")
+    try {
+        const id = req.params.id
+        console.log("Adding to player inventory with id:", id)
+        const itemArray = req.body
+        const itemsQuery = `INSERT INTO "players_inventory" ("quantity", "inventory_id", "player_id")
             VALUES ($1, $2, $3);
             `
 
-    for (let i = 0; i < itemArray.length; i++) {
-        await pool.query(itemsQuery, [itemArray[i].quantity, itemArray[i].inventory_id, id])
+        for (let i = 0; i < itemArray.length; i++) {
+            await pool.query(itemsQuery, [itemArray[i].quantity, itemArray[i].inventory_id, id])
+        }
+        res.sendStatus(201)
+    } catch (err) {
+        console.log('Error adding to player inventory', err);
+        res.sendStatus(500);
     }
-    res.sendStatus(201)
-} catch (err) {
-    console.log('Error adding to player inventory', err);
-    res.sendStatus(500);
-}
 });
 
 router.delete("/", (req, res) => {
@@ -48,15 +48,33 @@ router.delete("/", (req, res) => {
             res.sendStatus(400);
             return;
         };
-    
+
         pool.query(queryText, [id])
         res.sendStatus(201)
     } catch (err) {
         console.log('Error deleting from player inventory', err);
         res.sendStatus(500);
     }
-    });
+});
 
+router.put ("/", (req, res) => {
+    const id = req.body.id
+    const quantity = req.body.quantity
+    console.log(id);
+    const queryText = `UPDATE "players_inventory" SET "quantity" = $1 WHERE "id" = $2;`;
+
+    if (!id) {
+        res.sendStatus(400);
+        return;
+    };
+
+    pool.query(queryText, [quantity, id])
+    .then(() => res.sendStatus(200))
+    .catch((err) => {
+        console.log('Error updating condition length', err);
+        res.sendStatus(500)
+    })
+})
 
 
 

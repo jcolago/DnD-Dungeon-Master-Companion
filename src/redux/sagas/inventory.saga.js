@@ -1,4 +1,4 @@
-import { put, takeEvery } from "redux-saga/effects";
+import { put, take, takeEvery } from "redux-saga/effects";
 import axios from "axios";
 
 function* fetchInventorySaga() {
@@ -37,12 +37,26 @@ function* deleteItemSaga(action) {
     }
 }
 
+function* updateQuantitySaga(action) {
+    try {
+        console.log(action.payload) 
+        yield axios ({
+            method: 'PUT',
+            url: `/api/inventory/`,
+            data: {id: action.payload.id, quantity: action.payload.quantity}
+        });
+        yield put ({ type: 'FETCH_PLAYERS' })
+    } catch (err) {
+        console.log('Unable to update condition length', err)
+    }
+}
 
 
 function* inventorySaga() {
     yield takeEvery("FETCH_INVENTORY", fetchInventorySaga);
     yield takeEvery("ADD_ITEM", addItemSaga);
-    yield takeEvery("DELETE_ITEM", deleteItemSaga)
+    yield takeEvery("DELETE_ITEM", deleteItemSaga);
+    yield takeEvery("UPDATE_ITEM", updateQuantitySaga)
 }
 
 export default inventorySaga;
