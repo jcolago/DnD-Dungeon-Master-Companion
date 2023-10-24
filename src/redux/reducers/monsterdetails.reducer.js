@@ -1,4 +1,4 @@
-const monsterDetailsReducer = (state = {}, action) => {
+const monsterDetailsReducer = (state = [], action) => {
     switch (action.type) {
         case 'SET_MONSTER_DETAILS':
             return action.payload;

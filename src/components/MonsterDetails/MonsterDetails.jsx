@@ -22,21 +22,21 @@ export default function MonsterDetails() {
                 <h2>Monster Details</h2>
             </div>
 
-            {/* {monster.map(monster => {
-                return ( */}
+            {monster.map(monster => {
+                return (
                     <div>
-                        <p>Monster: {monster[0].name}</p>
-                        <p>Alignment: {monster[0].alignment}</p>
-                        <p>Armor Class: {monster[0].armor_class}</p>
-                        <p>Hit Points: {monster[0].hit_points}</p>
-                        <p>Speed: {monster[0].speed}</p>
-                        <p>Resistances: {monster[0].resistances}</p>
-                        <p>Proficiency Bonus: {monster[0].proficiency_bonus}</p>
-                        <p>Attacks: {monster[0].attacks}</p>
+                        <p>Monster: {monster.name}</p>
+                        <p>Alignment: {monster.alignment}</p>
+                        <p>Armor Class: {monster.armor_class}</p>
+                        <p>Hit Points: {monster.hit_points}</p>
+                        <p>Speed: {monster.speed}</p>
+                        <p>Resistances: {monster.resistances}</p>
+                        <p>Proficiency Bonus: {monster.proficiency_bonus}</p>
+                        <p>Attacks: {monster.attacks}</p>
                         <button onClick={() => history.push('/monsters')}>Monster List</button>
                     </div>
-                 {/* )
-            })}  */}
+                   )
+             })}
         </div>
     )
 }
