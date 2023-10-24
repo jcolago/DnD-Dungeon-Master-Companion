@@ -14,7 +14,7 @@ export default function ConditionItemSingle({ condition }) {
     console.log(newlength)
     return(
         <div>
-        <input onChange={(event) => setNewLength(event.target.value)} value={newlength} /><p>{condition.condition_name}</p>
+       <p> <input onChange={(event) => setNewLength(event.target.value)} value={newlength} />{condition.condition_name}</p>
         <button onClick={() => dispatch({ type: 'UPDATE_CONDITION', payload: {id: condition.id, length: newlength}})}>Update</button>
         <button onClick={() => dispatch({ type: 'DELETE_CONDITION', payload: Number(condition.id)})}>Delete</button>
         </div>

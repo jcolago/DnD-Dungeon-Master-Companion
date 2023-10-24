@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import DetailViewItem from "../DetailViewItem/DetailViewItem";
+import InventoryItem from "../InventoryItem/InventoryItem";
 
 export default function DetailsView() {
     const id = Number(useParams().id);
@@ -9,6 +9,7 @@ export default function DetailsView() {
     const history = useHistory();
 
     const players = useSelector((store) => store.details)
+    const inventory = useSelector((store) => store.inventory)
   
     useEffect(() => {
         dispatch({ type: 'FETCH_PLAYER_DETAILS', payload: id });
@@ -46,10 +47,26 @@ export default function DetailsView() {
 
                         return (
                             <ul>
-                                <DetailViewItem key={item.id} item={item} />
+                                <InventoryItem key={item.id} item={item} />
                             </ul>
                         )
                     })}
+
+<div>
+                <h2>Select Inventory</h2>
+            </div>
+            <br />
+            <label>Choose Items and quantity</label>
+            <input type="number" placeholder="Quantity"  />
+            <select   name="items" id="items">
+                <option value="" disabled>Please select an item</option>
+                {inventory.map(item => {
+                    return (<option value={item.id} key={item.id} >{item.item_name}</option>
+                    )
+                })}
+            </select>
+            <button >Add Item</button>
+            <br />
                     <button onClick={() => history.push(`/edit/${id}`)}>Edit</button>
                     <button onClick={() => history.push('/players')}>Player List</button>
                 </div>

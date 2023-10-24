@@ -7,6 +7,7 @@ export default function GameView() {
 const dispatch = useDispatch();
 const history = useHistory();
 const players = useSelector((store) => store.players)
+console.log(players)
 
     return(
         <div>

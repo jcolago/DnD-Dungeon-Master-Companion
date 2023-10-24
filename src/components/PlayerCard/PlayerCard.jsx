@@ -42,7 +42,10 @@ export default function PlayerCard({ player }) {
             </div>
             <div className="condition-container">
                 <h4>Conditions</h4>
-                <ConditionItem player={player} key={player.length_condition.id}/>
+                {player.length_condition && player.length_condition.map (player => {
+                    return(
+                        <div>
+                <ConditionItem player={player} key={player.id}/>
                 <input  onChange={(event) => setConditionLength(event.target.value)} type="number" placeholder="Condition Length" value={conditionLength}/>
                 <select onChange={(event) => setConditionId(event.target.value)} value={conditionId} name="conditions" id="conditions" key={conditions.id}>
                     <option value="" disabled> Please select a condition</option>
@@ -51,7 +54,11 @@ export default function PlayerCard({ player }) {
                     })}
                 </select>
                 <button onClick={addCondition}>Add Condition</button>
+                </div>
+                    )
+                })}
             </div>
+            
             <button onClick={() => dispatch({ type: 'REMOVE_PLAYER', payload: player.id})}>Remove</button>
         </div>
     )
