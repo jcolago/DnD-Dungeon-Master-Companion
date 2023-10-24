@@ -19,24 +19,22 @@ router.get('/', (req, res) => {
         })
 });
 
-router.post("/:id", async (req, res) => {
-    try {
-        const id = req.params.id
-        console.log("Adding to player inventory with id:", id)
-        const itemArray = req.body
-        const itemsQuery = `INSERT INTO "players_inventory" ("quantity", "inventory_id", "player_id")
-            VALUES ($1, $2, $3);
-            `
+router.post("/:id", (req, res) => {
 
-        for (let i = 0; i < itemArray.length; i++) {
-            await pool.query(itemsQuery, [itemArray[i].quantity, itemArray[i].inventory_id, id])
-        }
-        res.sendStatus(201)
-    } catch (err) {
-        console.log('Error adding to player inventory', err);
-        res.sendStatus(500);
-    }
-});
+    const id = req.params.id
+    console.log("Adding to player inventory with id:", id)
+    const item = req.body
+    const itemsQuery = `INSERT INTO "players_inventory" ("quantity", "inventory_id", "player_id")
+            VALUES ($1, $2, $3);`;
+
+    pool.query(itemsQuery, [item.quantity, item.inventory_id, id])
+        .then(() => { res.sendStatus(201) })
+
+        .catch((err) => {
+            console.log('Error adding to player inventory', err);
+            res.sendStatus(500);
+        })
+})
 
 router.delete("/", (req, res) => {
     try {
@@ -57,7 +55,7 @@ router.delete("/", (req, res) => {
     }
 });
 
-router.put ("/", (req, res) => {
+router.put("/", (req, res) => {
     const id = req.body.id
     const quantity = req.body.quantity
     console.log(id);
@@ -69,11 +67,11 @@ router.put ("/", (req, res) => {
     };
 
     pool.query(queryText, [quantity, id])
-    .then(() => res.sendStatus(200))
-    .catch((err) => {
-        console.log('Error updating condition length', err);
-        res.sendStatus(500)
-    })
+        .then(() => res.sendStatus(200))
+        .catch((err) => {
+            console.log('Error updating condition length', err);
+            res.sendStatus(500)
+        })
 })
 
 

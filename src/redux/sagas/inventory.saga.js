@@ -18,7 +18,7 @@ function* addItemSaga(action) {
             url: `/api/inventory/${action.payload.id}`,
             data: action.payload
         })
-        yield put({ type: 'FETCH_PLAYERS' })
+        yield put({ type: "FETCH_PLAYER_DETAILS", payload: action.payload.id })
     } catch (err) {
         console.log('Unable to add item to player', err)
     }

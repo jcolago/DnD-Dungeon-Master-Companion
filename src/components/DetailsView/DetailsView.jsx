@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import InventoryItem from "../InventoryItem/InventoryItem";
@@ -8,19 +8,25 @@ export default function DetailsView() {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const players = useSelector((store) => store.details)
-    const inventory = useSelector((store) => store.inventory)
-  
+    const players = useSelector((store) => store.details);
+    const inventory = useSelector((store) => store.inventory);
+    const [itemQuantity, setItemQuantity] = useState('0');
+    const [itemId, setItemId] = useState('');
+
     useEffect(() => {
         dispatch({ type: 'FETCH_PLAYER_DETAILS', payload: id });
     }, []);
 
+    const handleAddItem = () => {
+        dispatch({ type: 'ADD_ITEM', payload: { quantity: itemQuantity, inventory_id: itemId, id } });
+        setItemQuantity('0'),
+        setItemId('');
+    }
     console.log(players)
     console.log(id)
     return (
         <div>
             {players.map(player => {
-
                 return (<div key={player.id}>
                     <div>
                         <img src={player.character_img} />
@@ -52,21 +58,21 @@ export default function DetailsView() {
                         )
                     })}
 
-<div>
-                <h2>Select Inventory</h2>
-            </div>
-            <br />
-            <label>Choose Items and quantity</label>
-            <input type="number" placeholder="Quantity"  />
-            <select   name="items" id="items">
-                <option value="" disabled>Please select an item</option>
-                {inventory.map(item => {
-                    return (<option value={item.id} key={item.id} >{item.item_name}</option>
-                    )
-                })}
-            </select>
-            <button >Add Item</button>
-            <br />
+                    <div>
+                        <h2>Select Inventory</h2>
+                    </div>
+                    <br />
+                    <label>Choose Items and quantity</label>
+                    <input onChange={(event) => setItemQuantity(event.target.value)} type="number" placeholder="Quantity" value={itemQuantity} />
+                    <select onChange={(event) => setItemId(event.target.value)} value={itemId} name="items" id="items">
+                        <option value="" disabled>Please select an item</option>
+                        {inventory.map(item => {
+                            return (<option value={item.id} key={item.id} >{item.item_name}</option>
+                            )
+                        })}
+                    </select>
+                    <button onClick={handleAddItem}>Add Item</button>
+                    <br />
                     <button onClick={() => history.push(`/edit/${id}`)}>Edit</button>
                     <button onClick={() => history.push('/players')}>Player List</button>
                 </div>
