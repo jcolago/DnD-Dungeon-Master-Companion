@@ -63,7 +63,7 @@ router.delete("/", (req, res) => {
     console.log(id)
     const queryText = `DELETE FROM "players_conditions" WHERE "id" = $1`;
 
-    if (!req.body) {
+    if (!id) {
         res.sendStatus(400);
         return;
     };
@@ -75,4 +75,23 @@ router.delete("/", (req, res) => {
             res.sendStatus(500);
         })
 });
+
+router.put ("/", (req, res) => {
+    const id = req.body.id
+    const length = req.body.length
+    console.log(id);
+    const queryText = `UPDATE "players_conditions" SET "condition_length" = $1 WHERE "id" = $2;`;
+
+    if (!id) {
+        res.sendStatus(400);
+        return;
+    };
+
+    pool.query(queryText, [length, id])
+    .then(() => res.sendStatus(200))
+    .catch((err) => {
+        console.log('Error updating condition length', err);
+        res.sendStatus(500)
+    })
+})
 module.exports = router;
