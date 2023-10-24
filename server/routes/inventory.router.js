@@ -38,24 +38,24 @@ try {
 }
 });
 
-// router.delete("/:id", async (req, res) => {
-//     try {
-//         const id = req.params.id
+router.delete("/", (req, res) => {
+    try {
+        const id = req.body
+        console.log(id)
+        const queryText = `DELETE FROM "players_inventory" WHERE "id" = $1`
 
-//         console.log("Removing from player inventory with id:", id)
-//         const itemsQuery = `INSERT INTO "players_inventory" ("quantity", "inventory_id", "player_id")
-//                 VALUES ($1, $2, $3);
-//                 `
+        if (!id) {
+            res.sendStatus(400);
+            return;
+        };
     
-//         for (let i = 0; i < itemArray.length; i++) {
-//             await pool.query(itemsQuery, [itemArray[i].quantity, itemArray[i].inventory_id, id])
-//         }
-//         res.sendStatus(201)
-//     } catch (err) {
-//         console.log('Error adding to player inventory', err);
-//         res.sendStatus(500);
-//     }
-//     });
+        pool.query(queryText, [id])
+        res.sendStatus(201)
+    } catch (err) {
+        console.log('Error deleting from player inventory', err);
+        res.sendStatus(500);
+    }
+    });
 
 
 

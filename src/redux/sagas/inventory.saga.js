@@ -24,12 +24,25 @@ function* addItemSaga(action) {
     }
 }
 
-//Delete item saga goes here
+function* deleteItemSaga(action) {
+    try {
+        yield axios({
+            method: 'DELETE',
+            url: `/api/inventory/`,
+            data: {id: action.payload}
+        });
+        yield put({ type: 'FETCH_PLAYERS' });
+    } catch (err) {
+        console.log('Unable to delete item', err)
+    }
+}
+
 
 
 function* inventorySaga() {
     yield takeEvery("FETCH_INVENTORY", fetchInventorySaga);
-    yield takeEvery("ADD_ITEM", addItemSaga)
+    yield takeEvery("ADD_ITEM", addItemSaga);
+    yield takeEvery("DELETE_ITEM", deleteItemSaga)
 }
 
 export default inventorySaga;
