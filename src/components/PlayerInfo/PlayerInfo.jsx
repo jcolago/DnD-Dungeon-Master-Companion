@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { Card, TextField, OutlinedInput, InputLabel, FormControl, Container, Select, MenuItem, Button } from "@mui/material";
+import { Card, OutlinedInput, InputLabel, FormControl, Container, Select, MenuItem, Button, CardHeader } from "@mui/material";
 
 export default function PlayerInfo() {
     const dispatch = useDispatch();
@@ -80,6 +80,7 @@ export default function PlayerInfo() {
     return (
         <Container>
             <Card>
+                <CardHeader title="Enter Character Info Below!" />
                 <FormControl>
                     <form onSubmit={addNewPlayerInfo}>
                         <FormControl>
