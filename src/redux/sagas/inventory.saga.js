@@ -26,12 +26,13 @@ function* addItemSaga(action) {
 
 function* deleteItemSaga(action) {
     try {
+        console.log(action.payload)
         yield axios({
             method: 'DELETE',
             url: `/api/inventory/`,
-            data: {id: action.payload}
+            data: {id: action.payload.itemId}
         });
-        yield put({ type: 'FETCH_PLAYERS' });
+        yield put({ type: "FETCH_PLAYER_DETAILS", payload: action.payload.playerId })
     } catch (err) {
         console.log('Unable to delete item', err)
     }
@@ -45,7 +46,7 @@ function* updateQuantitySaga(action) {
             url: `/api/inventory/`,
             data: {id: action.payload.id, quantity: action.payload.quantity}
         });
-        yield put ({ type: 'FETCH_PLAYERS' })
+        yield put({ type: "FETCH_PLAYER_DETAILS", payload: id })
     } catch (err) {
         console.log('Unable to update condition length', err)
     }

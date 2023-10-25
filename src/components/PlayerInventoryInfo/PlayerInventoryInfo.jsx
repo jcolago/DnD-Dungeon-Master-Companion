@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { Card, CardActionArea, CardContent, CardHeader, Container, Button, Grid, OutlinedInput, Typography, Select, MenuItem, FormControl, InputLabel, TextField } from "@mui/material";
+import { Card, CardHeader, Container, Button, Grid, OutlinedInput, Typography, Select, MenuItem, FormControl, InputLabel } from "@mui/material";
 
 
 export default function PlayerInventoryInfo() {

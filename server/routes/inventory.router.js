@@ -47,7 +47,7 @@ router.delete("/", (req, res) => {
             return;
         };
 
-        pool.query(queryText, [id])
+        pool.query(queryText, [id.id])
         res.sendStatus(201)
     } catch (err) {
         console.log('Error deleting from player inventory', err);

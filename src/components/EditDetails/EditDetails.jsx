@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
+import { Card, OutlinedInput, InputLabel, FormControl, Container, Button, CardHeader, TextField, Select, MenuItem } from "@mui/material";
 import DetailViewItem from "../DetailViewItem/DetailViewItem";
 
 export default function EditDetails() {
@@ -144,47 +145,130 @@ export default function EditDetails() {
     }
 console.log(updatedPlayerInfo)
     return (
+        <Container>
         <div>
             <div key={updatedPlayerInfo.id}>
-                    <div>
+                    <Card>
                         <img src={updatedPlayerInfo.character_img} />
-                    </div>
-                    <div>
-                        <h3>Update Player Info</h3>
+                        </Card>
                         <form onSubmit={handleSubmit}>
-                            <input type="text" placeholder={updatedPlayerInfo.player_name} value={updatedPlayerInfo.player_name} onChange={handlePlayerNameChange} />
-                            <input type="text" placeholder={updatedPlayerInfo.character_name} value={updatedPlayerInfo.character_name} onChange={handleCharacterNameChange} />
-                            <input type="text" placeholder={updatedPlayerInfo.character_img} value={updatedPlayerInfo.character_img} onChange={handleCharacterImageChange} />
-                            <input type="number" placeholder={updatedPlayerInfo.character_level} value={updatedPlayerInfo.character_level} onChange={handleCharacterLevelChange} />
-                            <input type="number" placeholder={updatedPlayerInfo.current_hp} value={updatedPlayerInfo.current_hp} onChange={handleCurrentHpChange} />
-                            <input type="number" placeholder={updatedPlayerInfo.total_hp} value={updatedPlayerInfo.total_hp} onChange={handleTotalHpChange} />
-                            <input type="number" placeholder={updatedPlayerInfo.armor_class} value={updatedPlayerInfo.armor_class} onChange={handleArmorClassChange} />
-                            <input type="number" placeholder={updatedPlayerInfo.speed} value={updatedPlayerInfo.speed} onChange={handleSpeedChange} />
-                            <input type="number" placeholder={updatedPlayerInfo.initiative_bonus} value={updatedPlayerInfo.initiative_bonus} onChange={handleInitiativeBonusChange} />
-                            <br />
-                            <hr />
-                            <h3>Update Player Stats</h3>
-                            <input type="number" placeholder={updatedPlayerInfo.strength} value={updatedPlayerInfo.strength} onChange={handleStrengthChange} />
-                            <input type="number" placeholder={updatedPlayerInfo.str_bonus} value={updatedPlayerInfo.str_bonus} onChange={handleStrBonusChange} />
-                            <input type="number" placeholder={updatedPlayerInfo.str_save} value={updatedPlayerInfo.str_save} onChange={handleStrSaveChange} />
-                            <input type="number" placeholder={updatedPlayerInfo.dexterity} value={updatedPlayerInfo.dexterity} onChange={handleDexterityChange} />
-                            <input type="number" placeholder={updatedPlayerInfo.dex_bonus} value={updatedPlayerInfo.dex_bonus} onChange={handleDexBonusChange} />
-                            <input type="number" placeholder={updatedPlayerInfo.dex_save} value={updatedPlayerInfo.dex_save} onChange={handleDexSaveChange} />
-                            <input type="number" placeholder={updatedPlayerInfo.constitution} value={updatedPlayerInfo.constitution} onChange={handleConstitutionChange} />
-                            <input type="number" placeholder={updatedPlayerInfo.con_bonus} value={updatedPlayerInfo.con_bonus} onChange={handleConBonusChange} />
-                            <input type="number" placeholder={updatedPlayerInfo.con_save} value={updatedPlayerInfo.con_save} onChange={handleConSaveChange} />
-                            <input type="number" placeholder={updatedPlayerInfo.intelligence} value={updatedPlayerInfo.intelligence} onChange={handleIntelligenceChange} />
-                            <input type="number" placeholder={updatedPlayerInfo.int_bonus} value={updatedPlayerInfo.int_bonus} onChange={handleIntBonusChange} />
-                            <input type="number" placeholder={updatedPlayerInfo.int_save} value={updatedPlayerInfo.int_save} onChange={handleIntSaveChange} />
-                            <input type="number" placeholder={updatedPlayerInfo.wisdom} value={updatedPlayerInfo.wisdom} onChange={handleWisdomChange} />
-                            <input type="number" placeholder={updatedPlayerInfo.wis_bonus} value={updatedPlayerInfo.wis_bonus} onChange={handleWisBonusChange} />
-                            <input type="number" placeholder={updatedPlayerInfo.wis_save} value={updatedPlayerInfo.wis_save} onChange={handleWisSaveChange} />
-                            <input type="number" placeholder={updatedPlayerInfo.charisma} value={updatedPlayerInfo.charisma} onChange={handleCharismaChange} />
-                            <input type="number" placeholder={updatedPlayerInfo.cha_bonus} value={updatedPlayerInfo.cha_bonus} onChange={handleChaBonusChange} />
-                            <input type="number" placeholder={updatedPlayerInfo.cha_save} value={updatedPlayerInfo.cha_save} onChange={handleChaSaveChange} />
-                            <button type="submit">Submit</button>
+                    <Card>
+                        <CardHeader title="Update Player Info" style={{textDecoration: "underline"}}></CardHeader>
+                        <FormControl>
+                            <InputLabel >Player Name</InputLabel>
+                            <OutlinedInput label="Player Name" type="text" placeholder={updatedPlayerInfo.player_name} value={updatedPlayerInfo.player_name} onChange={handlePlayerNameChange} />
+                            </FormControl>
+                            <FormControl>
+                            <InputLabel>Character Name</InputLabel>
+                            <OutlinedInput label="Character Name" type="text" placeholder={updatedPlayerInfo.character_name} value={updatedPlayerInfo.character_name} onChange={handleCharacterNameChange} />
+                            </FormControl>
+                            <FormControl>
+                            <InputLabel>Character Image Url</InputLabel>
+                            <OutlinedInput label="Character Image Url" type="text" placeholder={updatedPlayerInfo.character_img} value={updatedPlayerInfo.character_img} onChange={handleCharacterImageChange} />
+                            </FormControl>
+                            <FormControl>
+                            <InputLabel>Character Level</InputLabel>
+                            <OutlinedInput label="Character Level" type="number" placeholder={updatedPlayerInfo.character_level} value={updatedPlayerInfo.character_level} onChange={handleCharacterLevelChange} />
+                            </FormControl>
+                            <FormControl>
+                            <InputLabel>Current Hit Points</InputLabel>
+                            <OutlinedInput label="Current Hit Points" type="number" placeholder={updatedPlayerInfo.current_hp} value={updatedPlayerInfo.current_hp} onChange={handleCurrentHpChange} />
+                            </FormControl>
+                            <FormControl>
+                            <InputLabel>Total Hit Points</InputLabel>
+                            <OutlinedInput label="Total Hit Points" type="number" placeholder={updatedPlayerInfo.total_hp} value={updatedPlayerInfo.total_hp} onChange={handleTotalHpChange} />
+                            </FormControl>
+                            <FormControl>
+                            <InputLabel>Armor Class</InputLabel>
+                            <OutlinedInput label="Armor class" type="number" placeholder={updatedPlayerInfo.armor_class} value={updatedPlayerInfo.armor_class} onChange={handleArmorClassChange} />
+                            </FormControl>
+                            <FormControl>
+                            <InputLabel>Speed</InputLabel>
+                            <OutlinedInput label="Speed" type="number" placeholder={updatedPlayerInfo.speed} value={updatedPlayerInfo.speed} onChange={handleSpeedChange} />
+                            </FormControl>
+                            <FormControl>
+                            <InputLabel>Initiative Bonus</InputLabel>
+                            <OutlinedInput label="Initiative Bonus" type="number" placeholder={updatedPlayerInfo.initiative_bonus} value={updatedPlayerInfo.initiative_bonus} onChange={handleInitiativeBonusChange} />
+                            </FormControl>
+                            </Card>
+                            <Card>
+                            <CardHeader title="Update Player Stats" style={{textDecoration: "underline"}}></CardHeader>
+                            <FormControl>
+                                <InputLabel>Strength</InputLabel>
+                            <OutlinedInput label="Strength" type="number" placeholder={updatedPlayerInfo.strength} value={updatedPlayerInfo.strength} onChange={handleStrengthChange} />
+                            </FormControl>
+                            <FormControl>
+                            <InputLabel>Strength Bonus</InputLabel>
+                            <OutlinedInput label="Strength Bonus" type="number" placeholder={updatedPlayerInfo.str_bonus} value={updatedPlayerInfo.str_bonus} onChange={handleStrBonusChange} />
+                            </FormControl>
+                            <FormControl>
+                            <InputLabel>Strength Saving Throw</InputLabel>
+                            <OutlinedInput label="Strength Saving Throw" type="number" placeholder={updatedPlayerInfo.str_save} value={updatedPlayerInfo.str_save} onChange={handleStrSaveChange} />
+                            </FormControl>
+                            <FormControl>
+                            <InputLabel>Dexterity</InputLabel>
+                            <OutlinedInput label="Dexterity" type="number" placeholder={updatedPlayerInfo.dexterity} value={updatedPlayerInfo.dexterity} onChange={handleDexterityChange} />
+                            </FormControl>
+                            <FormControl>
+                            <InputLabel>Dexterity Bonus</InputLabel>
+                            <OutlinedInput label="Dexterity Bonus" type="number" placeholder={updatedPlayerInfo.dex_bonus} value={updatedPlayerInfo.dex_bonus} onChange={handleDexBonusChange} />
+                            </FormControl>
+                            <FormControl>
+                            <InputLabel>Dexterity Saving Throw</InputLabel>
+                            <OutlinedInput label="Dexterity Saving Throw" type="number" placeholder={updatedPlayerInfo.dex_save} value={updatedPlayerInfo.dex_save} onChange={handleDexSaveChange} />
+                            </FormControl>
+                            <FormControl>
+                            <InputLabel>Constitution</InputLabel>
+                            <OutlinedInput label="Constitution" type="number" placeholder={updatedPlayerInfo.constitution} value={updatedPlayerInfo.constitution} onChange={handleConstitutionChange} />
+                            </FormControl>
+                            <FormControl>
+                            <InputLabel>Constitution Bonus</InputLabel>
+                            <OutlinedInput label="Constitution Bonus" type="number" placeholder={updatedPlayerInfo.con_bonus} value={updatedPlayerInfo.con_bonus} onChange={handleConBonusChange} />
+                            </FormControl>
+                            <FormControl>
+                            <InputLabel>Constitution Saving Throw</InputLabel>
+                            <OutlinedInput label="Constitution Saving Throw" type="number" placeholder={updatedPlayerInfo.con_save} value={updatedPlayerInfo.con_save} onChange={handleConSaveChange} />
+                            </FormControl>
+                            <FormControl>
+                            <InputLabel>Intelligence</InputLabel>
+                            <OutlinedInput label="Intelligence" type="number" placeholder={updatedPlayerInfo.intelligence} value={updatedPlayerInfo.intelligence} onChange={handleIntelligenceChange} />
+                            </FormControl>
+                            <FormControl>
+                            <InputLabel>Intelligence Bonus</InputLabel>
+                            <OutlinedInput label="Intelligence Bonus" type="number" placeholder={updatedPlayerInfo.int_bonus} value={updatedPlayerInfo.int_bonus} onChange={handleIntBonusChange} />
+                            </FormControl>
+                            <FormControl>
+                            <InputLabel>Intelligence Saving Throw</InputLabel>
+                            <OutlinedInput label="Intelligence Saving Throw" type="number" placeholder={updatedPlayerInfo.int_save} value={updatedPlayerInfo.int_save} onChange={handleIntSaveChange} />
+                            </FormControl>
+                            <FormControl>
+                            <InputLabel>Wisdom</InputLabel>
+                            <OutlinedInput label="Wisdom" type="number" placeholder={updatedPlayerInfo.wisdom} value={updatedPlayerInfo.wisdom} onChange={handleWisdomChange} />
+                            </FormControl>
+                            <FormControl>
+                            <InputLabel>Wisdom Bonus</InputLabel>
+                            <OutlinedInput label="Wisdom Bonus" type="number" placeholder={updatedPlayerInfo.wis_bonus} value={updatedPlayerInfo.wis_bonus} onChange={handleWisBonusChange} />
+                            </FormControl>
+                            <FormControl>
+                            <InputLabel>Wisdom Saving Throw</InputLabel>
+                            <OutlinedInput label="Wisdom Saving Throw" type="number" placeholder={updatedPlayerInfo.wis_save} value={updatedPlayerInfo.wis_save} onChange={handleWisSaveChange} />
+                            </FormControl>
+                            <FormControl>
+                            <InputLabel>Charisma</InputLabel>
+                            <OutlinedInput label="Charisma" type="number" placeholder={updatedPlayerInfo.charisma} value={updatedPlayerInfo.charisma} onChange={handleCharismaChange} />
+                            </FormControl>
+                            <FormControl>
+                            <InputLabel>Charisma Bonus</InputLabel>
+                            <OutlinedInput label="Charisma Bonus" type="number" placeholder={updatedPlayerInfo.cha_bonus} value={updatedPlayerInfo.cha_bonus} onChange={handleChaBonusChange} />
+                            </FormControl>
+                            <FormControl>
+                            <InputLabel>Charisma Saving Throw</InputLabel>
+                            <OutlinedInput label="Charisma Saving Throw" type="number" placeholder={updatedPlayerInfo.cha_save} value={updatedPlayerInfo.cha_save} onChange={handleChaSaveChange} />
+                            </FormControl>
+                            <Button variant="contained" type="submit">Submit</Button>
+                            </Card>
                         </form>
-                    </div>
+                    <Card>
                     {players[0].quantity_items.map(item => {
                         return (
                             <ul>
@@ -192,8 +276,10 @@ console.log(updatedPlayerInfo)
                             </ul>
                         )
                     })}
-                    <button onClick={() => history.push('/players')}>Player List</button>
+                    </Card>
+                    <Button variant="contained" onClick={() => history.push('/players')}>Player List</Button>
                 </div>
         </div>
+        </Container>
     )
 }
