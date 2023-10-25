@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
+import { Card, CardActionArea, CardContent, CardHeader, Container, Button, Grid, OutlinedInput, Typography, Select, MenuItem, FormControl, InputLabel } from "@mui/material"; 
 
 export default function MonsterDetails() {
     const id = Number(useParams().id);
@@ -19,22 +20,24 @@ export default function MonsterDetails() {
     return (
         <div>
             <div>
-                <h2>Monster Details</h2>
+                <Typography variant="h4">Monster Details</Typography>
             </div>
 
             {monster.map(monster => {
                 return (
-                    <div>
-                        <p>Monster: {monster.name}</p>
-                        <p>Alignment: {monster.alignment}</p>
-                        <p>Armor Class: {monster.armor_class}</p>
-                        <p>Hit Points: {monster.hit_points}</p>
-                        <p>Speed: {monster.speed}</p>
-                        <p>Resistances: {monster.resistances}</p>
-                        <p>Proficiency Bonus: {monster.proficiency_bonus}</p>
-                        <p>Attacks: {monster.attacks}</p>
-                        <button onClick={() => history.push('/monsters')}>Monster List</button>
-                    </div>
+                    <Container style={{margin: "10px"}}>
+                    <Card style={{padding: "10px", width: "60%", margin: "auto" }}>
+                        <Typography variant="body1" style={{fontSize: "20px"}}>Monster: {monster.name}</Typography>
+                        <Typography variant="body1" style={{fontSize: "20px"}}>Alignment: {monster.alignment}</Typography>
+                        <Typography variant="body1" style={{fontSize: "20px"}}>Armor Class: {monster.armor_class}</Typography>
+                        <Typography variant="body1" style={{fontSize: "20px"}}>Hit Points: {monster.hit_points}</Typography>
+                        <Typography variant="body1" style={{fontSize: "20px"}}>Speed: {monster.speed}</Typography>
+                        <Typography variant="body1" style={{fontSize: "20px"}}>Resistances: {monster.resistances}</Typography>
+                        <Typography variant="body1" style={{fontSize: "20px"}}>Proficiency Bonus: {monster.proficiency_bonus}</Typography>
+                        <Typography variant="body1" style={{fontSize: "20px"}}>Attacks: {monster.attacks}</Typography>
+                        <Button variant="contained" onClick={() => history.push('/monsters')}>Monster List</Button>
+                    </Card>
+                    </Container>
                    )
              })}
         </div>

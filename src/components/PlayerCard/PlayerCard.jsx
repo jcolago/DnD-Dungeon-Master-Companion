@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { Card, CardActionArea, CardContent, CardHeader, Container, Button, Grid, OutlinedInput, Typography, Select, MenuItem, FormControl, InputLabel } from "@mui/material";
+import { Card, CardActionArea, CardContent, CardHeader, Container, Button, Grid, OutlinedInput, Typography, Select, MenuItem, FormControl, InputLabel, InputAdornment } from "@mui/material";
 import ConditionItem from "../ConditionItem/ConditionItem";
 
 export default function PlayerCard({ player }) {
@@ -54,10 +54,14 @@ export default function PlayerCard({ player }) {
                 </div>
                 )
             })}
-                <OutlinedInput placeholder="Condition Length" style={{ maxHeight: "25px", marginTop: "20px"}} onChange={(event) => setConditionLength(event.target.value)} type="number" value={conditionLength}/>
+            <div style={{marginTop: "5px"}}>
+            <FormControl>
+            <InputLabel size="small" htmlFor="condition-length">Condition Length</InputLabel>
+                <OutlinedInput size="small" label="Condition Length" id="condition-length" placeholder="Condition Length"  onChange={(event) => setConditionLength(event.target.value)} type="number" value={conditionLength}/>
+                </FormControl>
                 <FormControl>
-                <InputLabel id="Conditon" style={{marginTop: "5px"}}> Condition </InputLabel>
-                <Select onChange={(event) => setConditionId(event.target.value)} value={conditionId} name="conditions" id="conditions" key={conditions.id} style={{width: "200px", maxHeight: "25px", marginTop: "20px", marginLeft: "5px"}}>
+                <InputLabel id="Conditon" size="small" > Condition </InputLabel>
+                <Select label="Condition" size="small" onChange={(event) => setConditionId(event.target.value)} value={conditionId} name="conditions" id="conditions" key={conditions.id} style={{width: "200px", marginLeft: "5px"}}>
                     <MenuItem disabled value="" > 
                     <em>Please select a condition</em>
                     </MenuItem>
@@ -66,7 +70,8 @@ export default function PlayerCard({ player }) {
                     })}
                 </Select>
                 </FormControl>
-                <Button style={{ maxHeight: "25px", marginLeft: "5px", marginBottom: "3px"}} variant="contained" onClick={addCondition}>Add Condition</Button>  
+                <Button style={{ maxHeight: "40px", marginLeft: "5px", marginBottom: "3px"}} variant="contained" onClick={addCondition}>Add Condition</Button> 
+                </div> 
             </Card>
             <Button variant="outlined" style={{margin: "5px", alignSelf:"end"}} onClick={() => dispatch({ type: 'REMOVE_PLAYER', payload: player.id})}>Remove</Button>
         </Container>

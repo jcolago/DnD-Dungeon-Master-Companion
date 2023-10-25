@@ -13,6 +13,6 @@ export default function DetailViewItem({ item }) {
 
 
     return(
-        <li>Quantity: <input onChange={(event) => setNewQuantity(event.target.value)} value={newQuantity}/>  Item: {item.item_name} <button onClick={() => dispatch({ type: "UPDATE_ITEM",payload: {id: item.id, quantity: newQuantity} })}>Update</button> <button onClick={() => dispatch({ type: 'DELETE_ITEM', payload: Number(item.id)})}>Delete</button></li>
+        <li> Quantity: <input onChange={(event) => setNewQuantity(event.target.value)} value={newQuantity}/>  Item: {item.item_name} <button onClick={() => dispatch({ type: "UPDATE_ITEM",payload: {id: item.id, quantity: newQuantity} })}>Update</button> <button onClick={() => dispatch({ type: 'DELETE_ITEM', payload: Number(item.id)})}>Delete</button></li>
     )
 }
