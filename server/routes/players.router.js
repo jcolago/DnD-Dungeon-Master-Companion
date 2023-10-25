@@ -7,7 +7,7 @@ const router = express.Router();
  */
 router.get('/', (req, res) => {
     // GET route from players table
-    const queryText = `SELECT "p".id, "p".player_name, "p".character_name, "p". character_img, "p".character_level, "p".current_hp, "p".total_hp, "p".armor_class, "p".speed, "p".initiative_bonus, "p".strength, "p".str_bonus, "p".str_save, "p".dexterity, "p".dex_bonus, "p".dex_save, "p".constitution, "p".con_bonus, "p".con_save, "p".intelligence, "p".int_bonus, "p".int_save, "p".wisdom, "p".wis_bonus, "p".wis_save, "p".charisma, "p".cha_bonus, "p".cha_save, "p".displayed,
+    const queryText = `SELECT "p".id, "p".player_name, "p".character_name, "p". character_img, "p".character_class, "p".character_level, "p".current_hp, "p".total_hp, "p".armor_class, "p".speed, "p".initiative_bonus, "p".strength, "p".str_bonus, "p".str_save, "p".dexterity, "p".dex_bonus, "p".dex_save, "p".constitution, "p".con_bonus, "p".con_save, "p".intelligence, "p".int_bonus, "p".int_save, "p".wisdom, "p".wis_bonus, "p".wis_save, "p".charisma, "p".cha_bonus, "p".cha_save, "p".displayed,
     "g".game_name, "g".dm_id,
             (SELECT JSON_AGG(JSON_BUILD_OBJECT('id', "pi".id, 'quantity',"pi".quantity, 'item_name', "i".item_name)) FROM "players_inventory" as "pi" JOIN "inventory" AS "i" ON 		"pi".inventory_id = "i".id WHERE "pi".player_id = "p".id) AS quantity_items,
             (SELECT JSON_AGG(JSON_BUILD_OBJECT('id', "pc".id, 'length', "pc".condition_length,  'condition_name', "c".condition_name)) FROM "players_conditions" as "pc"
@@ -31,7 +31,7 @@ router.get('/:id', (req, res) => {
     // GET route for player details
     const id = req.params.id
     console.log('Getting player information with id:', id)
-    const queryText = `SELECT "p".id, "p".player_name, "p".character_name, "p". character_img, "p".character_level, "p".current_hp, "p".total_hp, "p".armor_class, "p".speed, "p".initiative_bonus, "p".strength, "p".str_bonus, "p".str_save, "p".dexterity, "p".dex_bonus, "p".dex_save, "p".constitution, "p".con_bonus, "p".con_save, "p".intelligence, "p".int_bonus, "p".int_save, "p".wisdom, "p".wis_bonus, "p".wis_save, "p".charisma, "p".cha_bonus, "p".cha_save, "p".displayed,
+    const queryText = `SELECT "p".id, "p".player_name, "p".character_name, "p". character_img, "p".character_class, "p".character_level, "p".current_hp, "p".total_hp, "p".armor_class, "p".speed, "p".initiative_bonus, "p".strength, "p".str_bonus, "p".str_save, "p".dexterity, "p".dex_bonus, "p".dex_save, "p".constitution, "p".con_bonus, "p".con_save, "p".intelligence, "p".int_bonus, "p".int_save, "p".wisdom, "p".wis_bonus, "p".wis_save, "p".charisma, "p".cha_bonus, "p".cha_save, "p".displayed,
     "g".game_name, "g".dm_id,
             (SELECT JSON_AGG(JSON_BUILD_OBJECT('id', "pi".id, 'quantity',"pi".quantity, 'item_name', "i".item_name)) FROM "players_inventory" as "pi" JOIN "inventory" AS "i" ON 		"pi".inventory_id = "i".id WHERE "pi".player_id = "p".id) AS quantity_items,
             (SELECT JSON_AGG(JSON_BUILD_OBJECT('id', "pc".id, 'length', "pc".condition_length,  'condition_name', "c".condition_name)) FROM "players_conditions" as "pc"

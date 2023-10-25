@@ -34,6 +34,7 @@ export default function DetailsView() {
                     <div>
                         <p>Player Name: {player.player_name}</p>
                         <p>Character Name: {player.character_name}</p>
+                        <p>Character Class: {player.character_class}</p>
                         <p>Character Level: {player.character_level}</p>
                         <p>Current Hit Points: {player.current_hp}</p>
                         <p>Total Hit Points: {player.total_hp}</p>
