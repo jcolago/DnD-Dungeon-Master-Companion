@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { Card, Container, Button, CardHeader, Typography } from "@mui/material";
+import { Card, Container, Button, Typography } from "@mui/material";
 
 export default function Success() {
     const history = useHistory();
