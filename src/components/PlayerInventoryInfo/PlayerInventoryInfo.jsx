@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { Card, CardActionArea, CardContent, CardHeader, Container, Button, Grid, OutlinedInput, Typography, Select, MenuItem, FormControl, InputLabel, TextField } from "@mui/material";
 
 
 export default function PlayerInventoryInfo() {
@@ -33,35 +34,41 @@ export default function PlayerInventoryInfo() {
     }
 
     return (
-        <div>
-            <div>
-                <h2>Select Inventory</h2>
-            </div>
-            <br />
-            <label>Choose Items and quantity</label>
-            <input onChange={handleQuantityChange} type="number" placeholder="Quantity" value={itemQuantity} />
-            <select onChange={handleItemChange} value={itemId} name="items" id="items">
-                <option value="" disabled>Please select an item</option>
-                {inventory.map(item => {
-                    return (<option value={item.id} key={item.id} >{item.item_name}</option>
+        <Container>
+            <Card style={{ padding: "5px", margin: "auto", width: "60%" }}>
+                <CardHeader title="Select Inventory"></CardHeader>
+                <Typography variant="h6">Select Items and Quantity</Typography>
+                <FormControl>
+                    <InputLabel style={{margin: "5px"}} htmlFor="quantity">Item Quantity</InputLabel>
+                    <OutlinedInput style={{margin: "5px"}} label="Item Quantity" id="quantity" onChange={handleQuantityChange} type="number" placeholder="Item Quantity" value={itemQuantity} />
+                </FormControl>
+                <FormControl>
+                    <InputLabel style={{margin: "5px"}} htmlFor="items">Please Select an Item</InputLabel>
+                <Select style={{width: "250px", margin:"5px"}} label="Please Select an Item" onChange={handleItemChange} value={itemId} name="items" id="items">
+                    <MenuItem value="" disabled>Please select an item</MenuItem>
+                    {inventory.map(item => {
+                        return (<MenuItem value={item.id} key={item.id} >{item.item_name}</MenuItem>
+                        )
+                    })}
+                </Select>
+                </FormControl>
+                <Button style={{marginTop: "14px"}} variant="contained" onClick={handleAddItem}>Add Item</Button>
+
+                {backpack.map(backpackItem => {
+                    console.log(backpackItem);
+                    console.log(inventory)
+                    let item = inventory.find(inventoryItem => Number(inventoryItem.id) === Number(backpackItem.item_id));
+                    console.log(item)
+                    return (
+                        <div style={{margin: "5px"}} key={backpackItem.item_id}>
+                            <Typography>Quantity: {backpackItem.quantity} </Typography>
+                            <Typography>Item: {item.item_name}</Typography>
+                        </div>
                     )
                 })}
-            </select>
-            <button onClick={handleAddItem}>Add Item</button>
- 
-            {backpack.map(backpackItem => {
-                console.log(backpackItem);
-                console.log(inventory)
-                let item = inventory.find(inventoryItem => Number(inventoryItem.id) === Number(backpackItem.item_id));
-                console.log(item)
-                return (
-                    <div key={backpackItem.item_id}>
-                        <p>Quantity: {backpackItem.quantity} </p>
-                        <p>Item: {item.item_name}</p>
-                    </div>
-                )
-            })}
-            <button onClick={() => history.push('/review')}>Review Character</button>
-        </div>
+                <br />
+                <Button style={{margin: "5px"}} variant="outlined" onClick={() => history.push('/review')}>Review Character</Button>
+            </Card>
+        </Container>
     )
 }

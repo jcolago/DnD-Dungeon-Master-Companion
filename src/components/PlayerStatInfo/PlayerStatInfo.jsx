@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { Card, TextField, OutlinedInput, InputLabel, FormControl, Container, Select, MenuItem, Button, CardHeader } from "@mui/material";
-import "./PlayerStatInfo.css"
+import { Card, OutlinedInput, InputLabel, FormControl, Container, Button, CardHeader } from "@mui/material";
+
 
 export default function PlayerStatInfo() {
     const dispatch = useDispatch();
