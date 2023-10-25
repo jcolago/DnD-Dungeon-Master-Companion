@@ -1,7 +1,6 @@
-import { Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Button, FormControl, InputLabel, OutlinedInput, Typography } from "@mui/material";
 
 export default function DetailViewItem({ item }) {
     const dispatch = useDispatch();
@@ -19,6 +18,9 @@ export default function DetailViewItem({ item }) {
 
 
     return(
-        <li><Typography> Quantity: <input onChange={(event) => setNewQuantity(event.target.value)} value={newQuantity}/>  Item: {item.item_name} <button onClick={() => dispatch({ type: "UPDATE_ITEM",payload: {id: item.id, quantity: newQuantity} })}>Update</button> <button onClick={() => dispatch({ type: 'DELETE_ITEM', payload: deletedItem})}>Delete</button></Typography></li>
+        <Typography style={{margin: "5px"}}> Quantity: 
+            <FormControl>
+            <OutlinedInput style={{height: "30px", width: "50px"}} onChange={(event) => setNewQuantity(event.target.value)} value={newQuantity}/> 
+            </FormControl> Item: {item.item_name} <Button  variant="outlined" onClick={() => dispatch({ type: "UPDATE_ITEM",payload: {id: item.id, quantity: newQuantity} })}>Update</Button> <Button variant="outlined" onClick={() => dispatch({ type: 'DELETE_ITEM', payload: deletedItem})}>Delete</Button></Typography>
     )
 }
