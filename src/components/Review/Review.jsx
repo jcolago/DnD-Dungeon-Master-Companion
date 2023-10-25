@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { Card, OutlinedInput, InputLabel, FormControl, Container, Button, CardHeader, Typography } from "@mui/material";
+import { Card, Container, Button, CardHeader, Typography } from "@mui/material";
 
 
 export default function Review() {

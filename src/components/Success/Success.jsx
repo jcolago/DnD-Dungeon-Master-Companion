@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { Card, Container, Button, CardHeader, Typography } from "@mui/material";
 
 export default function Success() {
     const history = useHistory();
@@ -21,10 +22,14 @@ export default function Success() {
     }
 
     return(
-        <div>
-            <h2>Character successfully entered!</h2>
-            <button onClick={newCharacterClick}>Enter New Character</button>
-            <button onClick={playerListClick}>Players List</button>
-        </div>
+        <Container style={{border: "2px double black", padding: "5px"}}>
+        <Card style={{margin: "auto"}}>
+            <Typography style={{textAlign: "center"}} variant="h3">Character Successfully Entered!</Typography>
+            <div style={{textAlign: "center", margin: "5px"}}>
+            <Button variant="contained" style={{margin: "5px"}} onClick={newCharacterClick}>Enter New Character</Button>
+            <Button variant="contained"  style={{margin: "5px", width: "214.609px"}} onClick={playerListClick}>Players List</Button>
+            </div>
+        </Card>
+        </Container>
     )
 }
