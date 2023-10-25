@@ -63,6 +63,7 @@ export default function DetailsView() {
                     <div>
                         <Typography variant="h5" gutterBottom style={{ textDecoration: "underline" }}>Select Inventory</Typography>
                     </div>
+                    <div style={{ marginTop: "5px"}}>
                     <Typography>Choose Items and quantity</Typography>
                     <TextField size="small" onChange={(event) => setItemQuantity(event.target.value)} type="number" label='Quantity' placeholder="Quantity" value={itemQuantity}></TextField>
                     <FormControl>
@@ -76,7 +77,7 @@ export default function DetailsView() {
                     </Select>
                     
                     </FormControl> <Button style={{height: "40px"}} variant="contained" onClick={handleAddItem}>Add Item</Button>
-                    <br />
+                    </div>
                     <br />
                     <Button variant="outlined" onClick={() => history.push(`/edit/${id}`)}>Edit</Button> <Button variant="outlined" onClick={() => history.push('/players')}>Player List</Button>
                 </div>

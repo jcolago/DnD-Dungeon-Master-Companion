@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { Card, CardActionArea, CardContent, CardHeader, Container, Button, Grid, OutlinedInput, Typography, Select, MenuItem, FormControl, InputLabel } from "@mui/material"; 
+import { Card, Container, Button,  Typography, CardHeader } from "@mui/material"; 
 
 export default function MonsterDetails() {
     const id = Number(useParams().id);
@@ -25,8 +25,9 @@ export default function MonsterDetails() {
 
             {monster.map(monster => {
                 return (
-                    <Container style={{margin: "10px"}}>
+                    <Container style={{margin: "auto", border: "2px solid black", padding: "5px"}}>
                     <Card style={{padding: "10px", width: "60%", margin: "auto" }}>
+                    <CardHeader  title = {monster.name}></CardHeader>
                         <Typography variant="body1" style={{fontSize: "20px"}}>Monster: {monster.name}</Typography>
                         <Typography variant="body1" style={{fontSize: "20px"}}>Alignment: {monster.alignment}</Typography>
                         <Typography variant="body1" style={{fontSize: "20px"}}>Armor Class: {monster.armor_class}</Typography>

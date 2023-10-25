@@ -45,7 +45,8 @@ function App() {
     dispatch({ type: "FETCH_PLAYERS"});
     dispatch({ type: "FETCH_INVENTORY"});
     dispatch({ type: "FETCH_MONSTERS"});
-    dispatch({ type: "FETCH_CONDITIONS"})
+    dispatch({ type: "FETCH_CONDITIONS"});
+    dispatch({ type: "FETCH_GAMES"})
   }, []);
 
   return (
