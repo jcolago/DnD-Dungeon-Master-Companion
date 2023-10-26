@@ -26,13 +26,12 @@ export default function DetailsView() {
     console.log(players)
     console.log(id)
     return (
-        <Container style={{ border: "1px solid black", padding: "5px" }}>
+        <Container style={{ border: "2px double black", padding: "5px", display:"flex", flexDirection: "column"}}>
             {players.map(player => {
                 return (<div key={player.id}>
-                    <Card style={{ width: "20%" }}>
-                        <img src={player.character_img} />
-                    </Card>
-                    <Card style={{ background: "darkkhaki", width: "20%" }}>
+                    <Card style={{ background: "darkkhaki", width: "80%", columnCount: "3", margin: "auto"}}>
+                        <img style={{width: "197px", height: "255px"}} src={player.character_img} />
+                    
                         <Typography>Player Name: {player.player_name}</Typography>
                         <Typography>Character Name: {player.character_name}</Typography>
                         <Typography>Character Class: {player.character_class}</Typography>
@@ -42,15 +41,15 @@ export default function DetailsView() {
                         <Typography>Armor Class: {player.armor_class}</Typography>
                         <Typography>Speed: {player.speed}</Typography>
                         <Typography>Initiative Bonus: {player.initiative_bonus}</Typography>
+                        <br />
+                        <Typography style={{marginTop: "5px" }} variant="body1">Strength: {player.strength} Bonus: {player.str_bonus}  Save: {player.str_save}</Typography>
+                        <Typography variant="body1" style={{marginTop: "5px"}}>Dexterity: {player.dexterity} Bonus: {player.dex_bonus}  Save: {player.dex_save}</Typography>
+                        <Typography variant="body1" style={{marginTop: "5px"}}>Constitution: {player.constitution} Bonus: {player.con_bonus}  Save: {player.con_save}</Typography>
+                        <Typography variant="body1" style={{marginTop: "5px"}}>Intelligence: {player.intelligence} Bonus: {player.int_bonus}  Save: {player.int_save}</Typography>
+                        <Typography style={{marginTop: "5px"}}>Wisdom: {player.wisdom} Bonus: {player.wis_bonus}  Save: {player.wis_save}</Typography>
+                        <Typography style={{marginTop: "5px"}}>Charisma: {player.charisma} Bonus: {player.cha_bonus}  Save: {player.cha_save}</Typography>
                     </Card>
-                    <Card>
-                        <Typography>Strength: {player.strength} Bonus: {player.str_bonus}  Save: {player.str_save}</Typography>
-                        <Typography>Dexterity: {player.dexterity} Bonus: {player.dex_bonus}  Save: {player.dex_save}</Typography>
-                        <Typography>Constitution: {player.constitution} Bonus: {player.con_bonus}  Save: {player.con_save}</Typography>
-                        <Typography>Intelligence: {player.intelligence} Bonus: {player.int_bonus}  Save: {player.int_save}</Typography>
-                        <Typography>Wisdom: {player.wisdom} Bonus: {player.wis_bonus}  Save: {player.wis_save}</Typography>
-                        <Typography>Charisma: {player.charisma} Bonus: {player.cha_bonus}  Save: {player.cha_save}</Typography>
-                    </Card>
+                    <Card style={{width: "80%", columnCount: "3", margin: "auto"}}>
                     {player.quantity_items.map(item => {
 
                         return (
@@ -59,11 +58,14 @@ export default function DetailsView() {
                             </ul>
                         )
                     })}
-
+                    </Card>
+                   
+                    <Card style={{width: "80%", margin: "auto"}}>
                     <div>
                         <Typography variant="h5" gutterBottom style={{ textDecoration: "underline" }}>Select Inventory</Typography>
                     </div>
                     <div style={{ marginTop: "5px"}}>
+                        
                     <Typography>Choose Items and quantity</Typography>
                     <TextField size="small" onChange={(event) => setItemQuantity(event.target.value)} type="number" label='Quantity' placeholder="Quantity" value={itemQuantity}></TextField>
                     <FormControl>
@@ -80,6 +82,7 @@ export default function DetailsView() {
                     </div>
                     <br />
                     <Button variant="outlined" onClick={() => history.push(`/edit/${id}`)}>Edit</Button> <Button variant="outlined" onClick={() => history.push('/players')}>Player List</Button>
+                    </Card>
                 </div>
                 )
             })}

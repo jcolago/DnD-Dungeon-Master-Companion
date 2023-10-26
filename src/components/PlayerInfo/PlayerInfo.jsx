@@ -81,8 +81,9 @@ export default function PlayerInfo() {
         <Container>
             <Card>
                 <CardHeader title="Enter Character Info Below!" />
+                <center>
                 <FormControl>
-                    <form onSubmit={addNewPlayerInfo}>
+                    <form  onSubmit={addNewPlayerInfo}>
                         <FormControl>
                         <InputLabel htmlFor="player-name" style={{ margin: "5px" }}> Player Name</InputLabel>
                         <OutlinedInput label="Player Name" id="player-name" style={{ margin: "5px" }} type="text" placeholder="Player Name" value={newPlayerInfo.player_name} onChange={handlePlayerNameChange} />
@@ -136,6 +137,7 @@ export default function PlayerInfo() {
                         <Button style={{marginTop: "23px"}} variant="contained" type="submit">Submit</Button>
                     </form>
                 </FormControl>
+                </center>
             </Card>
         </Container>
     )

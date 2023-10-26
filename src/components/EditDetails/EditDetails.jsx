@@ -17,14 +17,14 @@ export default function EditDetails() {
         dispatch({ type: 'FETCH_PLAYER_DETAILS', payload: id });
     }, []);
 
-    const [updatedPlayerInfo, setUpdatedPlayerInfo] = useState({ player_name: "", character_name: "", character_img: "", character_level: "", current_hp: "", total_hp: "", armor_class: "", speed: "", initiative_bonus: "", strength: "", str_bonus: "", str_save: "", dexterity: "", dex_bonus: "", dex_save: "", constitution: "", con_bonus: "", con_save: "", intelligence: "", int_bonus: "", int_save: "", wisdom: "", wis_bonus: "", wis_save: "", charisma: "", cha_bonus: "", cha_save: "" })
+    const [updatedPlayerInfo, setUpdatedPlayerInfo] = useState({ player_name: "", character_name: "", character_img: "", character_class: "", character_level: "", current_hp: "", total_hp: "", armor_class: "", speed: "", initiative_bonus: "", strength: "", str_bonus: "", str_save: "", dexterity: "", dex_bonus: "", dex_save: "", constitution: "", con_bonus: "", con_save: "", intelligence: "", int_bonus: "", int_save: "", wisdom: "", wis_bonus: "", wis_save: "", charisma: "", cha_bonus: "", cha_save: "" })
 
   
 
 
 
     useEffect(() => {
-        setUpdatedPlayerInfo({ player_name: players[0].player_name, character_name: players[0].character_name, character_img: players[0].character_img, character_level: players[0].character_level, current_hp: players[0].current_hp, total_hp: players[0].total_hp, armor_class: players[0].armor_class, speed: players[0].speed, initiative_bonus: players[0].initiative_bonus, strength: players[0].strength, str_bonus: players[0].str_bonus, str_save: players[0].str_save, dexterity: players[0].dexterity, dex_bonus: players[0].dex_bonus, dex_save: players[0].dex_save, constitution: players[0].constitution, con_bonus: players[0].con_bonus, con_save: players[0].con_save, intelligence: players[0].intelligence, int_bonus: players[0].int_bonus, int_save: players[0].int_save, wisdom: players[0].wisdom, wis_bonus: players[0].wis_bonus, wis_save: players[0].wis_save, charisma: players[0].charisma, cha_bonus: players[0].cha_bonus, cha_save: players[0].cha_save })
+        setUpdatedPlayerInfo({ player_name: players[0].player_name, character_name: players[0].character_name, character_img: players[0].character_img, character_class: players[0].character_class, character_level: players[0].character_level, current_hp: players[0].current_hp, total_hp: players[0].total_hp, armor_class: players[0].armor_class, speed: players[0].speed, initiative_bonus: players[0].initiative_bonus, strength: players[0].strength, str_bonus: players[0].str_bonus, str_save: players[0].str_save, dexterity: players[0].dexterity, dex_bonus: players[0].dex_bonus, dex_save: players[0].dex_save, constitution: players[0].constitution, con_bonus: players[0].con_bonus, con_save: players[0].con_save, intelligence: players[0].intelligence, int_bonus: players[0].int_bonus, int_save: players[0].int_save, wisdom: players[0].wisdom, wis_bonus: players[0].wis_bonus, wis_save: players[0].wis_save, charisma: players[0].charisma, cha_bonus: players[0].cha_bonus, cha_save: players[0].cha_save })
     }, [players])
 
     const handlePlayerNameChange = (event) => {
@@ -38,6 +38,10 @@ export default function EditDetails() {
     const handleCharacterImageChange = (event) => {
         console.log(event);
         setUpdatedPlayerInfo({ ...updatedPlayerInfo, character_img: event.target.value })
+    }
+    const handleCharacterClassChange = (event) => {
+        console.log(event);
+        setUpdatedPlayerInfo({...updatedPlayerInfo, character_class: event.target.value })
     }
     const handleCharacterLevelChange = (event) => {
         console.log(event);
@@ -168,8 +172,12 @@ console.log(updatedPlayerInfo)
                             <OutlinedInput style={{margin: "5px"}} label="Character Image Url" type="text" placeholder={updatedPlayerInfo.character_img} value={updatedPlayerInfo.character_img} onChange={handleCharacterImageChange} />
                             </FormControl>
                             <FormControl>
+                            <InputLabel>Character Class</InputLabel>
+                            <OutlinedInput style={{margin: "5px"}} label="Character Class" type="text" placeholder={updatedPlayerInfo.character_class} value={updatedPlayerInfo.character_class} onChange={handleCharacterClassChange} />
+                            </FormControl>
+                            <FormControl>
                             <InputLabel>Character Level</InputLabel>
-                            <OutlinedInput style={{margin: "5px"}} label="Character Level" type="number" placeholder={updatedPlayerInfo.character_level} value={updatedPlayerInfo.character_level} onChange={handleCharacterLevelChange} />
+                            <OutlinedInput style={{margin: "5px"}} label="Character Level" type="text" placeholder={updatedPlayerInfo.character_level} value={updatedPlayerInfo.character_level} onChange={handleCharacterLevelChange} />
                             </FormControl>
                             <FormControl>
                             <InputLabel>Current Hit Points</InputLabel>

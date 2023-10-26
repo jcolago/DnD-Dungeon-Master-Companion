@@ -37,7 +37,7 @@ export default function PlayerCard({ player }) {
         <Container style={{background: "darkkhaki", padding: "5px", display: "flex", flexDirection: "row"}}>
             
                 <Card className="info-container" style={{ padding: "5px", margin: "5px", width: "30%"}}>
-                <img src={player.character_img}/>
+                <img style={{width: "197px", height: "255px"}} src={player.character_img}/>
                 <Typography variant="h4" gutterBottom> Player Info</Typography>
                 <Typography >Player Name: {player.player_name}</Typography> <Typography gutterBottom>Character Name: {player.character_name}</Typography>
                 
@@ -73,7 +73,7 @@ export default function PlayerCard({ player }) {
                 <Button style={{ maxHeight: "40px", marginLeft: "5px", marginBottom: "3px"}} variant="contained" onClick={addCondition}>Add Condition</Button> 
                 </div> 
             </Card>
-            <Button variant="outlined" style={{margin: "5px", alignSelf:"end"}} onClick={() => dispatch({ type: 'REMOVE_PLAYER', payload: player.id})}>Remove</Button>
+            <Button variant="contained" style={{margin: "5px", alignSelf:"end"}} onClick={() => dispatch({ type: 'REMOVE_PLAYER', payload: player.id})}>Remove</Button>
         </Container>
         
          
