@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Container, Card, Button, FormControl, InputLabel, CardHeader, OutlinedInput, Typography } from "@mui/material";
+import "./UserPage.css"
+
 
 function UserPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
@@ -20,12 +22,13 @@ function UserPage() {
 
   const user = useSelector((store) => store.user);
   return (
-    <Container style={{border: "2px double black"}}>
+
+    <Container className='user-container' style={{border: "2px double black"}}>
     <div>
       <div className="container">
         <Typography variant='h3'>Welcome, {user.username}!</Typography>
       </div>
-      <Card style={{margin: "5px"}}>
+      <Card style={{margin: "5px", backgroundColor: "rgb(226, 232, 243, .7)"}}>
         <CardHeader style={{textDecoration: "underline"}} title="Create A Game!"></CardHeader>
         <form onSubmit={handleSubmit}>
           <div style={{margin: "5px"}}>
@@ -39,7 +42,7 @@ function UserPage() {
           </div>
         </form>
       </Card>
-      <Card style={{margin: "5px"}}>
+      <Card style={{margin: "5px", backgroundColor:"rgb(226, 232, 243, .7)"}}>
         <center>
       <div style={{margin: "5px"}}>
         <CardHeader style={{textDecoration: "underline"}}  title="Click To Navigate To An Entry Form or List!" />

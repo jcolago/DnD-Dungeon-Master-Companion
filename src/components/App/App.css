@@ -1,6 +1,8 @@
 html,
 body,
 #react-root {
+  background-image: url("/public/images/dice2.jpg");
+  background-size: 100%;
   height: 100%;
 }
 
@@ -13,6 +15,7 @@ img {
   display: inline-block;
   max-width: 100%;
 }
+
 
 /* --------------------------------------------------------------------------------
 Container
