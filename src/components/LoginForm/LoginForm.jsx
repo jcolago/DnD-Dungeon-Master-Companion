@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {useSelector} from 'react-redux';
+import { Card, Container, Button,  Typography, Select, MenuItem, FormControl, InputLabel, TextField, CardHeader, OutlinedInput } from "@mui/material";
 
 function LoginForm() {
   const [username, setUsername] = useState('');
@@ -26,39 +27,50 @@ function LoginForm() {
 
   return (
     <form className="formPanel" onSubmit={login}>
-      <h2>Login</h2>
+      <Card >
+      <CardHeader title="Login" ></CardHeader>
       {errors.loginMessage && (
         <h3 className="alert" role="alert">
           {errors.loginMessage}
         </h3>
       )}
-      <div>
-        <label htmlFor="username">
-          Username:
-          <input
+      <div style={{margin: "5px"}}>
+        <center>
+        <FormControl>
+          <InputLabel htmlFor="username"> Username</InputLabel>
+            <OutlinedInput
+             style={{width: "250px" }}
             type="text"
             name="username"
+            label="Username"
             required
             value={username}
             onChange={(event) => setUsername(event.target.value)}
           />
-        </label>
+        </FormControl>
+        </center>
       </div>
-      <div>
-        <label htmlFor="password">
-          Password:
-          <input
+      <div style={{margin: "5px"}}>
+        <center>
+        <FormControl>
+        <InputLabel htmlFor="password">Password</InputLabel>
+          <OutlinedInput
+            style={{width: "250px" }}
             type="password"
             name="password"
+            label="Password"
             required
             value={password}
             onChange={(event) => setPassword(event.target.value)}
           />
-        </label>
+        
+        </FormControl>
+        </center>
       </div>
       <div>
-        <input className="btn" type="submit" name="submit" value="Log In" />
+        <Button variant="contained" style={{margin: "5px"}} className="btn" type="submit" name="submit" value="Log In" >Log In</Button>
       </div>
+      </Card>
     </form>
   );
 }

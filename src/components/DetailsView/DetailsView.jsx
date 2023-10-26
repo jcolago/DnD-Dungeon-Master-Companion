@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { Card, CardActionArea, CardContent, CardHeader, Container, Button, Grid, OutlinedInput, Typography, Select, MenuItem, FormControl, InputLabel, TextField } from "@mui/material";
+import { Card, Container, Button,  Typography, Select, MenuItem, FormControl, InputLabel, TextField } from "@mui/material";
 import InventoryItem from "../InventoryItem/InventoryItem";
 
 export default function DetailsView() {
