@@ -26,10 +26,10 @@ export default function DetailsView() {
     console.log(players)
     console.log(id)
     return (
-        <Container style={{ border: "2px double black", padding: "5px", display:"flex", flexDirection: "column"}}>
+        <Container style={{ border: "2px double black", width: "80%", backgroundColor: "rgb(128, 150, 191, .5)", display:"flex", flexDirection: "column", padding: "10px"}}>
             {players.map(player => {
                 return (<div key={player.id}>
-                    <Card style={{ background: "darkkhaki", width: "80%", columnCount: "3", margin: "auto"}}>
+                    <Card style={{ margin: "5px", backgroundColor: "rgb(226, 232, 243, .7)", columnCount: "3", padding: "5px"}}>
                         <img style={{width: "197px", height: "255px"}} src={player.character_img} />
                     
                         <Typography>Player Name: {player.player_name}</Typography>
@@ -49,7 +49,7 @@ export default function DetailsView() {
                         <Typography style={{marginTop: "5px"}}>Wisdom: {player.wisdom} Bonus: {player.wis_bonus}  Save: {player.wis_save}</Typography>
                         <Typography style={{marginTop: "5px"}}>Charisma: {player.charisma} Bonus: {player.cha_bonus}  Save: {player.cha_save}</Typography>
                     </Card>
-                    <Card style={{width: "80%", columnCount: "3", margin: "auto"}}>
+                    <Card style={{margin: "5px", backgroundColor: "rgb(226, 232, 243, .7)", columnCount: "3", padding: "5px"}}>
                     {player.quantity_items.map(item => {
 
                         return (
@@ -60,7 +60,7 @@ export default function DetailsView() {
                     })}
                     </Card>
                    
-                    <Card style={{width: "80%", margin: "auto"}}>
+                    <Card style={{margin: "5px", backgroundColor: "rgb(226, 232, 243, .7)", padding: "5px"}}>
                     <div>
                         <Typography variant="h5" gutterBottom style={{ textDecoration: "underline" }}>Select Inventory</Typography>
                     </div>
@@ -81,7 +81,7 @@ export default function DetailsView() {
                     </FormControl> <Button style={{height: "40px"}} variant="contained" onClick={handleAddItem}>Add Item</Button>
                     </div>
                     <br />
-                    <Button variant="outlined" onClick={() => history.push(`/edit/${id}`)}>Edit</Button> <Button variant="outlined" onClick={() => history.push('/players')}>Player List</Button>
+                    <Button variant="contained" onClick={() => history.push(`/edit/${id}`)}>Edit</Button> <Button variant="contained" onClick={() => history.push('/players')}>Player List</Button>
                     </Card>
                 </div>
                 )

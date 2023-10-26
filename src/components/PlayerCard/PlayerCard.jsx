@@ -34,9 +34,9 @@ export default function PlayerCard({ player }) {
     }
 
     return (
-        <Container style={{background: "darkkhaki", padding: "5px", display: "flex", flexDirection: "row"}}>
+        <Container style={{border: "2px double black", backgroundColor: "rgb(128, 150, 191, .5)", display: "flex", flexDirection: "row", padding: "10px", margin: "10px"}}>
             
-                <Card className="info-container" style={{ padding: "5px", margin: "5px", width: "30%"}}>
+                <Card className="info-container" style={{ padding: "5px", margin: "5px", width: "30%", backgroundColor: "rgb(226, 232, 243, .7)"}}>
                 <img style={{width: "197px", height: "255px"}} src={player.character_img}/>
                 <Typography variant="h4" gutterBottom> Player Info</Typography>
                 <Typography >Player Name: {player.player_name}</Typography> <Typography gutterBottom>Character Name: {player.character_name}</Typography>
@@ -45,7 +45,7 @@ export default function PlayerCard({ player }) {
                 <Typography>Armor Class: {player.armor_class}</Typography>
                 <Typography>Initiative bonus: {player.initiative_bonus} </Typography>
             </Card>
-            <Card className="condition-container" style={{padding: "5px", margin: "5px", width: "65%", height: "80%"}}>
+            <Card className="condition-container" style={{padding: "5px", margin: "5px", width: "65%", height: "80%", backgroundColor: "rgb(226, 232, 243, .7)"}}>
                 <Typography variant="h4" gutterBottom>Conditions</Typography>
                 {player.length_condition && player.length_condition.map (player => {
                     return(

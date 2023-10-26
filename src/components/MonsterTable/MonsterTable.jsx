@@ -15,8 +15,8 @@ export default function MonstersTable() {
     }, [])
 
     return (
-        <Paper style={{ border: "1px solid black", margin: "10px" }}>
-            <TableContainer style={{ maxWidth: "90%", margin: "auto", padding: "10px" }}>
+        <Paper style={{ border: "2px double black", padding: "10px", margin: "10px", backgroundColor: "rgb(128, 150, 191, .5)"}}>
+            <TableContainer style={{ maxWidth: "90%", margin: "auto", padding: "10px", backgroundColor: "rgb(226, 232, 243, .7)"}}>
                 <Table style={{ border: "2px solid black" }}>
                     <TableHead style={{ border: "2px solid black" }}>
                         <TableRow style={{ border: "2px solid black" }}>

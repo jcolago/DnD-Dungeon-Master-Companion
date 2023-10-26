@@ -34,10 +34,10 @@ export default function PlayerInventoryInfo() {
     }
 
     return (
-        <Container style={{border: "2px double black", padding: "5px"}} >
-            <Card style={{ padding: "5px", margin: "auto", width: "70%" }}>
-                <CardHeader title="Select Inventory"></CardHeader>
-                <Typography variant="h6">Select Items and Quantity</Typography>
+        <Container style={{border: "2px double black", width: "80%", backgroundColor: "rgb(128, 150, 191, .5)"}} >
+            <Card style={{ margin: "5px", backgroundColor: "rgb(226, 232, 243, .7)"}}>
+                <CardHeader style={{textDecoration: "underline"}} title="Select Inventory"></CardHeader>
+                <Typography style={{margin: "5px"}} variant="h6">Select Items and Quantity</Typography>
                 <FormControl>
                     <InputLabel style={{margin: "5px"}} htmlFor="quantity">Item Quantity</InputLabel>
                     <OutlinedInput style={{margin: "5px"}} label="Item Quantity" id="quantity" onChange={handleQuantityChange} type="number" placeholder="Item Quantity" value={itemQuantity} />
@@ -67,7 +67,7 @@ export default function PlayerInventoryInfo() {
                     )
                 })}
                 <br />
-                <Button style={{margin: "5px"}} variant="outlined" onClick={() => history.push('/review')}>Review Character</Button>
+                <Button style={{margin: "5px"}} variant="contained" onClick={() => history.push('/review')}>Review Character</Button>
             </Card>
         </Container>
     )

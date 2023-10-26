@@ -78,9 +78,9 @@ export default function PlayerInfo() {
     }
 
     return (
-        <Container>
-            <Card>
-                <CardHeader title="Enter Character Info Below!" />
+        <Container style={{border: "2px double black", width: "80%", backgroundColor: "rgb(128, 150, 191, .5)"}}>
+            <Card style={{margin: "5px", backgroundColor: "rgb(226, 232, 243, .7)"}}>
+                <CardHeader style={{textDecoration: "underline"}} title="Enter Character Info Below!" />
                 <center>
                 <FormControl>
                     <form  onSubmit={addNewPlayerInfo}>

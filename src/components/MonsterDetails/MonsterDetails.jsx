@@ -19,14 +19,12 @@ export default function MonsterDetails() {
     console.log(monster)
     return (
         <div>
-            <div>
-                <Typography variant="h4">Monster Details</Typography>
-            </div>
+           
 
             {monster.map(monster => {
                 return (
-                    <Container style={{margin: "auto", border: "2px solid black", padding: "5px"}}>
-                    <Card style={{padding: "10px", width: "60%", margin: "auto" }}>
+                    <Container style={{border: "2px double black", width: "80%", backgroundColor: "rgb(128, 150, 191, .5)", padding: "10px"}}>
+                    <Card style={{padding: "10px", width: "60%", margin: "auto", backgroundColor: "rgb(226, 232, 243, .7)", }}>
                     <CardHeader  title = {monster.name}></CardHeader>
                         <Typography variant="body1" style={{fontSize: "20px"}}>Monster: {monster.name}</Typography>
                         <Typography variant="body1" style={{fontSize: "20px"}}>Alignment: {monster.alignment}</Typography>

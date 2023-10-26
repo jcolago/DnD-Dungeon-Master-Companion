@@ -51,7 +51,11 @@ function App() {
 
   return (
     <Router>
-      <div>
+      <div style={{backgroundImage: "url(/public/images/dice2.jpg)",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    height: "100%",
+    width: "100%"}}>
         <Nav />
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}

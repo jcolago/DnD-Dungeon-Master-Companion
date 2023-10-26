@@ -91,11 +91,12 @@ export default function PlayerStatInfo() {
     }
 
     return (
-        <Container style={{bored: "2px double black", width: "80%"}}>
-            <Card style={{margin: "auto", width: "70%"}}>
-                <CardHeader title="Enter Character Stats Below!" />
+        <Container style={{border: "2px double black", width: "80%", backgroundColor: "rgb(128, 150, 191, .5)"}}>
+            <Card style={{margin: "5px", backgroundColor: "rgb(226, 232, 243, .7)"}}>
+                
+                <CardHeader style={{textDecoration: "underline"}} title="Enter Character Stats Below!" />
                 <FormControl>
-                    <form  onSubmit={addNewStatsInfo}>
+                    <form onSubmit={addNewStatsInfo}>
                         <FormControl>
                             <InputLabel style={{margin: "5px"}} htmlFor="strength" >Strength</InputLabel>
                             <OutlinedInput style={{margin: "5px", width: "225px"}}  label="Strength" id="strength" type="number" placeholder="Strength" value={newPlayerStats.strength} onChange={handleStrengthChange} />
@@ -170,7 +171,7 @@ export default function PlayerStatInfo() {
                         <InputLabel style={{margin: "5px"}}htmlFor="cha-save">Charisma Saving Throw</InputLabel>
                             <OutlinedInput style={{margin: "5px", width: "225px"}} label="Charaisma Saving Throw" id="cha-save"  type="number" placeholder="Charisma Save" value={newPlayerStats.cha_save} onChange={handleChaSaveChange} />
                         </FormControl>
-                        <Button style={{marginTop: "23px"}} variant="contained" type="submit">Submit</Button>
+                        <Button style={{marginTop: "23px", marginLeft: "380px"}} variant="contained" type="submit">Submit</Button>
                     </form>
                 </FormControl>
             </Card>

@@ -22,8 +22,8 @@ export default function Success() {
     }
 
     return(
-        <Container style={{border: "2px double black", padding: "5px", }}>
-        <Card style={{margin: "auto"}}>
+        <Container style={{border: "2px double black", width: "80%", backgroundColor: "rgb(128, 150, 191, .5)"}}>
+        <Card style={{margin: "5px", backgroundColor: "rgb(226, 232, 243, .7)"}}>
             <Typography style={{textAlign: "center"}} variant="h3">Character Successfully Entered!</Typography>
             <div style={{textAlign: "center", margin: "5px"}}>
             <Button variant="contained" style={{margin: "5px"}} onClick={newCharacterClick}>Enter New Character</Button>

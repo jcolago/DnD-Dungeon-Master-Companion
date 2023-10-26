@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { Card, OutlinedInput, InputLabel, FormControl, Container, Button, CardHeader, TextField, Select, MenuItem, Typography } from "@mui/material";
+import { Card, OutlinedInput, InputLabel, FormControl, Container, Button, CardHeader, Typography } from "@mui/material";
 import DetailViewItem from "../DetailViewItem/DetailViewItem";
+import "./EditDetails.css"
 
 export default function EditDetails() {
     const id = Number(useParams().id);
@@ -149,13 +150,13 @@ export default function EditDetails() {
     }
 console.log(updatedPlayerInfo)
     return (
-        <Container>
+        <Container style={{ border: "2px double black", width: "80%", backgroundColor: "rgb(128, 150, 191, .5)", display:"flex", flexDirection: "column", padding: "10px"}}>
             <Typography variant="h3">Character Edit</Typography>
-            <Button variant="contained" onClick={() => history.push('/players')}>Player List</Button>
+            <Button variant="contained" style={{width: "124.078px", height: "36.5px", margin: "5px"}} onClick={() => history.push('/players')}>Player List</Button>
         <div>
             <div key={updatedPlayerInfo.id}>
                         <form onSubmit={handleSubmit}>
-                    <Card style={{margin: "auto", width: "90%"}}>
+                    <Card style={{margin: "5px", backgroundColor: "rgb(226, 232, 243, .7)",  padding: "5px"}}>
                     <img src={updatedPlayerInfo.character_img} />
                         <CardHeader title="Update Player Info" style={{textDecoration: "underline"}}></CardHeader>
                        
@@ -200,7 +201,7 @@ console.log(updatedPlayerInfo)
                             <OutlinedInput style={{margin: "5px"}} label="Initiative Bonus" type="number" placeholder={updatedPlayerInfo.initiative_bonus} value={updatedPlayerInfo.initiative_bonus} onChange={handleInitiativeBonusChange} />
                             </FormControl>
                             </Card>
-                            <Card style={{margin: "auto", width: "90%"}}>
+                            <Card style={{ margin: "5px", backgroundColor: "rgb(226, 232, 243, .7)", padding: "5px"}}>
                             <CardHeader title="Update Player Stats" style={{textDecoration: "underline"}}></CardHeader>
                             <FormControl>
                                 <InputLabel>Strength</InputLabel>
@@ -274,10 +275,10 @@ console.log(updatedPlayerInfo)
                             <InputLabel>Charisma Saving Throw</InputLabel>
                             <OutlinedInput style={{margin: "5px"}} label="Charisma Saving Throw" type="number" placeholder={updatedPlayerInfo.cha_save} value={updatedPlayerInfo.cha_save} onChange={handleChaSaveChange} />
                             </FormControl>
-                            <Button variant="contained" type="submit">Submit</Button>
+                            <Button style={{marginTop: "25px", marginLeft: "317px"}} variant="contained" type="submit">Submit</Button>
                             </Card>
                         </form>
-                    <Card style={{margin: "auto", width: "90%"}}>
+                    <Card style={{margin: "5px", backgroundColor: "rgb(226, 232, 243, .7)", columnCount: "2", padding: "5px"}}>
                     {players[0].quantity_items.map(item => {
                         return (
                             <>

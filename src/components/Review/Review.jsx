@@ -23,11 +23,11 @@ export default function Review() {
     
 
     return (
-        <Container style={{border: "2px double black", width: "80%"}}>
+        <Container style={{border: "2px double black", width: "80%", backgroundColor: "rgb(128, 150, 191, .5)"}}>
              <div>
                 <Typography variant="h4">Player Character Review</Typography>
             </div>
-            <Card style={{padding: "5px", margin: "auto", width: "90%"}}>
+            <Card style={{margin: "5px", backgroundColor: "rgb(226, 232, 243, .7)"}}>
                 <CardHeader style={{textDecoration: "underline"}} title="Player Info"></CardHeader>
             <div>
                     <div  key={playersInfo.id}>
@@ -38,7 +38,7 @@ export default function Review() {
                     </div>
             </div>
             </Card>
-            <Card style={{padding: "5px", margin: "auto", width: "90%"}}>
+            <Card style={{margin: "5px", backgroundColor: "rgb(226, 232, 243, .7)"}}>
                 <CardHeader style={{textDecoration: "underline"}} title="Player Stats"></CardHeader>
             <div>
                     <div>
@@ -51,7 +51,7 @@ export default function Review() {
                     </div>
             </div>
             </Card>
-            <Card style={{padding: "5px", margin: "auto", width: "90%"}}>
+            <Card style={{margin: "5px", backgroundColor: "rgb(226, 232, 243, .7)"}}>
                 <CardHeader style={{textDecoration: "underline"}} title="Inventory"></CardHeader>
             <div>
             {item.map(backpackItem => {
