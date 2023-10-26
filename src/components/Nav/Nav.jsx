@@ -12,7 +12,7 @@ function Nav() {
       <Link to="/home">
         <h2 className="nav-title">Dungeon Master Companion App</h2>
       </Link>
-      <div>
+      <div style={{padding: "10px"}}>
         {/* If no user is logged in, show these links */}
         {!user.id && (
           // If there's no user, show login/registration links
@@ -51,10 +51,6 @@ function Nav() {
             <LogOutButton className="navLink" />
           </>
         )}
-
-        <Link className="navLink" to="/about">
-          About
-        </Link>
       </div>
     </div>
   );

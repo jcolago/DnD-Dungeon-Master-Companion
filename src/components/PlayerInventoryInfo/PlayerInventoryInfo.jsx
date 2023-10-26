@@ -34,8 +34,8 @@ export default function PlayerInventoryInfo() {
     }
 
     return (
-        <Container style={{border: "2px double black"}} >
-            <Card style={{ padding: "5px", margin: "auto", width: "60%" }}>
+        <Container style={{border: "2px double black", padding: "5px"}} >
+            <Card style={{ padding: "5px", margin: "auto", width: "70%" }}>
                 <CardHeader title="Select Inventory"></CardHeader>
                 <Typography variant="h6">Select Items and Quantity</Typography>
                 <FormControl>
