@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Card, Button, FormControl, InputLabel, CardHeader, OutlinedInput } from "@mui/material";
 
 function RegisterForm() {
   const [username, setUsername] = useState('');
@@ -21,39 +22,52 @@ function RegisterForm() {
 
   return (
     <form className="formPanel" onSubmit={registerUser}>
-      <h2>Register User</h2>
+       <Card >
+      <CardHeader style={{textDecoration: "underline"}} title="Register User" ></CardHeader>
+      
       {errors.registrationMessage && (
         <h3 className="alert" role="alert">
           {errors.registrationMessage}
         </h3>
       )}
-      <div>
-        <label htmlFor="username">
-          Username:
-          <input
+      <div style={{margin: "5px"}} >
+        <center>
+        <FormControl>
+        <InputLabel htmlFor="username">Username</InputLabel>
+          
+          <OutlinedInput
+            style={{width: "250px" }}
             type="text"
             name="username"
+            label="Username"
             value={username}
             required
             onChange={(event) => setUsername(event.target.value)}
           />
-        </label>
+        
+        </FormControl>
+        </center>
       </div>
-      <div>
-        <label htmlFor="password">
-          Password:
-          <input
+      <div style={{margin: "5px"}} >
+        <center>
+        <FormControl>
+        <InputLabel htmlFor="password">Password</InputLabel>
+          <OutlinedInput
+            style={{width: "250px" }}
             type="password"
             name="password"
+            label="Password"
             value={password}
             required
             onChange={(event) => setPassword(event.target.value)}
           />
-        </label>
+        </FormControl>
+        </center>
       </div>
       <div>
-        <input className="btn" type="submit" name="submit" value="Register" />
+        <Button style={{margin: "5px"}}  variant="contained" className="btn" type="submit" name="submit" value="Register">Register</Button>
       </div>
+      </Card>
     </form>
   );
 }

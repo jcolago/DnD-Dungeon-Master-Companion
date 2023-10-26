@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { Container, Card, Button, FormControl, InputLabel, CardHeader, OutlinedInput, Typography } from "@mui/material";
 
 function UserPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
@@ -19,23 +20,35 @@ function UserPage() {
 
   const user = useSelector((store) => store.user);
   return (
+    <Container style={{border: "2px double black"}}>
     <div>
       <div className="container">
-        <h2>Welcome, {user.username}!</h2>
+        <Typography variant='h3'>Welcome, {user.username}!</Typography>
       </div>
-      <div>
-        <h2>Create A Game!</h2>
+      <Card style={{margin: "5px"}}>
+        <CardHeader style={{textDecoration: "underline"}} title="Create A Game!"></CardHeader>
         <form onSubmit={handleSubmit}>
-          <lable>Game Name:</lable>
-          <input onChange={(event) => setGameName(event.target.value)} type='text' placeholder='Game Name' value={gameName} />
-          <button type='submit'>Submit</button>
+          <div style={{margin: "5px"}}>
+          <FormControl>
+          <Typography>
+          <InputLabel>Enter Game Name</InputLabel>
+          <OutlinedInput style={{ width: "250px"}} label="Enter Game Name" onChange={(event) => setGameName(event.target.value)} type='text' placeholder='Game Name' value={gameName} /> 
+          <Button style={{margin: "5px"}} variant='contained' type='submit'>Submit</Button>
+          </Typography>
+          </FormControl>
+          </div>
         </form>
+      </Card>
+      <Card style={{margin: "5px"}}>
+        <center>
+      <div style={{margin: "5px"}}>
+        <CardHeader style={{textDecoration: "underline"}}  title="Click To Navigate To An Entry Form or List!" />
+        <Button style={{margin: "5px"}} variant='contained' onClick={() => history.push('/playerinfo')}>Player Entry Form</Button> <Button style={{margin: "5px"}} variant='contained' onClick={() => history.push('/players')}>Character List</Button>  <Button style={{margin: "5px"}} variant="contained" onClick={() => history.push('/monsterentry')}>Monster Entry Form</Button>
       </div>
-      <div>
-        <h2>Click To Navigate To An Entry Form or List!</h2>
-        <button onClick={() => history.push('/playerinfo')}>Player Entry Form</button> <button onClick={() => history.push('/players')}>Character List</button>  <button onClick={() => history.push('/monsterentry')}>Monster Entry Form</button>
-      </div>
+      </center>
+      </Card>
     </div>
+    </Container>
   );
 }
 
