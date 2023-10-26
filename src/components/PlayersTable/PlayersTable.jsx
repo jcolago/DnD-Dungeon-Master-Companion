@@ -15,7 +15,7 @@ export default function PlayersTable() {
     }, [])
 
     return (
-        <Paper style={{border: "1px solid black", margin: "10px"}}>
+        <Paper style={{border: "2px double black", margin: "10px"}}>
             <TableContainer style={{ maxWidth: "90%", margin: "auto", padding: "10px" }}>
                 <Table style={{ border: "2px solid black" }}>
                     <TableHead style={{ border: "2px solid black" }}>

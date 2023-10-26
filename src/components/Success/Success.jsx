@@ -22,7 +22,7 @@ export default function Success() {
     }
 
     return(
-        <Container style={{border: "2px double black", padding: "5px"}}>
+        <Container style={{border: "2px double black", padding: "5px", }}>
         <Card style={{margin: "auto"}}>
             <Typography style={{textAlign: "center"}} variant="h3">Character Successfully Entered!</Typography>
             <div style={{textAlign: "center", margin: "5px"}}>

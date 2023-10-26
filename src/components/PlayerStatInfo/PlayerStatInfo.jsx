@@ -91,7 +91,7 @@ export default function PlayerStatInfo() {
     }
 
     return (
-        <Container>
+        <Container style={{bored: "2px double black", width: "80%"}}>
             <Card style={{margin: "auto", width: "70%"}}>
                 <CardHeader title="Enter Character Stats Below!" />
                 <FormControl>
