@@ -8,7 +8,7 @@ function Nav() {
   const user = useSelector((store) => store.user);
 
   return (
-    <div className="nav">
+    <div style={{backgroundColor: "rgb(4, 20, 51, .6)" }} className="nav">
       <Link to="/home">
         <h2 className="nav-title">Dungeon Master Companion App</h2>
       </Link>
@@ -16,7 +16,7 @@ function Nav() {
         {/* If no user is logged in, show these links */}
         {!user.id && (
           // If there's no user, show login/registration links
-          <Link className="navLink" to="/login">
+          <Link style={{backgroundColor: "rgb(4, 20, 51, .6)" }} className="navLink" to="/login">
             Login / Register
           </Link>
         )}
@@ -24,31 +24,31 @@ function Nav() {
         {/* If a user is logged in, show these links */}
         {user.id && (
           <>
-            <Link className="navLink" to="/user">
+            <Link  style={{backgroundColor: "rgb(4, 20, 51, .6)" }} className="navLink" to="/user">
               Home
             </Link>
 
-            <Link className="navLink" to="/playerinfo">
+            <Link style={{backgroundColor: "rgb(4, 20, 51, .6)" }} className="navLink" to="/playerinfo">
               Player Entry
             </Link>
 
-            <Link className="navLink" to="/players">
+            <Link style={{backgroundColor: "rgb(4, 20, 51, .6)" }} className="navLink" to="/players">
               Character List
             </Link>
 
-            <Link className="navLink" to="/gameview">
+            <Link style={{backgroundColor: "rgb(4, 20, 51, .6)" }} className="navLink" to="/gameview">
               Game View
             </Link>
 
-            <Link className="navLink" to="/monsterentry">
+            <Link style={{backgroundColor: "rgb(4, 20, 51, .6)" }} className="navLink" to="/monsterentry">
               Monster Entry
             </Link>
 
-            <Link className="navLink" to="/monsters">
+            <Link style={{backgroundColor: "rgb(4, 20, 51, .6)" }} className="navLink" to="/monsters">
               Monster List
             </Link>
 
-            <LogOutButton className="navLink" />
+            <LogOutButton  className="navLink" />
           </>
         )}
       </div>

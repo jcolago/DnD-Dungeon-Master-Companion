@@ -22,7 +22,7 @@ function RegisterForm() {
 
   return (
     <form className="formPanel" onSubmit={registerUser}>
-       <Card >
+       <Card style={{margin: "5px", backgroundColor: "rgb(226, 232, 243, .7)"}} >
       <CardHeader style={{textDecoration: "underline"}} title="Register User" ></CardHeader>
       
       {errors.registrationMessage && (

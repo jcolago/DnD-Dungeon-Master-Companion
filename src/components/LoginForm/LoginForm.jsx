@@ -27,7 +27,7 @@ function LoginForm() {
 
   return (
     <form className="formPanel" onSubmit={login}>
-      <Card >
+      <Card style={{margin: "5px", backgroundColor: "rgb(226, 232, 243, .7)"}} >
       <CardHeader title="Login" ></CardHeader>
       {errors.loginMessage && (
         <h3 className="alert" role="alert">

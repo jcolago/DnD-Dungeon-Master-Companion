@@ -17,18 +17,21 @@ function LandingPage() {
   return (
    
     <div className="container">
-      <Typography variant='h2'>{heading}</Typography >
+      
 
       <div className="grid">
         <div className="grid-col grid-col_8">
+          <Card style={{padding: "5px", backgroundColor: "rgb(226, 232, 243, .7)"}}>
+          <Typography variant='h2'>{heading}</Typography >
           <Typography variant='h5'>Welcome to the D&D Dungeon Master Companion App!</Typography> <Typography variant='h6'> This app was designed to help keep track of player characters for your specific games as well as keep a list of entered monsters for use.</Typography>
           <Typography typography="h6">Register now or log in if you already have an accout.</Typography>
+          </Card>
         </div>
         <div className="grid-col grid-col_4">
           <RegisterForm />
 
           <center>
-            <Typography variant='h5'>Already a Member?</Typography >
+            <Typography style={{color: "white"}} variant='h5'>Already a Member?</Typography >
             <Button variant='contained' className="btn btn_sizeSm" onClick={onLogin}>
               Login
             </Button>
