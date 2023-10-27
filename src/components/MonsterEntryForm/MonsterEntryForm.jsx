@@ -43,7 +43,7 @@ export default function MonsterEntryFrom() {
 
     return (
         <Container style={{border: "2px double black", width: "100%", backgroundColor: "rgb(128, 150, 191, .5)"}}>
-            <Card style={{margin: "15px", padding: "5px", backgroundColor: "rgb(226, 232, 243, .7)"}}>
+            <Card style={{marginTop: "20px", marginBottom: "20px", padding: "5px", backgroundColor: "rgb(226, 232, 243, .7)"}}>
                 <CardHeader title="Enter Monster Info" style={{ textDecoration: "underline" }} ></CardHeader>
                 <form onSubmit={handleSubmit}>
                     <FormControl>

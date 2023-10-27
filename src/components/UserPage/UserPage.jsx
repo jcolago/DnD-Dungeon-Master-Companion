@@ -24,7 +24,7 @@ function UserPage() {
   return (
     <>
   <div style={{textAlign: "center"}} className="container">
-        <Typography variant='h3'>Welcome, {user.username.charAt(0).toUpperCase() + user.username.slice(1)}!</Typography>
+        <Typography variant='h3' style={{textDecoration: "underline"}}>Welcome, {user.username.charAt(0).toUpperCase() + user.username.slice(1)}!</Typography>
       </div>
     <Container className='user-container' style={{border: "2px double black"}}>
     <div>

@@ -80,7 +80,7 @@ export default function PlayerInfo() {
     return (
 
         <Container style={{border: "2px double black", backgroundColor: "rgb(128, 150, 191, .5)"}}>
-            <Card style={{margin: "15px", backgroundColor: "rgb(226, 232, 243, .7)"}}>
+            <Card style={{marginTop: "20px", marginBottom: "20px", backgroundColor: "rgb(226, 232, 243, .7)"}}>
                 <CardHeader style={{textDecoration: "underline"}} title="Enter Character Info Below" />
                 <center>
                 <FormControl>
