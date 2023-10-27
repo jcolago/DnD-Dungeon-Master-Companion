@@ -37,7 +37,7 @@ export default function MonsterTableItem({ monster }) {
                 <TableCell style={{borderRight: "2px solid black"}}><Typography>{monster.size}</Typography></TableCell>
                 <TableCell style={{borderRight: "2px solid black"}}><Typography>{monster.hit_points}</Typography></TableCell>
                 <TableCell style={{borderRight: "2px solid black"}}><Typography>{monster.game_name}</Typography></TableCell>
-                <TableCell style={{textAlign: "center"}}><Button variant="contained" onClick={() => history.push(`/monsterdetails/${monster.id}`)}>Details</Button> <Button variant="contained" onClick={deleteMonster}>Delete</Button> </TableCell>
+                <TableCell style={{textAlign: "center"}}><Button variant="contained" onClick={() => history.push(`/monsterdetails/${monster.id}`)}>Details</Button> <Button variant="contained" style={{backgroundColor: "red", color: "white"}} onClick={deleteMonster}>Delete</Button> </TableCell>
             </TableRow>
         </>
     )
