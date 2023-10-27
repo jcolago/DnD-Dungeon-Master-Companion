@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { Card, Container, Button,  Typography, Select, MenuItem, FormControl, InputLabel, TextField } from "@mui/material";
+import { Card, Container, Button,  Typography, Select, MenuItem, FormControl, InputLabel, TextField, CardHeader } from "@mui/material";
 import InventoryItem from "../InventoryItem/InventoryItem";
 
 export default function DetailsView() {
@@ -26,13 +26,17 @@ export default function DetailsView() {
     console.log(players)
     console.log(id)
     return (
+        <>
+        <Typography style={{textAlign: "center", margin: "10px", textDecoration: "underline"}} variant="h4" >Charater Details</Typography>
         <Container style={{ border: "2px double black", width: "80%", backgroundColor: "rgb(128, 150, 191, .5)", display:"flex", flexDirection: "column", padding: "10px"}}>
             {players.map(player => {
                 return (
                 <div>
-                    <Card key={player.id} style={{ margin: "5px", backgroundColor: "rgb(226, 232, 243, .7)", columnCount: "3", padding: "5px"}}>
-                        <img style={{width: "197px", height: "255px"}} src={player.character_img} />
                     
+                    <Card key={player.id} style={{ margin: "5px", backgroundColor: "rgb(226, 232, 243, .7)", columnCount: "3", padding: "5px"}}>
+                    
+                        <img style={{width: "197px", height: "255px"}} src={player.character_img} />
+                       
                         <Typography>Player Name: {player.player_name}</Typography>
                         <Typography>Character Name: {player.character_name}</Typography>
                         <Typography>Character Class: {player.character_class}</Typography>
@@ -50,7 +54,8 @@ export default function DetailsView() {
                         <Typography style={{marginTop: "5px"}}>Wisdom: {player.wisdom} Bonus: {player.wis_bonus}  Save: {player.wis_save}</Typography>
                         <Typography style={{marginTop: "5px"}}>Charisma: {player.charisma} Bonus: {player.cha_bonus}  Save: {player.cha_save}</Typography>
                     </Card>
-                    <Card style={{margin: "5px", backgroundColor: "rgb(226, 232, 243, .7)", columnCount: "3", padding: "5px"}}>
+                    <Card style={{margin: "5px", backgroundColor: "rgb(226, 232, 243, .7)", columnCount: "2", padding: "5px"}}>
+                        <CardHeader style={{textDecoration: "underline"}} title="Inventory"></CardHeader>
                     {player.quantity_items.map(item => {
 
                         return (
@@ -88,5 +93,6 @@ export default function DetailsView() {
                 )
             })}
         </Container>
+        </>
     )
 }

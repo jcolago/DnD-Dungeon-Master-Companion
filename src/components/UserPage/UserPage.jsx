@@ -29,8 +29,8 @@ function UserPage() {
     <Container className='user-container' style={{border: "2px double black"}}>
     <div>
       
-      <Card style={{margin: "5px", backgroundColor: "rgb(226, 232, 243, .7)"}}>
-        <CardHeader style={{textDecoration: "underline"}} title="Create A Game!"></CardHeader>
+      <Card style={{margin: "5px", marginTop: "15px", backgroundColor: "rgb(226, 232, 243, .7)"}}>
+        <CardHeader style={{textDecoration: "underline"}} title="Create A Game"></CardHeader>
         <form onSubmit={handleSubmit}>
           <div style={{margin: "5px"}}>
           <FormControl>
@@ -43,10 +43,10 @@ function UserPage() {
           </div>
         </form>
       </Card>
-      <Card style={{margin: "5px", backgroundColor:"rgb(226, 232, 243, .7)"}}>
+      <Card style={{margin: "5px", marginBottom: "15px", backgroundColor:"rgb(226, 232, 243, .7)"}}>
         <center>
       <div style={{margin: "5px"}}>
-        <CardHeader style={{textDecoration: "underline"}}  title="Click To Navigate To An Entry Form or List!" />
+        <CardHeader style={{textDecoration: "underline"}}  title="Click To Navigate To An Entry Form or List" />
         <Button style={{margin: "5px"}} variant='contained' onClick={() => history.push('/playerinfo')}>Player Entry Form</Button> <Button style={{margin: "5px"}} variant='contained' onClick={() => history.push('/players')}>Character List</Button>  <Button style={{margin: "5px"}} variant="contained" onClick={() => history.push('/monsterentry')}>Monster Entry Form</Button>
       </div>
       </center>
