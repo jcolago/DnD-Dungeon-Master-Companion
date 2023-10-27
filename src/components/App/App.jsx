@@ -135,45 +135,45 @@ function App() {
               
             }
           </Route>
-          <Route path= "/playerinfo">
+          <ProtectedRoute path= "/playerinfo">
             <PlayerInfo />
-          </Route>
-          <Route path="/stats">
+          </ProtectedRoute>
+          <ProtectedRoute path="/stats">
             <PlayerStatInfo />
-          </Route>
-          <Route exact path="/playerinventory">
+          </ProtectedRoute>
+          <ProtectedRoute exact path="/playerinventory">
             <PlayerInventoryInfo />
-          </Route>
-          <Route exact path="/players">
+          </ProtectedRoute>
+          <ProtectedRoute exact path="/players">
             <PlayersTable />
-          </Route>
-          <Route path="/review">
+          </ProtectedRoute>
+          <ProtectedRoute path="/review">
             <Review />
-          </Route>
-          <Route path="/success">
+          </ProtectedRoute>
+          <ProtectedRoute path="/success">
             <Success />
-          </Route>
-          <Route path='/details/:id'>
+          </ProtectedRoute>
+          <ProtectedRoute path='/details/:id'>
             <DetailsView />
-          </Route>
-          <Route path='/edit/:id'>
+          </ProtectedRoute>
+          <ProtectedRoute path='/edit/:id'>
             <EditDetails />
-          </Route>
-          <Route exact path="/monsterentry">
+          </ProtectedRoute>
+          <ProtectedRoute exact path="/monsterentry">
             <MonsterEntryFrom />
-          </Route>
-          <Route exact path="/monstersuccess">
+          </ProtectedRoute>
+          <ProtectedRoute exact path="/monstersuccess">
             <MonsterSuccess />
-          </Route>
-          <Route path="/monsters">
+          </ProtectedRoute>
+          <ProtectedRoute path="/monsters">
             <MonstersTable />
-          </Route>
-          <Route exact path="/monsterdetails/:id">
+          </ProtectedRoute>
+          <ProtectedRoute exact path="/monsterdetails/:id">
             <MonsterDetails />
-          </Route>
-          <Route path="/gameview">
+          </ProtectedRoute>
+          <ProtectedRoute path="/gameview">
             <GameView />
-          </Route>
+          </ProtectedRoute>
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>
             <h1>404</h1>

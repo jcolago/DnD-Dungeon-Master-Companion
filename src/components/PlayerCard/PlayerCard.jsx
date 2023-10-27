@@ -34,7 +34,7 @@ export default function PlayerCard({ player }) {
     }
 
     return (
-        <Container style={{border: "2px double black", backgroundColor: "rgb(128, 150, 191, .5)", display: "flex", flexDirection: "row", padding: "10px", margin: "10px"}}>
+        <Container style={{border: "2px double black", backgroundColor: "rgb(128, 150, 191, .5)", display: "flex", flexDirection: "row" ,padding: "10px", margin: "10px"}}>
             
                 <Card className="info-container" style={{ padding: "5px", margin: "5px", width: "30%", backgroundColor: "rgb(226, 232, 243, .7)"}}>
                 <img style={{width: "197px", height: "255px"}} src={player.character_img}/>

@@ -13,11 +13,8 @@ console.log(players)
 
     return(
         <div>
-        <Container style={{border: "2px double black", width: "80%", backgroundColor: "rgb(128, 150, 191, .5)"}}>
-            
-                <Typography variant="h4">Game View</Typography>
-           
-            
+            <Typography style={{textAlign: "center"}} variant="h4">Game View</Typography>
+        <Container style={{border: "2px double black", width: "90%", backgroundColor: "rgb(128, 150, 191, .5)", paddingRight: "50px"}}>
             {players.map(player => {
                 return( 
                     player.displayed === true && (

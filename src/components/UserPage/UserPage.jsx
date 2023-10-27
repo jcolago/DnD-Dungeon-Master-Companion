@@ -22,12 +22,13 @@ function UserPage() {
 
   const user = useSelector((store) => store.user);
   return (
-
+    <>
+  <div style={{textAlign: "center"}} className="container">
+        <Typography variant='h3'>Welcome, {user.username.charAt(0).toUpperCase() + user.username.slice(1)}!</Typography>
+      </div>
     <Container className='user-container' style={{border: "2px double black"}}>
     <div>
-      <div className="container">
-        <Typography variant='h3'>Welcome, {user.username}!</Typography>
-      </div>
+      
       <Card style={{margin: "5px", backgroundColor: "rgb(226, 232, 243, .7)"}}>
         <CardHeader style={{textDecoration: "underline"}} title="Create A Game!"></CardHeader>
         <form onSubmit={handleSubmit}>
@@ -52,6 +53,7 @@ function UserPage() {
       </Card>
     </div>
     </Container>
+    </>
   );
 }
 

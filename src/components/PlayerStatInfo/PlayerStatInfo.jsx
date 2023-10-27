@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Card, OutlinedInput, InputLabel, FormControl, Container, Button, CardHeader } from "@mui/material";
-import "./PlayerStatInfo.css"
+
 
 export default function PlayerStatInfo() {
     const dispatch = useDispatch();
@@ -92,7 +92,7 @@ export default function PlayerStatInfo() {
 
     return (
         <Container style={{border: "2px double black", width: "80%", backgroundColor: "rgb(128, 150, 191, .5)"}}>
-            <Card style={{margin: "5px", backgroundColor: "rgb(226, 232, 243, .7)"}}>
+            <Card style={{margin: "15px", backgroundColor: "rgb(226, 232, 243, .7)"}}>
                 
                 <CardHeader style={{textDecoration: "underline"}} title="Enter Character Stats Below!" />
                 <FormControl>

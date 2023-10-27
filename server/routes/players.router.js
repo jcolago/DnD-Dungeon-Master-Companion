@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
              JOIN "conditions" AS "c" ON "pc".condition_id = "c".id WHERE "pc".player_id = "p".id) AS length_condition
     FROM "players" AS "p"
     JOIN "games" AS "g" ON "p".game_id = "g".id
-    WHERE "g".dm_id = $1;
+    WHERE "g".dm_id = $1 ORDER BY "g".id;
     `;
 
     pool.query(queryText, [req.user.id])
