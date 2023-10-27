@@ -10,7 +10,7 @@ export default function PlayerInventoryInfo() {
     const inventory = useSelector((store) => store.inventory)
     const backpack = useSelector((store) => store.backpack)
     // let [newItem, setNewItem] = useState({quantity: "" , item_id: "" })
-    const [itemQuantity, setItemQuantity] = useState('0');
+    const [itemQuantity, setItemQuantity] = useState('');
     const [itemId, setItemId] = useState('');
 
     const handleQuantityChange = (event) => {
@@ -29,7 +29,7 @@ export default function PlayerInventoryInfo() {
         console.log({ quantity: itemQuantity, item_id: itemId });
         let newItem = { quantity: itemQuantity, item_id: itemId }
         dispatch({ type: 'ADD_TO_ARRAY', payload: newItem })
-        setItemQuantity('0');
+        setItemQuantity('');
         setItemId('');
     }
 

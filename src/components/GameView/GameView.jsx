@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import PlayerCard from "../PlayerCard/PlayerCard";
+import Footer from "../Footer/Footer";
 import { Card, Container, Typography } from "@mui/material";
 
 export default function GameView() {
@@ -11,10 +12,11 @@ const players = useSelector((store) => store.players)
 console.log(players)
 
     return(
+        <div>
         <Container style={{border: "2px double black", width: "80%", backgroundColor: "rgb(128, 150, 191, .5)"}}>
-            <div>
+            
                 <Typography variant="h4">Game View</Typography>
-            </div>
+           
             
             {players.map(player => {
                 return( 
@@ -28,5 +30,6 @@ console.log(players)
              })}
             
         </Container>
+   </div>
     )
 }

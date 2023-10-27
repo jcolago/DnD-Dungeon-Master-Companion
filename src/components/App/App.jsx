@@ -42,12 +42,15 @@ function App() {
 
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
+  }, [dispatch]);
+
+  useEffect(() => {
     dispatch({ type: "FETCH_PLAYERS"});
     dispatch({ type: "FETCH_INVENTORY"});
     dispatch({ type: "FETCH_MONSTERS"});
     dispatch({ type: "FETCH_CONDITIONS"});
     dispatch({ type: "FETCH_GAMES"})
-  }, []);
+  }, [user])
 
   return (
     <Router>
@@ -176,6 +179,7 @@ function App() {
             <h1>404</h1>
           </Route>
         </Switch>
+        <Footer />
       </div>
     </Router>
   );

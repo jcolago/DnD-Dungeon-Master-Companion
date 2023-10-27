@@ -36,13 +36,14 @@ export default function MonsterEntryFrom() {
         setMonsterResistances('');
         setMonsterProficiencyBonus('');
         setMonsterAttacks('');
-        setGameId('')
+        setGameId('');
+        history.push("/monstersuccess")
 
     }
 
     return (
         <Container style={{border: "2px double black", width: "80%", backgroundColor: "rgb(128, 150, 191, .5)"}}>
-            <Card style={{margin: "5px", backgroundColor: "rgb(226, 232, 243, .7)"}}>
+            <Card style={{margin: "5px", padding: "5px", backgroundColor: "rgb(226, 232, 243, .7)"}}>
                 <CardHeader title="Enter Monster Info" style={{ textDecoration: "underline" }} ></CardHeader>
                 <form onSubmit={handleSubmit}>
                     <FormControl>

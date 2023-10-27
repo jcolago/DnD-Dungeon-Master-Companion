@@ -14,6 +14,8 @@ export default function PlayersTable() {
         dispatch({ type: "FETCH_PLAYERS" });
     }, [])
 
+
+
     return (
         <Paper style={{border: "2px double black", padding: "10px", margin: "10px", backgroundColor: "rgb(128, 150, 191, .5)"}}>
             <TableContainer style={{ maxWidth: "90%", margin: "auto", padding: "10px", backgroundColor: "rgb(226, 232, 243, .7)" }}>

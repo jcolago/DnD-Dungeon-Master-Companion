@@ -23,7 +23,7 @@ export default function MonsterDetails() {
 
             {monster.map(monster => {
                 return (
-                    <Container style={{border: "2px double black", width: "80%", backgroundColor: "rgb(128, 150, 191, .5)", padding: "10px"}}>
+                    <Container key={monster.id} style={{border: "2px double black", width: "80%", backgroundColor: "rgb(128, 150, 191, .5)", padding: "10px"}}>
                     <Card style={{padding: "10px", width: "60%", margin: "auto", backgroundColor: "rgb(226, 232, 243, .7)", }}>
                     <CardHeader  title = {monster.name}></CardHeader>
                         <Typography variant="body1" style={{fontSize: "20px"}}>Monster: {monster.name}</Typography>

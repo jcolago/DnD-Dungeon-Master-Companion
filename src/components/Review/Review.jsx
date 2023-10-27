@@ -27,31 +27,32 @@ export default function Review() {
              <div>
                 <Typography variant="h4">Player Character Review</Typography>
             </div>
-            <Card style={{margin: "5px", backgroundColor: "rgb(226, 232, 243, .7)"}}>
+            <Card style={{margin: "5px", padding: "10px", backgroundColor: "rgb(226, 232, 243, .7)"}}>
                 <CardHeader style={{textDecoration: "underline"}} title="Player Info"></CardHeader>
             <div>
                     <div  key={playersInfo.id}>
-                        <Typography variant="body1" style={{fontSize: "20px"}}>Player Name: {playersInfo.player_name} Character Name: {playersInfo.character_name}
-                         Character Image: {playersInfo.character_img}</Typography>
-                        <Typography variant="body1" style={{fontSize: "20px"}}>Character Class: {playersInfo.character_class} Character Level: {playersInfo.character_level}Current Hit Points: {playersInfo.current_hp}Total Hit Points: {playersInfo.total_hp}</Typography>
-                        <Typography variant="body1" style={{fontSize: "20px"}}>Armor Class: {playersInfo.armor_class} Speed: {playersInfo.speed} Initiative Bonus: {playersInfo.initiative_bonus}</Typography>
+                        <Typography variant="body1" >Player Name: {playersInfo.player_name},   Character Name: {playersInfo.character_name} </Typography> <Typography variant="body1" >Character Image: {playersInfo.character_img}</Typography>
+
+                        <Typography variant="body1" >Character Class: {playersInfo.character_class},   Character Level: {playersInfo.character_level},   Current Hit Points: {playersInfo.current_hp},   Total Hit Points: {playersInfo.total_hp}</Typography>
+
+                        <Typography variant="body1" >Armor Class: {playersInfo.armor_class},   Speed: {playersInfo.speed},   Initiative Bonus: {playersInfo.initiative_bonus}</Typography>
                     </div>
             </div>
             </Card>
-            <Card style={{margin: "5px", backgroundColor: "rgb(226, 232, 243, .7)"}}>
+            <Card style={{margin: "5px", padding: "10px", backgroundColor: "rgb(226, 232, 243, .7)"}}>
                 <CardHeader style={{textDecoration: "underline"}} title="Player Stats"></CardHeader>
             <div>
                     <div>
-                        <Typography variant="body1" style={{fontSize: "20px"}}>Strength: {playerStats.strength} Bonus: {playerStats.str_bonus}  Save: {playerStats.str_save}</Typography>
-                        <Typography variant="body1" style={{fontSize: "20px"}}>Dexterity: {playerStats.dexterity} Bonus: {playerStats.dex_bonus}  Save: {playerStats.dex_save}</Typography>
-                        <Typography variant="body1" style={{fontSize: "20px"}}>Constitution: {playerStats.constitution} Bonus: {playerStats.con_bonus}  Save: {playerStats.con_save}</Typography>
-                        <Typography variant="body1" style={{fontSize: "20px"}}>Intelligence: {playerStats.intelligence} Bonus: {playerStats.int_bonus}  Save: {playerStats.int_save}</Typography>
-                        <Typography variant="body1" style={{fontSize: "20px"}}>Wisdom: {playerStats.wisdom} Bonus: {playerStats.wis_bonus}  Save: {playerStats.wis_save}</Typography>
-                        <Typography variant="body1" style={{fontSize: "20px"}}>Charisma: {playerStats.charisma} Bonus: {playerStats.cha_bonus}  Save: {playerStats.cha_save}</Typography>
+                        <Typography variant="body1" >Strength: {playerStats.strength}, Bonus: {playerStats.str_bonus},  Save: {playerStats.str_save}</Typography>
+                        <Typography variant="body1" >Dexterity: {playerStats.dexterity}, Bonus: {playerStats.dex_bonus},  Save: {playerStats.dex_save}</Typography>
+                        <Typography variant="body1" >Constitution: {playerStats.constitution}, Bonus: {playerStats.con_bonus},  Save: {playerStats.con_save}</Typography>
+                        <Typography variant="body1">Intelligence: {playerStats.intelligence}, Bonus: {playerStats.int_bonus},  Save: {playerStats.int_save}</Typography>
+                        <Typography variant="body1" >Wisdom: {playerStats.wisdom}, Bonus: {playerStats.wis_bonus},  Save: {playerStats.wis_save}</Typography>
+                        <Typography variant="body1" >Charisma: {playerStats.charisma}, Bonus: {playerStats.cha_bonus},  Save: {playerStats.cha_save}</Typography>
                     </div>
             </div>
             </Card>
-            <Card style={{margin: "5px", backgroundColor: "rgb(226, 232, 243, .7)"}}>
+            <Card style={{margin: "5px", padding: "10px", backgroundColor: "rgb(226, 232, 243, .7)"}}>
                 <CardHeader style={{textDecoration: "underline"}} title="Inventory"></CardHeader>
             <div>
             {item.map(backpackItem => {
@@ -61,7 +62,7 @@ export default function Review() {
                 console.log(item)
                 return (
                     <div key={backpackItem.item_id}>
-                        <Typography variant="body1" style={{fontSize: "20px"}}>Quantity: {backpackItem.quantity} Item: {item.item_name}</Typography>
+                        <Typography variant="body1" >Quantity: {backpackItem.quantity} Item: {item.item_name}</Typography>
                     </div>
                 )
             })}
