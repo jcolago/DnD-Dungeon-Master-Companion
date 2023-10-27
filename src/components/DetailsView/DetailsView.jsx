@@ -28,8 +28,8 @@ export default function DetailsView() {
     return (
         <Container style={{ border: "2px double black", width: "80%", backgroundColor: "rgb(128, 150, 191, .5)", display:"flex", flexDirection: "column", padding: "10px"}}>
             {players.map(player => {
-                return (<div key={player.id}>
-                    <Card style={{ margin: "5px", backgroundColor: "rgb(226, 232, 243, .7)", columnCount: "3", padding: "5px"}}>
+                return (<div>
+                    <Card key={player.id} style={{ margin: "5px", backgroundColor: "rgb(226, 232, 243, .7)", columnCount: "3", padding: "5px"}}>
                         <img style={{width: "197px", height: "255px"}} src={player.character_img} />
                     
                         <Typography>Player Name: {player.player_name}</Typography>
