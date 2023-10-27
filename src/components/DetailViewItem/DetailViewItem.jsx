@@ -8,6 +8,7 @@ export default function DetailViewItem({ item }) {
     const [newQuantity, setNewQuantity] = useState('');
     const players = useSelector((store) => store.details)
     const id = players[0].id
+    
     useEffect(() => {
         setNewQuantity(item.quantity)
     }, [item])
