@@ -47,8 +47,8 @@ export default function MonsterEntryFrom() {
                 <CardHeader title="Enter Monster Info" style={{ textDecoration: "underline" }} ></CardHeader>
                 <form onSubmit={handleSubmit}>
                     <FormControl>
-                        <InputLabel htmlFor="monster-name" style={{margin: "5px"}}>Monster Name</InputLabel>
-                        <OutlinedInput  style={{margin: "5px"}} label="Monster Name" id="monster-name" type="text" placeholder="Monster Name" value={monsterName} onChange={(event) => setMonsterName(event.target.value)} />
+                        <InputLabel  htmlFor="monster-name" style={{margin: "5px"}}>Monster Name</InputLabel>
+                        <OutlinedInput required style={{margin: "5px"}} label="Monster Name" id="monster-name" type="text" placeholder="Monster Name" value={monsterName} onChange={(event) => setMonsterName(event.target.value)} />
                     </FormControl>
                     <FormControl>
                         <InputLabel htmlFor="monster-size" style={{margin: "5px"}}>Monster Size</InputLabel>
@@ -60,15 +60,15 @@ export default function MonsterEntryFrom() {
                     </FormControl>
                     <FormControl>
                         <InputLabel htmlFor="armor-class" style={{margin: "5px"}}>Armor Class</InputLabel>
-                        <OutlinedInput style={{margin: "5px"}} label="Armor Class" id="armor-class" type="number" placeholder="Armor Class" value={monsterArmorClass} onChange={(event) => setMonsterArmorClass(event.target.value)} />
+                        <OutlinedInput required style={{margin: "5px"}} label="Armor Class" id="armor-class" type="number" placeholder="Armor Class" value={monsterArmorClass} onChange={(event) => setMonsterArmorClass(event.target.value)} />
                     </FormControl>
                     <FormControl>
-                        <InputLabel htmlFor="hit-points" style={{margin: "5px"}}>Hit Points</InputLabel>
-                        <OutlinedInput style={{margin: "5px"}} label="Hit Point" id="hit-points" type="number" placeholder="Hit Points" value={monsterHitPoints} onChange={(event) => setMonsterHitPoints(event.target.value)} />
+                        <InputLabel  htmlFor="hit-points" style={{margin: "5px"}}>Hit Points</InputLabel>
+                        <OutlinedInput required style={{margin: "5px"}} label="Hit Point" id="hit-points" type="number" placeholder="Hit Points" value={monsterHitPoints} onChange={(event) => setMonsterHitPoints(event.target.value)} />
                     </FormControl>
                     <FormControl>
                         <InputLabel htmlFor="speed" style={{margin: "5px"}}>Speed</InputLabel>
-                        <OutlinedInput style={{margin: "5px"}} label="Speed" id="speed" type="number" placeholder="Speed" value={monsterSpeed} onChange={(event) => setMonsterSpeed(event.target.value)} />
+                        <OutlinedInput required style={{margin: "5px"}} label="Speed" id="speed" type="number" placeholder="Speed" value={monsterSpeed} onChange={(event) => setMonsterSpeed(event.target.value)} />
                     </FormControl>
                     <TextField style={{margin: "5px"}} label="Resistances" type="text" placeholder="Resistances" value={monsterResistances} onChange={(event) => setMonsterResistances(event.target.value)} />
                     <FormControl>

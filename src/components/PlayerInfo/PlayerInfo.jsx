@@ -86,11 +86,11 @@ export default function PlayerInfo() {
                     <form  onSubmit={addNewPlayerInfo}>
                         <FormControl>
                         <InputLabel htmlFor="player-name" style={{ margin: "5px" }}> Player Name</InputLabel>
-                        <OutlinedInput label="Player Name" id="player-name" style={{ margin: "5px" }} type="text" placeholder="Player Name" value={newPlayerInfo.player_name} onChange={handlePlayerNameChange} />
+                        <OutlinedInput required label="Player Name" id="player-name" style={{ margin: "5px" }} type="text" placeholder="Player Name" value={newPlayerInfo.player_name} onChange={handlePlayerNameChange} />
                         </FormControl>
                         <FormControl>
                         <InputLabel htmlFor="character-name" style={{ margin: "5px" }}>Character Name</InputLabel>
-                        <OutlinedInput id="character-name" label="Character Name" style={{ margin: "5px" }} type="text" placeholder="Character Name" value={newPlayerInfo.character_name} onChange={handleCharacterNameChange} />
+                        <OutlinedInput required id="character-name" label="Character Name" style={{ margin: "5px" }} type="text" placeholder="Character Name" value={newPlayerInfo.character_name} onChange={handleCharacterNameChange} />
                         </FormControl>
                         <FormControl>
                         <InputLabel htmlFor="character-image" style={{ margin: "5px" }}>Character Image</InputLabel>
@@ -101,19 +101,19 @@ export default function PlayerInfo() {
                         <OutlinedInput id="character-class" label="Character Class" style={{ margin: "5px" }} type="text" placeholder="Character Class" value={newPlayerInfo.character_class} onChange={handleCharacterClassChange} />
                         </FormControl>
                         <FormControl>
-                        <InputLabel htmlFor="character-level" style={{ margin: "5px" }}>Character Level</InputLabel>
+                        <InputLabel required htmlFor="character-level" style={{ margin: "5px" }}>Character Level</InputLabel>
                         <OutlinedInput id="character-level" label="Character Level" style={{ margin: "5px" }} type="number" placeholder="Character Level" value={newPlayerInfo.character_level} onChange={handleCharacterLevelChange} />
                         </FormControl>
                         <FormControl>
-                        <InputLabel htmlFor="current-hp" style={{ margin: "5px" }}>Current Hit Points</InputLabel>
+                        <InputLabel required htmlFor="current-hp" style={{ margin: "5px" }}>Current Hit Points</InputLabel>
                         <OutlinedInput id="current-hp" label="Current Hit Points" style={{ margin: "5px" }} type="number" placeholder="Character Current HP" value={newPlayerInfo.current_hp} onChange={handleCurrentHpChange} />
                         </FormControl>
                         <FormControl>
                         <InputLabel htmlFor="total-hp" style={{ margin: "5px" }}>Total Hit Points</InputLabel>
-                        <OutlinedInput id="total-hp" label="Total Hit Points" style={{ margin: "5px" }} type="number" placeholder="Character Total HP" value={newPlayerInfo.total_hp} onChange={handleTotalHpChange} />
+                        <OutlinedInput required id="total-hp" label="Total Hit Points" style={{ margin: "5px" }} type="number" placeholder="Character Total HP" value={newPlayerInfo.total_hp} onChange={handleTotalHpChange} />
                         </FormControl>
                         <FormControl>
-                        <InputLabel htmlFor="armor-class" style={{ margin: "5px" }}>Armor Class</InputLabel>
+                        <InputLabel required htmlFor="armor-class" style={{ margin: "5px" }}>Armor Class</InputLabel>
                         <OutlinedInput id="armor-class" label="Armor Class" style={{ margin: "5px" }} type="number" placeholder="Character Armor Class" value={newPlayerInfo.armor_class} onChange={handleArmorClassChange} />
                         </FormControl>
                         <FormControl>
@@ -122,7 +122,7 @@ export default function PlayerInfo() {
                         </FormControl>
                         <FormControl>
                         <InputLabel html="initiative-bonus" style={{ margin: "5px" }}>Initiative Bonus</InputLabel>
-                        <OutlinedInput id="initiative-bonus" label="Initiative Bonus" style={{ margin: "5px" }} type="number" placeholder="Character Initiative Bonus" value={newPlayerInfo.initiative_bonus} onChange={handleInitiativeBonusChange} />
+                        <OutlinedInput required id="initiative-bonus" label="Initiative Bonus" style={{ margin: "5px" }} type="number" placeholder="Character Initiative Bonus" value={newPlayerInfo.initiative_bonus} onChange={handleInitiativeBonusChange} />
                         </FormControl>
                         <FormControl>
                             <InputLabel htmlFor="game-name" style={{margin: "5px"}}>Please Select a Game</InputLabel>
