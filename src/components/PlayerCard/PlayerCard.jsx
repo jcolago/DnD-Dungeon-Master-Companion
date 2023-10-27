@@ -1,12 +1,10 @@
 import React, {useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { Card, Container, Button, OutlinedInput, Typography, Select, MenuItem, FormControl, InputLabel } from "@mui/material";
 import ConditionItem from "../ConditionItem/ConditionItem";
 
 export default function PlayerCard({ player }) {
     const dispatch = useDispatch();
-    const history = useHistory();
 
     const conditions = useSelector((store) => store.conditions);
     const [conditionLength, setConditionLength] = useState('')

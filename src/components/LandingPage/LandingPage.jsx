@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Card, Button, FormControl, InputLabel, CardHeader, OutlinedInput, Typography, Container } from "@mui/material";
+import { Card, Button, Typography, Container } from "@mui/material";
 import './LandingPage.css';
 
 // CUSTOM COMPONENTS

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
-import { Button, FormControl, InputLabel, OutlinedInput, Typography } from "@mui/material";
+import { Button, FormControl, OutlinedInput, Typography } from "@mui/material";
 
 export default function DetailViewItem({ item }) {
     const dispatch = useDispatch();
