@@ -33,7 +33,7 @@ export default function DetailsView() {
                 return (
                 <div>
                     
-                    <Card key={player.id} style={{ margin: "5px", backgroundColor: "rgb(226, 232, 243, .7)", columnCount: "3", padding: "5px"}}>
+                    <Card key={player.id} style={{ margin: "5px", backgroundColor: "rgb(226, 232, 243, .7)", columnCount: "3", padding: "5px", width: "90%", margin: "auto", marginTop: "20px", marginBottom: "5px" }}>
                     
                         <img style={{width: "197px", height: "255px"}} src={player.character_img} />
                        
@@ -54,7 +54,7 @@ export default function DetailsView() {
                         <Typography style={{marginTop: "5px"}}>Wisdom: {player.wisdom} Bonus: {player.wis_bonus}  Save: {player.wis_save}</Typography>
                         <Typography style={{marginTop: "5px"}}>Charisma: {player.charisma} Bonus: {player.cha_bonus}  Save: {player.cha_save}</Typography>
                     </Card>
-                    <Card style={{margin: "5px", backgroundColor: "rgb(226, 232, 243, .7)", columnCount: "2", padding: "5px"}}>
+                    <Card style={{margin: "5px", backgroundColor: "rgb(226, 232, 243, .7)", columnCount: "2", padding: "5px", width: "90%", margin: "auto", marginTop: "5px", marginBottom: "5px"}}>
                         <CardHeader style={{textDecoration: "underline"}} title="Inventory"></CardHeader>
                     {player.quantity_items.map(item => {
 
@@ -66,7 +66,7 @@ export default function DetailsView() {
                     })}
                     </Card>
                    
-                    <Card style={{margin: "5px", backgroundColor: "rgb(226, 232, 243, .7)", padding: "5px"}}>
+                    <Card style={{margin: "5px", backgroundColor: "rgb(226, 232, 243, .7)", padding: "5px", width: "90%", margin: "auto", marginTop: "5px", marginBottom: "20px"}}>
                     <div>
                         <Typography variant="h5" gutterBottom style={{ textDecoration: "underline" }}>Select Inventory</Typography>
                     </div>

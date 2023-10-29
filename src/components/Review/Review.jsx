@@ -31,8 +31,10 @@ export default function Review() {
                 <CardHeader style={{textDecoration: "underline"}} title="Player Info"></CardHeader>
             <div>
                     <div  key={playersInfo.id}>
-                        <Typography variant="body1" >Player Name: {playersInfo.player_name},   Character Name: {playersInfo.character_name} </Typography> <Typography variant="body1" >Character Image: {playersInfo.character_img}</Typography>
 
+                    <img style={{width: "197px", height: "255px"}} src={playersInfo.character_img} />
+
+                        <Typography variant="body1" >Player Name: {playersInfo.player_name},   Character Name: {playersInfo.character_name} </Typography> 
                         <Typography variant="body1" >Character Class: {playersInfo.character_class},   Character Level: {playersInfo.character_level},   Current Hit Points: {playersInfo.current_hp},   Total Hit Points: {playersInfo.total_hp}</Typography>
 
                         <Typography variant="body1" >Armor Class: {playersInfo.armor_class},   Speed: {playersInfo.speed},   Initiative Bonus: {playersInfo.initiative_bonus}</Typography>

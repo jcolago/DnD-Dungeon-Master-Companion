@@ -16,6 +16,7 @@ export default function DetailViewItem({ item }) {
     console.log(item)
     console.log(id)
     let deletedItem = {itemId: Number(item.id), playerId: id}
+    let updatedItem = {id: item.id, quantity: newQuantity}
 
     const deleteItem = () => {
         Swal.fire({
@@ -39,12 +40,23 @@ export default function DetailViewItem({ item }) {
 
     }
 
+    const handleUpdate = () => {
+        Swal.fire(
+            'Updated!',
+            'The item quantity has been updated.',
+            'success'
+        )
+        dispatch ({
+            type: "UPDATE_ITEM", 
+            payload: updatedItem
+        })
+    }
 
 
     return(
         <Typography style={{margin: "5px"}}> Quantity: 
             <FormControl>
             <OutlinedInput style={{height: "30px", width: "50px"}} onChange={(event) => setNewQuantity(event.target.value)} value={newQuantity}/> 
-            </FormControl> Item: {item.item_name} <Button  variant="contained" onClick={() => dispatch({ type: "UPDATE_ITEM",payload: {id: item.id, quantity: newQuantity} })}>Update</Button> <Button variant="outlined" style={{backgroundColor: "red", color: "white"}} onClick={deleteItem}>Delete</Button></Typography>
+            </FormControl> Item: {item.item_name} <Button  variant="contained" onClick={handleUpdate}>Update</Button> <Button variant="outlined" style={{backgroundColor: "red", color: "white"}} onClick={deleteItem}>Delete</Button></Typography>
     )
 }
