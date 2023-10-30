@@ -27,7 +27,7 @@ export default function DetailsView() {
     console.log(id)
     return (
         <>
-        <Typography style={{textAlign: "center", margin: "10px", textDecoration: "underline"}} variant="h4" >Charater Details</Typography>
+        <Typography style={{textAlign: "center", margin: "10px", textDecoration: "underline"}} variant="h4" >Character Details</Typography>
         <Container style={{ border: "2px double black", width: "80%", backgroundColor: "rgb(128, 150, 191, .5)", display:"flex", flexDirection: "column", padding: "10px"}}>
             {players.map(player => {
                 return (
