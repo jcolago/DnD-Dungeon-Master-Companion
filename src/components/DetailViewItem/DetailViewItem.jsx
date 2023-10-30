@@ -54,9 +54,11 @@ export default function DetailViewItem({ item }) {
 
 
     return(
+        
         <Typography style={{margin: "5px"}}> Quantity: 
             <FormControl>
             <OutlinedInput style={{height: "30px", width: "50px"}} onChange={(event) => setNewQuantity(event.target.value)} value={newQuantity}/> 
             </FormControl> Item: {item.item_name} <Button  variant="contained" onClick={handleUpdate}>Update</Button> <Button variant="outlined" style={{backgroundColor: "red", color: "white"}} onClick={deleteItem}>Delete</Button></Typography>
+            
     )
 }

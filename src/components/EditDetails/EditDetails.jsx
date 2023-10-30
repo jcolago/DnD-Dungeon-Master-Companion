@@ -166,14 +166,18 @@ export default function EditDetails() {
     
 console.log(updatedPlayerInfo)
     return (
+        <>
+        <div style={{textAlign: "center"}}>
+        <Typography variant="h4" style={{textDecoration: "underline"}}>Character Edit</Typography>
+        </div>
         <Container style={{ border: "2px double black", width: "80%", backgroundColor: "rgb(128, 150, 191, .5)", display:"flex", flexDirection: "column", padding: "10px"}}>
-            <Typography variant="h3">Character Edit</Typography>
+            
             <Button variant="contained" style={{width: "124.078px", height: "36.5px", margin: "5px"}} onClick={() => history.push('/players')}>Player List</Button>
         <div>
             <div key={updatedPlayerInfo.id}>
                         <form onSubmit={handleSubmit}>
                     <Card style={{margin: "5px", backgroundColor: "rgb(226, 232, 243, .7)",  padding: "5px"}}>
-                    <img src={updatedPlayerInfo.character_img} />
+                    <img style={{width: "197px", height: "255px"}} src={updatedPlayerInfo.character_img} />
                         <CardHeader title="Update Player Info" style={{textDecoration: "underline"}}></CardHeader>
                        
                         <FormControl>
@@ -307,5 +311,6 @@ console.log(updatedPlayerInfo)
                 </div>
         </div>
         </Container>
+        </>
     )
 }
