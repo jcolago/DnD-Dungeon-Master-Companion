@@ -2,9 +2,7 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-/**
- * GET route template
- */
+
 router.get('/', (req, res) => {
     // GET route for conditions
     const queryText = `SELECT * FROM "conditions";`;
@@ -20,11 +18,9 @@ router.get('/', (req, res) => {
 
 });
 
-/**
- * POST route template
- */
+
 router.post('/:id', (req, res) => {
-    // POST route code here
+    // POST route for players_conditions, add new condition to player with matching id
     const id = req.params.id
     const condition = req.body
     console.log("Adding condition for player with id:", id)
@@ -42,6 +38,7 @@ router.post('/:id', (req, res) => {
 });
 
 router.put('/:id', (req, res)=> {
+    //PUT route for players_conditions, sets a new condition to a player with matching player id
     const id = req.params.id
     console.log("Updating condition for player with id:", id)
     const updatedCondition = req.body
@@ -58,7 +55,7 @@ router.put('/:id', (req, res)=> {
 })
 
 router.delete("/", (req, res) => {
-    //query to delete from players_inventory table
+    //query to delete from players_conditions table
     const id = req.body.id
     console.log(id)
     const queryText = `DELETE FROM "players_conditions" WHERE "id" = $1`;
@@ -77,6 +74,7 @@ router.delete("/", (req, res) => {
 });
 
 router.put ("/", (req, res) => {
+     //PUT route for players_conditions, updates the conditions length for player with matching condition id and player id.
     const id = req.body.id
     const length = req.body.length
     console.log(id);

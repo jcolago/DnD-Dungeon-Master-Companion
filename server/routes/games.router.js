@@ -2,11 +2,9 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-/**
- * GET route template
- */
+
 router.get('/', (req, res) => {
-  // GET route for games
+  // GET route for games, returns games list for user with matching user id
   console.log('req.user:', req.user)
   const queryText = `SELECT * FROM "games" WHERE "dm_id" = $1`
   pool.query(queryText, [req.user.id])
@@ -19,11 +17,9 @@ router.get('/', (req, res) => {
   })
 });
 
-/**
- * POST route template
- */
+
 router.post('/', (req, res) => {
-  // POST route code here
+  // POST route for games table, inserts new game name in to games table with matching dm_id
   const game = req.body;
   console.log(req.body)
   console.log('Creating game:', game)

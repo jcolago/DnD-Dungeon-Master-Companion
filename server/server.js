@@ -27,6 +27,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 /* Routes */
+//Routes imported for use in project
 app.use('/api/user', userRouter);
 app.use('/api/players', playersRouter);
 app.use('/api/monsters', monstersRouter);

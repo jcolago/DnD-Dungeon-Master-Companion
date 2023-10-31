@@ -2,11 +2,9 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-/**
- * GET route template
- */
+
 router.get('/', (req, res) => {
-    // GET route for inventory
+    // GET route for inventory, retuns the inventory list from the database for use in app
     const queryText = `SELECT * FROM "inventory";`;
 
     pool.query(queryText)
@@ -20,7 +18,7 @@ router.get('/', (req, res) => {
 });
 
 router.post("/:id", (req, res) => {
-
+    //POST route for players_inventory table. Adds a new item to the matching player_id
     const id = req.params.id
     console.log("Adding to player inventory with id:", id)
     const item = req.body
@@ -37,6 +35,7 @@ router.post("/:id", (req, res) => {
 })
 
 router.delete("/", (req, res) => {
+    //DELETE route for players_inventory, deletes the row that equals the id
     try {
         const id = req.body
         console.log(id)
@@ -56,6 +55,7 @@ router.delete("/", (req, res) => {
 });
 
 router.put("/", (req, res) => {
+    //PUT route for players_inventory table. Updates the quantity of the entry with matching id
     const id = req.body.id
     const quantity = req.body.quantity
     console.log(id);

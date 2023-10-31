@@ -2,11 +2,9 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-/**
- * GET route template
- */
+
 router.get('/', (req, res) => {
-    // GET route from players table
+    // GET route from players table, returns all player data for players tied to the logged in user's id
     const queryText = `SELECT "p".id, "p".player_name, "p".character_name, "p". character_img, "p".character_class, "p".character_level, "p".current_hp, "p".total_hp, "p".armor_class, "p".speed, "p".initiative_bonus, "p".strength, "p".str_bonus, "p".str_save, "p".dexterity, "p".dex_bonus, "p".dex_save, "p".constitution, "p".con_bonus, "p".con_save, "p".intelligence, "p".int_bonus, "p".int_save, "p".wisdom, "p".wis_bonus, "p".wis_save, "p".charisma, "p".cha_bonus, "p".cha_save, "p".displayed,
     "g".game_name, "g".dm_id,
             (SELECT JSON_AGG(JSON_BUILD_OBJECT('id', "pi".id, 'quantity',"pi".quantity, 'item_name', "i".item_name)) FROM "players_inventory" as "pi" JOIN "inventory" AS "i" ON 		"pi".inventory_id = "i".id WHERE "pi".player_id = "p".id) AS quantity_items,
@@ -28,7 +26,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-    // GET route for player details
+    // GET route for player details, returns the data for player with matching id to be used in detail and edit view
     const id = req.params.id
     console.log('Getting player information with id:', id)
     const queryText = `SELECT "p".id, "p".player_name, "p".character_name, "p". character_img, "p".character_class, "p".character_level, "p".current_hp, "p".total_hp, "p".armor_class, "p".speed, "p".initiative_bonus, "p".strength, "p".str_bonus, "p".str_save, "p".dexterity, "p".dex_bonus, "p".dex_save, "p".constitution, "p".con_bonus, "p".con_save, "p".intelligence, "p".int_bonus, "p".int_save, "p".wisdom, "p".wis_bonus, "p".wis_save, "p".charisma, "p".cha_bonus, "p".cha_save, "p".displayed,
@@ -51,11 +49,9 @@ router.get('/:id', (req, res) => {
         })
 });
 
-/**
- * POST route template
- */
+
 router.post('/', async (req, res) => {
-    // POST route to players table
+    // POST route to players table, add a new player to the players table, inventory to the players_inventory table, and none condition to players_conditions table
     try {
         const character = req.body;
         console.log(character);
@@ -92,6 +88,7 @@ VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $
 });
 
 router.delete("/:id", (req, res) => {
+    //DELETE route for deleting a player, needs to be refactored
     //query to delete from players_inventory table
     const id = req.params.id;
     console.log(id)
@@ -137,6 +134,7 @@ router.delete("/:id", (req, res) => {
 })
 
 router.put("/:id", (req, res) => {
+    //PUT route for updating player information with matching id number
      const id = req.body.id
     console.log("PUT request to player with id", id);
     const updatedCharacter = req.body
@@ -154,6 +152,7 @@ router.put("/:id", (req, res) => {
 });
 
 router.put('/display/:id', (req, res) =>{
+    //PUT route to set player as displayed for game view component
     const id = req.params.id;
     console.log("Display request to player with id", id);
     const queryText = 'UPDATE "players" SET "displayed" = true WHERE "id" = $1;';
@@ -168,6 +167,7 @@ router.put('/display/:id', (req, res) =>{
 });
 
 router.put('/remove/:id', (req, res) =>{
+    //PUT route to remove a player from the game view component
     const id = req.params.id;
     console.log("Remove from display request to player with id", id);
     const queryText = 'UPDATE "players" SET "displayed" = false WHERE "id" = $1;';
@@ -182,6 +182,7 @@ router.put('/remove/:id', (req, res) =>{
 });
 
 router.put('/' , (req, res) => {
+    //PUT route to update player hit points, used on game view component
     const updatedHp = req.body;
     console.log(updatedHp)
     console.log('Updating player hit points')

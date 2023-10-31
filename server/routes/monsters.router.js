@@ -2,11 +2,9 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-/**
- * GET route template
- */
+
 router.get('/', (req, res) => {
-    // GET route for /monsters
+    // GET route for /monsters, returns the full list for the logged in user for use in the app
     const queryText = `SELECT "m".id, "g".game_name, "g".dm_id, "m".name, "m".size, "m".alignment, "m".armor_class, "m".armor_class, "m".hit_points, "m".speed, "m".resistances, "m".proficiency_bonus, "m".attacks, "m".displayed FROM "games" AS "g"
   JOIN "monsters" AS "m" ON "g".id = "m".game_id
   WHERE "g".dm_id = $1;`;
@@ -21,7 +19,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-    // GET route for monster details
+    // GET route for monster details, returns the monster data with matching id number for display on monster details component
     const id = req.params.id;
     console.log('Getting details for monster with id:', id)
     const queryText = `SELECT "m".id, "g".game_name, "g".dm_id, "m".name, "m".size, "m".alignment, "m".armor_class, "m".armor_class, "m".hit_points, "m".speed, "m".resistances, "m".proficiency_bonus, "m".attacks, "m".displayed FROM "games" AS "g"
@@ -37,11 +35,9 @@ router.get('/:id', (req, res) => {
         })
 });
 
-/**
- * POST route template
- */
+
 router.post('/', (req, res) => {
-    // POST route for /monsters
+    // POST route for /monsters, inserts a new monster into the monsters table from the monster entry from component
     const monster = req.body;
     console.log(monster);
     const queryText = `INSERT INTO "monsters" ("name", "size", "alignment", "armor_class", "hit_points", "speed", "resistances", "proficiency_bonus", "attacks", "game_id")
@@ -58,7 +54,7 @@ router.post('/', (req, res) => {
 });
 
 router.delete("/:id", (req, res) => {
-    //query to delete from players_inventory table
+    //query to delete from monsters table, deletes the monster with matching id number
     const id = req.params.id;
     console.log(id)
     const queryText = `DELETE FROM "monsters" WHERE "id" = $1`;
@@ -77,6 +73,7 @@ router.delete("/:id", (req, res) => {
 });
 
 router.put("/id", (req, res) => {
+    //PUT route for updating monster with matching id, to be used for future features
     const id = req.params.id;
     const updatedMonster = req.body;
     console.log("Update request to moster with id:", id)
@@ -95,6 +92,7 @@ router.put("/id", (req, res) => {
 });
 
 router.put('/display/:id', (req, res) =>{
+    //PUT route that sets monster to be displayed on future combat tracker feature
     const id = req.params.id;
     console.log("Display request to monster with id", id);
     const queryText = 'UPDATE "monsters" SET "displayed" = true WHERE "id" = $1;';
@@ -109,6 +107,7 @@ router.put('/display/:id', (req, res) =>{
 });
 
 router.put('/remove/:id', (req, res) =>{
+    //PUT route to remove monster from future combat tracker feature
     const id = req.params.id;
     console.log("Remove from display request to monster with id", id);
     const queryText = 'UPDATE "monsters" SET "displayed" = false WHERE "id" = $1;';
