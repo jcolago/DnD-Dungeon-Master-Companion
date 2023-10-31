@@ -3,11 +3,11 @@ let testServer = require('supertest')
 
 describe("Test the /games GET route", () => {
    
-    test("It should return 500 code", async () => {
+    test("It should return 200 code", async () => {
         try {
             const gamesResponse = await testServer(app)
             .get("/api/games/")
-            expect(gamesResponse.statusCode).toEqual(500)
+            expect(gamesResponse.statusCode).toEqual(200)
         } catch (error) {
             console.log(error)
         }
