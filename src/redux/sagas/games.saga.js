@@ -1,6 +1,7 @@
 import { put, takeEvery } from "redux-saga/effects";
 import axios from "axios";
 
+//Saga used to fetch games data from server and send data to reducer
 function* fetchGamesSaga() {
     try {
         const games = yield axios.get('/api/games');
@@ -11,6 +12,7 @@ function* fetchGamesSaga() {
     }
 }
 
+//Saga used to post a game to the games database then fetches the game data to rerender in app
 function* addGameSaga(action) {
     try {
         yield axios({
@@ -25,10 +27,10 @@ function* addGameSaga(action) {
 }
 
 
-
+//watcher saga for all games sagas
 function* gamesSaga() {
     yield takeEvery("FETCH_GAMES", fetchGamesSaga);
     yield takeEvery("ADD_GAME", addGameSaga)
 }
-
+//exports sagas for use in root saga file
 export default gamesSaga;

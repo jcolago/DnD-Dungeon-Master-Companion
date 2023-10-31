@@ -1,6 +1,7 @@
 import { put, take, takeEvery } from "redux-saga/effects";
 import axios from "axios";
 
+//fetches inventory data from database and sends it to the reducer to set state
 function* fetchInventorySaga() {
     try {
         const inventory = yield axios.get('/api/inventory');
@@ -11,6 +12,7 @@ function* fetchInventorySaga() {
     }
 }
 
+//Adds an item to player from details component and fetches the detailed data to rerender on all
 function* addItemSaga(action) {
     try {
         yield axios({
@@ -24,6 +26,7 @@ function* addItemSaga(action) {
     }
 }
 
+//Sends a delete request to the server to delete an item from a player
 function* deleteItemSaga(action) {
     try {
         console.log(action.payload)
@@ -38,6 +41,7 @@ function* deleteItemSaga(action) {
     }
 }
 
+//Sends a put request to the server to update the quantity of an item tied to a player
 function* updateQuantitySaga(action) {
     try {
         console.log(action.payload) 
@@ -52,12 +56,12 @@ function* updateQuantitySaga(action) {
     }
 }
 
-
+//Watcher saga for all inventory sagas
 function* inventorySaga() {
     yield takeEvery("FETCH_INVENTORY", fetchInventorySaga);
     yield takeEvery("ADD_ITEM", addItemSaga);
     yield takeEvery("DELETE_ITEM", deleteItemSaga);
     yield takeEvery("UPDATE_ITEM", updateQuantitySaga)
 }
-
+//Exports watcher saga for use in root saga file
 export default inventorySaga;
