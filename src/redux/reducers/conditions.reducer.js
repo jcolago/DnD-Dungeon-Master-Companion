@@ -1,3 +1,5 @@
+
+//Reducer used to set state for conditions
 const conditionsReducer = (state = [], action) => {
     switch (action.type) {
         case 'SET_CONDITIONS':
@@ -6,5 +8,5 @@ const conditionsReducer = (state = [], action) => {
             return state;
     }
 }
-
+//export of the conditions reducer to be used in root reducer
 export default conditionsReducer;
