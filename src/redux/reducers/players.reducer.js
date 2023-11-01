@@ -1,3 +1,5 @@
+
+//Reducer used to set state of players list
 const playersReducer = (state = [], action) => {
     switch (action.type) {
         case 'SET_PLAYERS':
@@ -6,5 +8,5 @@ const playersReducer = (state = [], action) => {
             return state;
     }
 }
-
+//Export reducer for use in root reducer
 export default playersReducer;
