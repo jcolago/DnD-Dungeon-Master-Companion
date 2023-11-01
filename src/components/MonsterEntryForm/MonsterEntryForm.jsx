@@ -1,14 +1,16 @@
+//Imports used for this component
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Card, OutlinedInput, InputLabel, FormControl, Container, Button, CardHeader, TextField, Select, MenuItem } from "@mui/material";
-
+//Function for this component
 export default function MonsterEntryFrom() {
+    //Instanciates dispatch and history for use
     const dispatch = useDispatch();
     const history = useHistory();
-
+    //Grabs the list of games tied to the user for use in the dropdown on the form
     const games = useSelector((store) => store.games)
-
+    //State used for the monster form
     const [monsterName, setMonsterName] = useState('');
     const [monsterSize, setMonsterSize] = useState('');
     const [monsterAlignment, setMonsterAlignment] = useState('');
@@ -19,11 +21,11 @@ export default function MonsterEntryFrom() {
     const [monsterProficiencyBonus, setMonsterProficiencyBonus] = useState('');
     const [monsterAttacks, setMonsterAttacks] = useState('');
     const [gameId, setGameId] = useState('')
-
+    //Variable that takes the state above and packages it up into an object for the submission dispatch
     const monsterObj = { name: monsterName, size: monsterSize, alignment: monsterAlignment, armor_class: monsterArmorClass, hit_points: monsterHitPoints, speed: monsterSpeed, resistances: monsterResistances, proficiency_bonus: monsterProficiencyBonus, attacks: monsterAttacks, game_id: gameId }
-
+    //Test for the newly made object
     console.log(monsterObj)
-
+    //Function that runs on submit, sends the monsterObj to the database then resets the state of the form before sending the user to the success page
     const handleSubmit = (event) => {
         event.preventDefault
         dispatch({ type: "ADD_MONSTER", payload: monsterObj });
@@ -40,7 +42,7 @@ export default function MonsterEntryFrom() {
         history.push("/monstersuccess")
 
     }
-
+    //Elements used for this component, form fields set the state tied to each entry and runs the handleSubmit function on button click.
     return (
         <Container style={{border: "2px double black", width: "100%", backgroundColor: "rgb(128, 150, 191, .5)"}}>
             <Card style={{marginTop: "20px", marginBottom: "20px", padding: "5px", backgroundColor: "rgb(226, 232, 243, .7)"}}>

@@ -21,6 +21,8 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 
 import './App.css';
+
+//Imports of components used for this project
 import PlayerInfo from '../PlayerInfo/PlayerInfo';
 import PlayerStatInfo from '../PlayerStatInfo/PlayerStatInfo';
 import PlayersTable from '../PlayersTable/PlayersTable';
@@ -39,11 +41,12 @@ function App() {
   const dispatch = useDispatch();
   
   const user = useSelector(store => store.user);
-
+//useEffect fetches user data on app load
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
   }, [dispatch]);
 
+  //useEffect to fetch data from database after user info has been set
   useEffect(() => {
     dispatch({ type: "FETCH_PLAYERS"});
     dispatch({ type: "FETCH_INVENTORY"});
@@ -134,6 +137,7 @@ function App() {
               <LandingPage />
               
             }
+              {/* Components used in this app and routes to acces views */}
           </Route>
           <ProtectedRoute path= "/playerinfo">
             <PlayerInfo />

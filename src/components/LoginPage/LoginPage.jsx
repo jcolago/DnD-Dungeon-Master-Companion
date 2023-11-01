@@ -1,3 +1,4 @@
+//Imports used for this component
 import React from 'react';
 import LoginForm from '../LoginForm/LoginForm';
 import { useHistory } from 'react-router-dom';
@@ -5,7 +6,7 @@ import { Button } from '@mui/material';
 
 function LoginPage() {
   const history = useHistory();
-
+  //Elements used for this component
   return (
     <div className='login-background'>
       <LoginForm />

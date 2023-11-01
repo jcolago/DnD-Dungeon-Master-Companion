@@ -1,3 +1,4 @@
+//Imports used for component
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Card, Button, Typography, Container } from "@mui/material";
@@ -13,7 +14,7 @@ function LandingPage() {
   const onLogin = (event) => {
     history.push('/login');
   };
-
+  //Elements used in component, provides a breif description of the web app and alows the user to log in or register
   return (
    
     <div className="container">

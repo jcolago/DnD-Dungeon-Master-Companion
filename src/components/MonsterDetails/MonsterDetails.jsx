@@ -1,22 +1,26 @@
+//Imports used for this component
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { Card, Container, Button,  Typography, CardHeader } from "@mui/material"; 
-
+//Functiion for this component
 export default function MonsterDetails() {
+    //Saves off the id number of the monster
     const id = Number(useParams().id);
+    //Instanciates dispatch and history for use
     const dispatch = useDispatch();
     const history = useHistory();
-
+    //Grabs the state for the monster details
     const monster = useSelector((store) => store.monsterdetails)
-
+    //useEffect that fetchs the monster details with the matching id
     useEffect(() => {
         dispatch({ type: 'FETCH_MONSTER_DETAILS', payload: id })
     }, [])
 
-
+    //Console logs for testing
     console.log(id)
     console.log(monster)
+    //Elements used for this component, maps over the monster data and breaks apart the data for display on the DOM
     return (
         <div>
            

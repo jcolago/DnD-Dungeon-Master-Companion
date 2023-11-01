@@ -1,3 +1,4 @@
+//Imports used for component
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {useSelector} from 'react-redux';
@@ -24,7 +25,7 @@ function LoginForm() {
       dispatch({ type: 'LOGIN_INPUT_ERROR' });
     }
   }; // end login
-
+//Elements used for this component
   return (
     <form className="formPanel" onSubmit={login}>
       <Card style={{margin: "5px", backgroundColor: "rgb(226, 232, 243, .7)"}} >

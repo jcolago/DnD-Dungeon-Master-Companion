@@ -1,30 +1,38 @@
+//Imports used for this component
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { Card, Container, Button,  Typography, Select, MenuItem, FormControl, InputLabel, TextField, CardHeader } from "@mui/material";
 import InventoryItem from "../InventoryItem/InventoryItem";
-
+//Function renders component for use in app
 export default function DetailsView() {
+    //Saves off the id of the player to be displayed
     const id = Number(useParams().id);
+    //Instanciates dispatch and history for use in component
     const dispatch = useDispatch();
     const history = useHistory();
 
+    //Use selectors that grab the state of players and inventory for use in the component
     const players = useSelector((store) => store.details);
     const inventory = useSelector((store) => store.inventory);
+    //State used to update items
     const [itemQuantity, setItemQuantity] = useState('0');
     const [itemId, setItemId] = useState('');
 
+    //useEffect that loads the player details on page load
     useEffect(() => {
         dispatch({ type: 'FETCH_PLAYER_DETAILS', payload: id });
     }, []);
-
+    //Function that runs when an item is added to the player. It sends the quantity and item id as a data payload
     const handleAddItem = () => {
         dispatch({ type: 'ADD_ITEM', payload: { quantity: itemQuantity, inventory_id: itemId, id } });
         setItemQuantity('0'),
             setItemId('');
     }
+    //Console logs for tests
     console.log(players)
     console.log(id)
+    //Elements for the component. This also maps over data so that the data can be broken out of state and displayed on the details page. Also maps over the player inventory and adds the entry to a seperate line item in a list
     return (
         <>
         <Typography style={{textAlign: "center", margin: "10px", textDecoration: "underline"}} variant="h4" >Character Details</Typography>
