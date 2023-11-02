@@ -1,30 +1,31 @@
+//Imports used for the the component
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { Card, CardHeader, Container, Button, Grid, OutlinedInput, Typography, Select, MenuItem, FormControl, InputLabel } from "@mui/material";
+import { Card, CardHeader, Container, Button, OutlinedInput, Typography, Select, MenuItem, FormControl, InputLabel } from "@mui/material";
 
-
+//Function used for the component
 export default function PlayerInventoryInfo() {
+    //Instanciates dispatch and history for use in the component
     const dispatch = useDispatch();
     const history = useHistory();
+    //Selectors to get the stort of inventory and the player's backpack
     const inventory = useSelector((store) => store.inventory)
     const backpack = useSelector((store) => store.backpack)
-    // let [newItem, setNewItem] = useState({quantity: "" , item_id: "" })
+   //State used for the new item
     const [itemQuantity, setItemQuantity] = useState('');
     const [itemId, setItemId] = useState('');
-
+    //On change listeners that set the state of the new item
     const handleQuantityChange = (event) => {
         console.log(event)
-        // setNewItem({...newItem, quantity: event.target.value})
         setItemQuantity(event.target.value)
     }
 
     const handleItemChange = (event) => {
         console.log(event)
-        // setNewItem({...newItem, item_id: event.target.value})
         setItemId(event.target.value);
     }
-
+    //Takes the new state, bundles it up into an object and sends it to the inverntory reducer array
     const handleAddItem = () => {
         console.log({ quantity: itemQuantity, item_id: itemId });
         let newItem = { quantity: itemQuantity, item_id: itemId }
@@ -32,7 +33,7 @@ export default function PlayerInventoryInfo() {
         setItemQuantity('');
         setItemId('');
     }
-
+    //Elements used in the component, loops over the backpack and then finds the matching item id in the inventory store to display the item when it is added to the inventory array
     return (
         <Container style={{border: "2px double black", width: "80%", backgroundColor: "rgb(128, 150, 191, .5)"}} >
             <Card style={{ marginTop: "20px", marginBottom: "20px", backgroundColor: "rgb(226, 232, 243, .7)"}}>

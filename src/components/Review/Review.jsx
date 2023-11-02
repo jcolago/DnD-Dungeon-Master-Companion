@@ -1,27 +1,32 @@
-import React, { useState } from "react";
+//Imports for component
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Card, Container, Button, CardHeader, Typography } from "@mui/material";
 
-
+//function for component
 export default function Review() {
+    //Instanciates dispatch and history for use
     const dispatch = useDispatch();
     const history = useHistory();
+    //Saves the store in a variable for use in the component, this is the data from the player entry form
     const playersInfo = useSelector((store) => store.playersInfo);
     const playerStats = useSelector((store) => store.stats);
     const item = useSelector((store) => store.backpack);
     const inventory = useSelector((store) => store.inventory)
+    //Object send to backend to be added to the database
     const characterObj = {...playersInfo, ...playerStats, item }
+    //Console logs for testing
     console.log(playersInfo)
     console.log(characterObj)
-
+    //Runs when submit is clicked, dispatches the character object to the back end
     const submitCharacter = () => {
         dispatch({ type: "ADD_PLAYER", payload: characterObj})
         history.push("/success")
     }
 
     
-
+    //Components used for the component, also loops over the backpack and inventory to display all player info on the DOM
     return (
         <Container style={{border: "2px double black", width: "80%", backgroundColor: "rgb(128, 150, 191, .5)"}}>
              <div>

@@ -1,19 +1,23 @@
+//Imports for component
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Card, OutlinedInput, InputLabel, FormControl, Container, Select, MenuItem, Button, CardHeader } from "@mui/material";
-
+//Function for componet
 export default function PlayerInfo() {
+    //Instanciates dispatch and history for use in the component
     const dispatch = useDispatch();
     const history = useHistory();
+    //Saves off the games list in the games reducer for use in the form
     const games = useSelector((state) => state.games)
+    //Console log for testing
     console.log(games)
-
+    //State for the info in the form - needs to be refactored
     let [newPlayerInfo, setNewPlayerInfo] = useState({
         player_name: "", character_name: "", character_img: "",
         character_class: "", character_level: "", current_hp: "", total_hp: "", armor_class: "", speed: "", initiative_bonus: "", game_id: ""
     })
-
+    //Stupid amout of on change listeners - also needs to be refactored
     const handlePlayerNameChange = (event) => {
         console.log(event);
         setNewPlayerInfo({ ...newPlayerInfo, player_name: event.target.value })
@@ -68,7 +72,7 @@ export default function PlayerInfo() {
         console.log(event)
         setNewPlayerInfo({ ...newPlayerInfo, game_id: event.target.value })
     }
-
+    //Runs on click of the submit button. Takes the player data from the state and send the object to the back end to be added to the database
     const addNewPlayerInfo = (event) => {
         event.preventDefault();
         console.log(newPlayerInfo)
@@ -76,7 +80,7 @@ export default function PlayerInfo() {
         setNewPlayerInfo({ player_name: "", character_name: "", character_img: "", character_class: "", character_level: "", current_hp: "", total_hp: "", armor_class: "", speed: "", initiative_bonus: "", game_id: "" });
         history.push("/stats")
     }
-
+    //Elements used for the component, each input in the form is tied to one of the keys of the player info object, most likely going to be refactoring this
     return (
 
         <Container style={{border: "2px double black", backgroundColor: "rgb(128, 150, 191, .5)"}}>

@@ -1,13 +1,15 @@
+//Imports for the component
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 import { TableRow, TableCell, Button, Typography } from "@mui/material";
-
+//Function for the component
 export default function PlayersTableItem({ player }) {
+    //Instanciates dispatch and history for use in the component
     const dispatch = useDispatch();
     const history = useHistory();
-
+    //Function that runs on click of delete button. Asks the user to confirm they want to delete the character
     const deleteCharacter = () => {
         Swal.fire({
             title: "Are you sure?",
@@ -29,7 +31,7 @@ export default function PlayersTableItem({ player }) {
         })
 
     }
-
+    //Elements used for this component. Takes the passed in player data and breaks it apart to display on DOM
     return (
         <>
             <TableRow style={{border: "2px solid black"}}>
