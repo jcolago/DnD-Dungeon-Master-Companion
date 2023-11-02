@@ -1,9 +1,12 @@
+//Imports for the component
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { Card, Container, Button, Typography } from "@mui/material";
-
+//Function for this component
 export default function MonsterSuccess() {
+    //Instanciates history for use on button click
         const history = useHistory();
+    //Elements used for the component and buttons to navigate the user to new views
         return(
             <Container style={{border: "2px double black", width: "80%", backgroundColor: "rgb(128, 150, 191, .5)"}}>
             <Card style={{margin: "15px", backgroundColor: "rgb(226, 232, 243, .7)"}}>

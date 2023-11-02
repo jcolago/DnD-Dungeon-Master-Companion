@@ -1,22 +1,25 @@
+//Imports used for the component
 import React, {useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Card, Container, Button, OutlinedInput, Typography, Select, MenuItem, FormControl, InputLabel } from "@mui/material";
 import ConditionItem from "../ConditionItem/ConditionItem";
-
+//Function for the components, takes in the player info 
 export default function PlayerCard({ player }) {
+    //Instanciates dispatch for use in component
     const dispatch = useDispatch();
-
+    //Saves the conditions state in a variable for use
     const conditions = useSelector((store) => store.conditions);
+    //State used for updating information in component
     const [conditionLength, setConditionLength] = useState('')
     const [conditionId, setConditionId] = useState('')
     const [newHp, setNewHp] = useState('')
-
+    //Console log for testing
     console.log(newHp);
-
+    //useEffect that sets new hp state to the current hp of the character
     useEffect (() => {
         setNewHp(player.current_hp)
     },[player])
-
+    //Function runs on click of add condition button, takes the new state and sends it to the database before refetching the player data
     const addCondition = () => {
         let conditionObj = { condition_length: Number(conditionLength), condition_id: Number(conditionId), player_id: Number(player.id)}
         console.log(conditionObj)
@@ -24,13 +27,13 @@ export default function PlayerCard({ player }) {
         setConditionId('');
         setConditionLength('');
     }
-
+    //Function that runs when update button is clicked, sends the new hp state to database to be updated then fetches the player data
     const handleUpdate = () =>{
         const newHpObj = { current_hp: Number(newHp), player_id: Number(player.id)}
         console.log(newHpObj)
         dispatch ({ type: "UPDATE_HIT_POINTS", payload: newHpObj})
     }
-
+    //Elements used for the components, takes the passed in player data and breaks it apart for display on the DOM
     return (
         <Container style={{border: "2px double black", backgroundColor: "rgb(128, 150, 191, .5)", display: "flex", flexDirection: "row" ,padding: "10px", margin: "10px"}}>
             
