@@ -167,7 +167,7 @@ export default function EditDetails() {
     return (
         <>
         <div style={{textAlign: "center"}}>
-        <Typography variant="h4" style={{textDecoration: "underline"}}>Character Edit</Typography>
+        <Typography variant="h4" style={{textDecoration: "underline"}}>Edit Details</Typography>
         </div>
         <Container style={{ border: "2px double black", width: "80%", backgroundColor: "rgb(128, 150, 191, .5)", display:"flex", flexDirection: "column", padding: "10px"}}>
             
