@@ -73,7 +73,7 @@ export default function PlayerStatInfo() {
                         </FormControl>
                         <FormControl>
                         <InputLabel style={{margin: "5px"}} htmlFor="str-save">Strength Saving Throw</InputLabel>
-                            <OutlinedInput required style={{margin: "5px", width: "225px"}} label="Strength Saving Throw" id="str-save"  type="number" placeholder="Strength Save" value={strengthSave} onChange={(e) => setStrengthBonus(e.target.value)} />
+                            <OutlinedInput required style={{margin: "5px", width: "225px"}} label="Strength Saving Throw" id="str-save"  type="number" placeholder="Strength Save" value={strengthSave} onChange={(e) => setStrengthSave(e.target.value)} />
                         </FormControl>
                         <FormControl>
                         <InputLabel style={{margin: "5px"}}htmlFor="dexterity">Dexterity</InputLabel>
@@ -90,7 +90,7 @@ export default function PlayerStatInfo() {
                         <FormControl>
                         <InputLabel style={{margin: "5px"}}htmlFor="constitution">Constitution</InputLabel>
                             <OutlinedInput required style={{margin: "5px", width: "225px"}}
-                            label="Constitution" id="constitution"  type="number" placeholder="Constitution" value={constitution} onChange={setConstitution(e.target.value)} />
+                            label="Constitution" id="constitution"  type="number" placeholder="Constitution" value={constitution} onChange={(e) => setConstitution(e.target.value)} />
                         </FormControl>
                         <FormControl>
                         <InputLabel style={{margin: "5px"}}htmlFor="con-bonus">Constitution Bonus</InputLabel>
@@ -98,7 +98,7 @@ export default function PlayerStatInfo() {
                         </FormControl>
                         <FormControl>
                         <InputLabel style={{margin: "5px"}}htmlFor="con-save">Constitution Saving Throw</InputLabel>
-                            <OutlinedInput required style={{margin: "5px", width: "225px"}} label="Constitution Saving Throw" id="con-save"  type="number" placeholder="Constitution Save" value={constitutionSave} onChange={(e) => setCharismaSave(e.target.value)} />
+                            <OutlinedInput required style={{margin: "5px", width: "225px"}} label="Constitution Saving Throw" id="con-save"  type="number" placeholder="Constitution Save" value={constitutionSave} onChange={(e) => setConstitutionSave(e.target.value)} />
                         </FormControl>
                         <FormControl>
                         <InputLabel style={{margin: "5px"}}htmlFor="intelligence">Intelligence</InputLabel>
