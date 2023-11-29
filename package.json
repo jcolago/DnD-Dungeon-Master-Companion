@@ -40,6 +40,7 @@
     "testServer": "jest server/test/*.test.js --forceExit"
   },
   "devDependencies": {
+    "@flydotio/dockerfile": "^0.4.11",
     "nodemon": "^2.0.4",
     "supertest": "^6.3.3"
   },
