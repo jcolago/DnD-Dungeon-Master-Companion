@@ -11,8 +11,9 @@ function UserPage() {
   const history = useHistory();
   const dispatch = useDispatch();
 
-
+  //State used to add a game
   let [gameName, setGameName] = useState('');
+  //Function that runs on click of submit button. Fires off a sweetalert to let user know that the game has been added. Then sends the game data to the backend to be added to the database
   const handleSubmit = (event) => {
     event.preventDefault();
     const game = { game_name: gameName }
@@ -27,10 +28,10 @@ function UserPage() {
     })
     setGameName('')
   }
-  console.log(gameName)
-
+  //Selectors used to set state in the component
   const games = useSelector((store) => store.games)
   const user = useSelector((store) => store.user);
+  //Elements used in component
   return (
     <>
       <div style={{ textAlign: "center" }} className="container">
