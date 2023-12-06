@@ -1,7 +1,7 @@
 //Imports used for the component
 import React, {useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Card, Container, Button, OutlinedInput, Typography, Select, MenuItem, FormControl, InputLabel } from "@mui/material";
+import { Card, Container, Button, OutlinedInput, Typography, Select, MenuItem, FormControl, InputLabel, CardMedia } from "@mui/material";
 import ConditionItem from "../ConditionItem/ConditionItem";
 //Function for the components, takes in the player info 
 export default function PlayerCard({ player }) {
@@ -35,19 +35,21 @@ export default function PlayerCard({ player }) {
     }
     //Elements used for the components, takes the passed in player data and breaks it apart for display on the DOM
     return (
-        <Container style={{border: "2px double black", backgroundColor: "rgb(128, 150, 191, .5)", display: "flex", flexDirection: "row" ,padding: "10px", margin: "10px"}}>
+        // <Container style={{border: "2px double black", backgroundColor: "rgb(128, 150, 191, .5)", display: "flex", flexDirection: "row" ,padding: "10px", margin: "10px"}}>
             
-                <Card className="info-container" style={{ padding: "5px", margin: "5px", width: "30%", backgroundColor: "rgb(226, 232, 243, .7)"}}>
+                <Card className="info-container" style={{ padding: "5px", margin: "5px", width: "25%", backgroundColor: "rgb(226, 232, 243, .7)"}}>
+                <CardMedia style={{textAlign: "center"}} >
                 <img style={{width: "197px", height: "255px"}} src={player.character_img}/>
-                <Typography variant="h4" gutterBottom> Player Info</Typography>
+                </CardMedia>
+                {/* <Typography variant="h6" gutterBottom> Player Info</Typography> */}
                 <Typography >Player Name: {player.player_name}</Typography> <Typography gutterBottom>Character Name: {player.character_name}</Typography>
                 
                 <Typography>Hit Points: <OutlinedInput  style={{ maxHeight: "25px", maxWidth: "50px"}} variant="outlined" onChange={(event) => setNewHp(event.target.value)} value={newHp} /> / {player.total_hp} <Button style={{ maxHeight: "25px", marginLeft: "5px"}} onClick={handleUpdate} variant="contained">Update</Button></Typography>
                 <Typography>Armor Class: {player.armor_class}</Typography>
                 <Typography>Initiative bonus: {player.initiative_bonus} </Typography>
-            </Card>
-            <Card className="condition-container" style={{padding: "5px", margin: "5px", width: "65%", height: "80%", backgroundColor: "rgb(226, 232, 243, .7)"}}>
-                <Typography variant="h4" gutterBottom>Conditions</Typography>
+            {/* </Card>
+            <Card className="condition-container" style={{padding: "5px", margin: "5px", width: "65%", height: "80%", backgroundColor: "rgb(226, 232, 243, .7)"}}> */}
+                {/* <Typography variant="h6" gutterBottom>Conditions</Typography> */}
                 {player.length_condition && player.length_condition.map (player => {
                     return(
                         <div>
@@ -57,8 +59,8 @@ export default function PlayerCard({ player }) {
             })}
             <div style={{marginTop: "5px"}}>
             <FormControl>
-            <InputLabel size="small" htmlFor="condition-length">Condition Length</InputLabel>
-                <OutlinedInput size="small" label="Condition Length" id="condition-length" placeholder="Condition Length"  onChange={(event) => setConditionLength(event.target.value)} type="number" value={conditionLength}/>
+            <InputLabel size="small" htmlFor="condition-length">Length</InputLabel>
+                <OutlinedInput style={{width: "95px"}} size="small" label="Length" id="condition-length" placeholder=" Length"  onChange={(event) => setConditionLength(event.target.value)} type="number" value={conditionLength}/>
                 </FormControl>
                 <FormControl>
                 <InputLabel id="Conditon" size="small" > Condition </InputLabel>
@@ -67,15 +69,24 @@ export default function PlayerCard({ player }) {
                     <em>Please select a condition</em>
                     </MenuItem>
                     {conditions.map(condition =>{
-                        return(<MenuItem value={condition.id} key={condition.id}><Typography>{condition.condition_name}</Typography></MenuItem>)
+                        return(
+                            condition.condition_name != "None" && (
+                            
+                        <MenuItem value={condition.id} key={condition.id}><Typography>{condition.condition_name}</Typography></MenuItem>
+                        
+                            )
+                        )
                     })}
                 </Select>
                 </FormControl>
-                <Button style={{ maxHeight: "40px", marginLeft: "5px", marginBottom: "3px"}} variant="contained" onClick={addCondition}>Add Condition</Button> 
+                <Button style={{ maxHeight: "25px", marginBottom: "3px", marginTop: "2px"}} variant="contained" onClick={addCondition}>Add Condition</Button> 
                 </div> 
+                <br/>
+            <div style={{textAlign: "left"}}>
+            <Button variant="contained" style={{marginTop: "5px"}} onClick={() => dispatch({ type: 'REMOVE_PLAYER', payload: player.id})}>Remove</Button>
+            </div>
             </Card>
-            <Button variant="contained" style={{margin: "5px", alignSelf:"end"}} onClick={() => dispatch({ type: 'REMOVE_PLAYER', payload: player.id})}>Remove</Button>
-        </Container>
+        // </Container>
         
          
          

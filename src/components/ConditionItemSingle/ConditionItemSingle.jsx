@@ -42,12 +42,14 @@ export default function ConditionItemSingle({ condition }) {
     console.log(newlength)
     //Elements used by the component. The return renders the component view.
     return(
+       condition.condition_name != "None" && (
         <div>
-       <Typography> <Typography>Condition: {condition.condition_name} </Typography> <Typography>Duration: <OutlinedInput  style={{ maxHeight: "25px", maxWidth: "40px"}} onChange={(event) => setNewLength(event.target.value)} value={newlength} /> 
+        <Typography>Condition: {condition.condition_name} </Typography> <Typography>Duration: <OutlinedInput  style={{ maxHeight: "25px", maxWidth: "40px"}} onChange={(event) => setNewLength(event.target.value)} value={newlength} /> 
         <Button variant="contained" style={{ maxHeight: "25px", marginLeft: "5px", marginBottom: "3px"}} onClick={() => dispatch({ type: 'UPDATE_CONDITION', payload: {id: condition.id, length: newlength}})}>Update</Button>
         <Button variant="contained" style={{ backgroundColor: "red", color: "white", maxHeight: "25px", marginLeft: "5px", marginBottom: "3px"}}  onClick={deleteCondition}>Delete</Button>
         </Typography> 
-        </Typography>
+        
         </div>
-    )
+       )
+     )
 }

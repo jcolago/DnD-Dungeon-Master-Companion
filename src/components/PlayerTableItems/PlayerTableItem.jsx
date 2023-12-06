@@ -40,7 +40,7 @@ export default function PlayersTableItem({ player }) {
                 <TableCell style={{borderRight: "2px solid black"}}> <Typography>{player.character_level}</Typography> </TableCell>
                 <TableCell style={{borderRight: "2px solid black"}}> <Typography>{player.character_class}</Typography> </TableCell>
                 <TableCell style={{borderRight: "2px solid black"}}> <Typography>{player.game_name}</Typography> </TableCell>
-                <TableCell style={{textAlign: "center"}}><Button variant="contained" onClick={() => history.push(`/details/${player.id}`)}>Details</Button> <Button style={{backgroundColor: "red", color: "white"}} variant="contained" onClick={deleteCharacter}>Delete</Button> {player.displayed === false ? <Button variant="contained" onClick={() => dispatch({ type: 'DISPLAY_PLAYER', payload: player.id})}>Display</Button> : <Button variant="contained" onClick={() => history.push("/gameview")}>Game View</Button>}</TableCell>
+                <TableCell style={{textAlign: "center"}}><Button style={{width: "55px", height: "25px"}} variant="contained" onClick={() => history.push(`/details/${player.id}`)}>Details</Button> <Button style={{backgroundColor: "red", color: "white", width: "55px", height: "25px"}} variant="contained" onClick={deleteCharacter}>Delete</Button> {player.displayed === false ? <Button style={{width: "55px", height: "25px"}} variant="contained" onClick={() => dispatch({ type: 'DISPLAY_PLAYER', payload: player.id})}>Display</Button> : <Button style={{ height: "25px"}} variant="contained" onClick={() => history.push("/gameview")}>Game View</Button>}</TableCell>
             </TableRow>
         </>
     )
