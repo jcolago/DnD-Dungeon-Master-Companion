@@ -47,6 +47,7 @@ export default function PlayerCard({ player }) {
                 <Typography>Hit Points: <OutlinedInput  style={{ maxHeight: "25px", maxWidth: "50px"}} variant="outlined" onChange={(event) => setNewHp(event.target.value)} value={newHp} /> / {player.total_hp} <Button style={{ maxHeight: "25px", marginLeft: "5px"}} onClick={handleUpdate} variant="contained">Update</Button></Typography>
                 <Typography>Armor Class: {player.armor_class}</Typography>
                 <Typography>Initiative bonus: {player.initiative_bonus} </Typography>
+                <hr />
             {/* </Card>
             <Card className="condition-container" style={{padding: "5px", margin: "5px", width: "65%", height: "80%", backgroundColor: "rgb(226, 232, 243, .7)"}}> */}
                 {/* <Typography variant="h6" gutterBottom>Conditions</Typography> */}

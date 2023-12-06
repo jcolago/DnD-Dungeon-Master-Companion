@@ -49,12 +49,25 @@ function* deleteMonsterSaga(action) {
         console.log('Unable to delete monster character', err)
     }
 }
+
+function* displayMonsterSaga(action) {
+    try {
+        yield axios({
+            method: 'PUT',
+            url: `/api/monsters/display/${action.payload}`
+        })
+        yield put({ type: 'FETCH_MONSTERS' })
+    } catch (err) {
+        console.log('Unable to set monster to displayed', err)
+    }
+}
 //Watcher saga for all monster sagas
 function* monstersSaga() {
     yield takeEvery("FETCH_MONSTERS", fetchMonstersSaga);
     yield takeEvery("FETCH_MONSTER_DETAILS", fetchMonsterDetailsSaga);
     yield takeEvery("ADD_MONSTER", addMonsterSaga);
-    yield takeEvery("DELETE_MONSTER", deleteMonsterSaga)
+    yield takeEvery("DELETE_MONSTER", deleteMonsterSaga);
+    yield takeEvery('DISPLAY_MONSTER', displayMonsterSaga);
 }
 //Exports the watcher saga for use in root saga file
 export default monstersSaga;
